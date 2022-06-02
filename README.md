@@ -1,92 +1,122 @@
 # robot_dev_config
+## 文件说明
+aarch64_toolchainfile.cmake 用于TROS交叉编译
 
+all_build.sh 编译配置脚本，完整编译
 
+clear_COLCON_IGNORE.sh 重制编译配置脚本
 
-## Getting started
+Dockerfile_ubuntu20.04_pc 用于制作ubuntu20.04 PC docker镜像
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+minimal_build.sh 编译配置脚本，最小化编译
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+minimal_deploy.sh 部署剪裁脚本，用于最小化部署
 
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
+## 交叉编译说明
+### 基于ubuntu20.04 docker
+1. 本地创建开发目录结构，获取源码。这里以/mnt/data/kairui.wang/test为例
 ```
-cd existing_repo
-git remote add origin https://c-gitlab.horizon.ai/HHP/robot_dev_config.git
-git branch -M main
-git push -uf origin main
+## 创建目录
+cd /mnt/data/kairui.wang/test
+mkdir -p cc_ws/tros_ws/src
+cd cc_ws/tros_ws
+## 获取配置文件
+git clone http://gitlab.hobot.cc/robot_dev_platform/robot_dev_config.git -b develop
+## 安装vcs工具
+sudo pip install -U vcstool 
+## 拉取代码
+vcs-import src < ./robot_dev_config/ros2.repos 
+## 拷贝sysroot
+cd ../
+cp tros_ws/robot_dev_config/sysroot_docker.tar.gz .
+tar -xvf sysroot_docker.tar.gz
+```
+整个工程目录结构如下
+```
+├── cc_ws
+│   ├── sysroot_docker
+│   │   ├── etc
+│   │   ├── lib -> usr/lib
+│   │   ├── opt
+│   │   └── usr
+│   └── tros_ws
+│       ├── robot_dev_config
+│       └── src
+```
+**注意：目录结构需要保持一致**
+
+**注意：vcs import过程中打印.表示成功拉取repo，如果打印E表示该repo拉取失败可以通过执行后的log看到具体失败的repo，碰到这种情况可以尝试删除src里面的内容重新vcs import或者手动拉取失败的repo**
+
+2. 使用docker镜像
+```
+## 加载docker镜像
+docker load --input ubuntu20.04_tros.tar
+## 查看对应的image ID
+docker images
+## 启动docker挂载目录
+docker run -it --rm --entrypoint="/bin/bash" -v PC本地目录:docker目录 imageID，这里以docker run -it --rm --entrypoint="/bin/bash" -v /mnt/data/kairui.wang/test:/mnt/test 725ec5a56ede 为例
 ```
 
-## Integrate with your tools
+3. 交叉编译。该步骤均在docker中完成
+```
+## 配置交叉编译工具链
+export TARGET_ARCH=aarch64
+export TARGET_TRIPLE=aarch64-linux-gnu
+export CROSS_COMPILE=/usr/bin/$TARGET_TRIPLE-
+cd /mnt/test/cc_ws/tros_ws
+## 清除配置选项
+./robot_dev_config/clear_COLCON_IGNORE.sh
+## 配置编译选项，若需要最小化部署包则使用minimal_build.sh
+./robot_dev_config/all_build.sh
+## 开始编译
+colcon build \
+  --merge-install \
+  --cmake-force-configure \
+  --cmake-args \
+    --no-warn-unused-cli \
+    -DCMAKE_TOOLCHAIN_FILE=`pwd`/robot_dev_config/aarch64_toolchainfile.cmake \
+    -DTHIRDPARTY=ON \
+    -DBUILD_TESTING:BOOL=OFF \
+    -DCMAKE_BUILD_RPATH="`pwd`/build/poco_vendor/poco_external_project_install/lib/;`pwd`/build/libyaml_vendor/libyaml_install/lib/"
+```
 
-- [ ] [Set up project integrations](https://c-gitlab.horizon.ai/HHP/robot_dev_config/-/settings/integrations)
+**注意：编译过程中，要确保同一个终端中执行olcon build命令之前已执行执行export环境变量命令**
 
-## Collaborate with your team
+编译成功后会提示总计N packages编译通过
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+4. 简单验证
 
-## Test and Deploy
+将编译生成的install目录放入开发板中（开发板ubuntu20.04环境）
 
-Use the built-in continuous integration in GitLab.
+打开一个terminator
+```
+source ./local_setup.bash
+ros2 run examples_rclcpp_minimal_publisher publisher_member_function
+```
+打开另一个terminator
+```
+source ./local_setup.bash
+ros2 run examples_rclcpp_minimal_subscriber subscriber_member_function
+```
+可以看到subscriber已经收到了消息
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+5. 最小部署包
 
-***
+量产环节为了节省ROM和RAM空间，需要对TROS进行最小化剪裁
 
-# Editing this README
+这里分为两个步骤：
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+  第4步配置编译选项，使用minimal_build.sh；
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+  第4步编译完成后得到install目录，执行./minimal_deploy.sh -d install_path
 
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+6. FAQ
+Q: git获取代码重复提示输入账户、密码
+A: 
+```
+apt install ssh
+ssh-keygen -t rsa -C 'xxx@e-mail.com'
+gitlab添加pub key
+git config --global credential.helper store
+```
+尝试拉一个repo，输入账户密码，后面不再需要重复输入密码
