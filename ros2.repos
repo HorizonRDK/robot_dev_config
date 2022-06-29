@@ -67,6 +67,10 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_cv.git
     version: develop
+  box/hobot_hdmi:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/box/hobot_hdmi.git
+    version: develop
   box/hobot_msgs:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_msgs.git
