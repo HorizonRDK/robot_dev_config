@@ -5,7 +5,15 @@ touch \
     ./src/ament/googletest/googletest/COLCON_IGNORE \
     ./src/box/ros-perception/COLCON_IGNORE \
     ./src/box/ros-planning/COLCON_IGNORE \
-    ./src/box/ros-planning/COLCON_IGNORE \
+    ./src/box/hobot_interactions/COLCON_IGNORE \
+    ./src/box/hobot_perception/COLCON_IGNORE \
+    ./src/box/hobot_dnn/dnn_benchmark_example/COLCON_IGNORE \
+    ./src/box/hobot_dnn/dnn_node_example/COLCON_IGNORE \
+    ./src/box/hobot_websocket/COLCON_IGNORE \
+    ./src/box/hobot_codec/COLCON_IGNORE \
+    ./src/box/hobot_hdmi/COLCON_IGNORE \
+    ./src/box/hobot_cv/COLCON_IGNORE \
+    ./src/app/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/ros2trace/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/tracetools_launch/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/tracetools_read/COLCON_IGNORE \
@@ -47,7 +55,6 @@ touch \
     ./src/tros/rosbag2/rosbag2_storage_evaluation/COLCON_IGNORE \
     ./src/tros/rosbag2/rosbag2_transport/COLCON_IGNORE \
     ./src/tros/rosbag2/rosbag2_tests/COLCON_IGNORE \
-    ./src/tros/rosbag2/rosbag2_samples/COLCON_IGNORE \
     ./src/tros/rosidl_python/COLCON_IGNORE \
     ./src/tros/rosidl_runtime_py/COLCON_IGNORE \
     ./src/tros/rosidl_typesupport_connext/COLCON_IGNORE \
@@ -58,8 +65,6 @@ touch \
     ./src/tros/test_interface_files/COLCON_IGNORE \
     ./src/tros/tlsf/COLCON_IGNORE \
     ./src/tros/urdf/COLCON_IGNORE \
-    ./src/tools/benchmark/performance_test_ros1_msgs/COLCON_IGNORE \
-    ./src/tools/benchmark/performance_test_ros1_publisher/COLCON_IGNORE \
-    ./src/tools/benchmark/performance_report/COLCON_IGNORE \
+    ./src/tools/benchmark/COLCON_IGNORE \
     ./src/eProsima/compatibility/COLCON_IGNORE
     
