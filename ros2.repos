@@ -83,6 +83,10 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_codec.git
     version: develop
+  box/hobot_audio:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/box/hobot_audio.git
+    version: develop
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono2d_body_detection.git
@@ -122,6 +126,10 @@ repositories:
   box/hobot_interactions/body_tracking:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/body_tracking.git
+    version: develop
+  box/hobot_interactions/audio_control:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/audio_tracking.git
     version: develop
   app/xr_robot:
     type: git
