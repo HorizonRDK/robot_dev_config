@@ -1,5 +1,21 @@
 # Changelog for Horizon Hobot Platform
 
+v1.0.2 (2022-07-17)
+------------------
+- Apps
+
+    无
+
+- Boxs
+    1. mono2d_body_detection，人体关键点感知结果中增加置信度信息
+    2. audio_control，增加语音控制小车运动功能
+    3. hobot_audio，增加语音识别功能
+    4. hobot_websocket，优化显示卡顿，解决偶现加载失败问题
+    5. hobot_msgs，更新Point.msg，增加audio_msg
+
+- TogetherROS
+    无
+
 v1.0.1 (2022-06-23)
 ------------------
 - Apps
