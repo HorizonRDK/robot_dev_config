@@ -58,7 +58,7 @@ repositories:
   box/hobot_sensors:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_sensors.git
-    version: v1.0.1
+    version: hhp_1.0.3
   box/hobot_dnn:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_dnn.git
