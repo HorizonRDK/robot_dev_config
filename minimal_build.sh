@@ -19,6 +19,7 @@ touch \
     ./src/box/ros-tracing/ros2_tracing/tracetools_read/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/tracetools_test/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/tracetools_trace/COLCON_IGNORE \
+    ./src/box/ros-perception/vision_opencv/COLCON_IGNORE \
     ./src/eclipse-cyclonedds/cyclonedds/COLCON_IGNORE \
     ./src/osrf/COLCON_IGNORE \
     ./src/ros/kdl_parser/COLCON_IGNORE \
