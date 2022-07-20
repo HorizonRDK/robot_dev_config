@@ -139,6 +139,10 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros-perception/laser_geometry.git
     version: 2.2.0
+  box/ros-perception/vision_opencv:
+    type: git
+    url: https://c-gitlab.horizon.ai/third_party/ros-perception/vision_opencv.git
+    version: hhp_1.0.3
   box/ros-planning/navigation_msgs:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros-planning/navigation_msgs.git
