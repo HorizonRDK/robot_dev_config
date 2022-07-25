@@ -130,7 +130,7 @@ repositories:
   box/hobot_interactions/audio_control:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/audio_control.git
-    version: hhp_1.0.2
+    version: hhp_1.0.3
   app/xr_robot:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/app/xr_robot.git
