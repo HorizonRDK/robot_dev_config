@@ -127,6 +127,10 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/audio_control.git
     version: hhp_1.0.3
+  box/hobot_slam/orb_slam3:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/box/hobot_slam/orb_slam3.git
+    version: hhp_1.0.4
   app/xr_robot:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/app/xr_robot.git
