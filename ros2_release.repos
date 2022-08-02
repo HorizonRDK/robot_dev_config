@@ -111,10 +111,6 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono3d_indoor_detection.git
     version: v0.0.1
-  box/hobot_perception/fcos_detection:
-    type: git
-    url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/fcos_detection.git
-    version: v0.0.2
   box/hobot_perception/elevation_net:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/elevation_net.git
