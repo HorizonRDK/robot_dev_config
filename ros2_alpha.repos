@@ -62,7 +62,7 @@ repositories:
   box/hobot_dnn:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_dnn.git
-    version: hhp_1.0.4
+    version: hhp_1.0.5
   box/hobot_cv:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_cv.git
@@ -90,7 +90,7 @@ repositories:
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono2d_body_detection.git
-    version: hhp_1.0.4
+    version: hhp_1.0.5
   box/hobot_perception/mot:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mot.git
@@ -98,15 +98,15 @@ repositories:
   box/hobot_perception/hand_lmk_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/hand_lmk_detection.git
-    version: hhp_1.0.4
+    version: hhp_1.0.5
   box/hobot_perception/hand_gesture_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/hand_gesture_detection.git
-    version: hhp_1.0.4
+    version: hhp_1.0.5
   box/hobot_perception/hobot_falldown_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/hobot_falldown_detection.git
-    version: v0.0.3
+    version: hhp_1.0.5
   box/hobot_perception/mono3d_indoor_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono3d_indoor_detection.git
@@ -118,11 +118,11 @@ repositories:
   box/hobot_interactions/gesture_control:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/gesture_control.git
-    version: v1.0RC1
+    version: hhp_1.0.5
   box/hobot_interactions/body_tracking:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/body_tracking.git
-    version: v1.0RC1
+    version: hhp_1.0.5
   box/hobot_interactions/audio_control:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/audio_control.git
