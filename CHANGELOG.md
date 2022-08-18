@@ -1,5 +1,15 @@
 # Changelog for TogetherROS
 
+v1.0.4 (2022-08-18)
+------------------
+
+  1. hobot_dnn，升级预测库，修复偶现算法推理输出异常的问题，以及加密芯片访问报错的问题
+  3. audio_control，更新说明文档中的唤醒词说明
+  4. hobot_hdmi，增加启动的launch文件，更新文档
+  5. hobot_sensor，优化NV转RGB效率，更新RGBD驱动
+  6. ORB SLAM3，新增v-slam功能
+  7. lttng，新增trace工具lttng支持
+
 v1.0.3 (2022-07-29)
 ------------------
 
