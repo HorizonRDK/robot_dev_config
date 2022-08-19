@@ -435,3 +435,7 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/tools/flamegraph.git
     version: master   
+  tools/hobot_image_publisher:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/tools/hobot_image_publisher.git
+    version: hhp_1.0.5
