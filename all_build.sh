@@ -7,4 +7,4 @@ touch \
     ./src/ros/ros_tutorials/COLCON_IGNORE \
     ./src/tros/ros1_bridge/COLCON_IGNORE \
     ./src/eProsima/compatibility/COLCON_IGNORE \
-    ./src/box/hobot_perception/parking_perception
+    ./src/box/hobot_perception/parking_perception/COLCON_IGNORE
