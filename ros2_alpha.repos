@@ -62,11 +62,11 @@ repositories:
   box/hobot_dnn:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_dnn.git
-    version: hhp_1.0.5
+    version: hhp_1.0.6
   box/hobot_cv:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_cv.git
-    version: hhp_1.0.5
+    version: hhp_1.0.6
   box/hobot_msgs:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_msgs.git
