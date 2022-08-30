@@ -139,6 +139,10 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/app/xr_robot.git
     version: v1.0RC1
+  app/line_follower:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/app/line_follower.git
+    version: hhp_1.0.6
   box/ros-perception/laser_geometry:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros-perception/laser_geometry.git
