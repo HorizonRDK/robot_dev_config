@@ -70,11 +70,11 @@ repositories:
   box/hobot_msgs:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_msgs.git
-    version: hhp_1.0.2
+    version: hhp_1.0.6
   box/hobot_websocket:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_websocket.git
-    version: hhp_1.0.4
+    version: hhp_1.0.6
   box/hobot_codec:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_codec.git
@@ -110,7 +110,7 @@ repositories:
   box/hobot_perception/mono3d_indoor_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono3d_indoor_detection.git
-    version: hhp_1.0.4
+    version: hhp_1.0.6
   box/hobot_perception/elevation_net:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/elevation_net.git
@@ -126,11 +126,11 @@ repositories:
   box/hobot_interactions/body_tracking:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/body_tracking.git
-    version: hhp_1.0.5
+    version: hhp_1.0.6
   box/hobot_interactions/audio_control:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/audio_control.git
-    version: hhp_1.0.4
+    version: hhp_1.0.6
   box/hobot_slam/orb_slam3:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_slam/orb_slam3.git
