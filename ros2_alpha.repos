@@ -118,7 +118,7 @@ repositories:
   box/hobot_perception/parking_perception:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/parking_perception.git
-    version: hhp_1.0.5RC1
+    version: hhp_1.0.6
   box/hobot_interactions/gesture_control:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/gesture_control.git
