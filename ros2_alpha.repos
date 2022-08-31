@@ -86,7 +86,7 @@ repositories:
   box/hobot_audio:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_audio.git
-    version: hhp_1.0.4
+    version: hhp_1.0.6
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono2d_body_detection.git
