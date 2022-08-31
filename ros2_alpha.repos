@@ -443,3 +443,7 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/tools/hobot_image_publisher.git
     version: hhp_1.0.5RC1
+  ../../sysroot_docker:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/sysroot_docker.git
+    version: hhp_1.0.6
