@@ -58,23 +58,23 @@ repositories:
   box/hobot_sensors:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_sensors.git
-    version: hhp_1.0.3
+    version: hhp_1.0.6RC1
   box/hobot_dnn:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_dnn.git
-    version: hhp_1.0.5
+    version: hhp_1.0.6
   box/hobot_cv:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_cv.git
-    version: hhp_1.0.5
+    version: hhp_1.0.6
   box/hobot_msgs:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_msgs.git
-    version: hhp_1.0.2
+    version: hhp_1.0.6
   box/hobot_websocket:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_websocket.git
-    version: hhp_1.0.4
+    version: hhp_1.0.6
   box/hobot_codec:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_codec.git
@@ -86,11 +86,11 @@ repositories:
   box/hobot_audio:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_audio.git
-    version: hhp_1.0.4
+    version: hhp_1.0.6
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono2d_body_detection.git
-    version: hhp_1.0.5
+    version: hhp_1.0.6
   box/hobot_perception/mot:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mot.git
@@ -110,7 +110,7 @@ repositories:
   box/hobot_perception/mono3d_indoor_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono3d_indoor_detection.git
-    version: hhp_1.0.4
+    version: hhp_1.0.6
   box/hobot_perception/elevation_net:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/elevation_net.git
@@ -118,7 +118,7 @@ repositories:
   box/hobot_perception/parking_perception:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/parking_perception.git
-    version: hhp_1.0.5RC2
+    version: hhp_1.0.6RC1
   box/hobot_interactions/gesture_control:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/gesture_control.git
@@ -126,19 +126,27 @@ repositories:
   box/hobot_interactions/body_tracking:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/body_tracking.git
-    version: hhp_1.0.5
+    version: hhp_1.0.6
   box/hobot_interactions/audio_control:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/audio_control.git
-    version: hhp_1.0.4
+    version: hhp_1.0.6
+  box/hobot_interactions/parking_search:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/parking_search.git
+    version: hhp_1.0.6RC1
   box/hobot_slam/orb_slam3:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_slam/orb_slam3.git
-    version: hhp_1.0.4
+    version: hhp_1.0.6
   app/xr_robot:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/app/xr_robot.git
     version: v1.0RC1
+  app/line_follower:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/app/line_follower.git
+    version: hhp_1.0.6
   box/ros-perception/laser_geometry:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros-perception/laser_geometry.git
@@ -439,3 +447,7 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/tools/hobot_image_publisher.git
     version: hhp_1.0.5RC1
+  ../../sysroot_docker:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/sysroot_docker.git
+    version: hhp_1.0.6
