@@ -1,5 +1,21 @@
 # Changelog for TogetherROS
 
+v1.1.0 (2022-09-09)
+------------------
+
+  1. hobot_dnn，example中算法前处理使用hobot_cv进行图片resize，解决不同输入图片分辨率影响算法效果的问题。
+  2. hobot_cv，修复图片处理耗时不稳定的问题。
+  3. hobot_websocket，支持3D检测算法数据序列化输出；支持停车区域环境感知算法数据的序列化和渲染。
+  4. hobot_codec，增强程序鲁棒性，解决处理异常图片时程序崩溃的问题；支持通过rqt预览JPEG压缩格式图像；支持输出帧率控制，降低跨设备传输图片的网络带宽消耗。
+  5. hobot_sensors，支持发布camera_info话题的相机标定数据；适配RGBD模组。
+  6. hobot_msgs，属性感知消息Attribute.msg中属性数值value成员类型由int16变更为float32，可用于表示更丰富的属性信息。
+  7. hobot_audio，智能语音算法示例完善README中算法输出的DOA数据说明。
+  8. mono3d_indoor_detection，单目3D室内检测算法示例支持通过订阅图片进行算法推理；完善README中算法输出数据的说明。
+  9. parking_perception，停车区域环境感知算法示例支持WEB端渲染算法结果功能。
+  10. parking_search，新增自动泊车的应用示例。
+  11. line_follower，新增小车巡线的应用示例，用CNN的方式实现巡线任务中引导线的位置感知。
+  12. 交叉编译优化，拉取代码时自动下载sysroot_docker。
+
 v1.0.5 (2022-08-26)
 ------------------
 

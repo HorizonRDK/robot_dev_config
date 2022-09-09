@@ -58,7 +58,7 @@ repositories:
   box/hobot_sensors:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_sensors.git
-    version: hhp_1.0.6
+    version: hhp_1.0.6RC1
   box/hobot_dnn:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_dnn.git
@@ -118,7 +118,7 @@ repositories:
   box/hobot_perception/parking_perception:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/parking_perception.git
-    version: hhp_1.0.6
+    version: hhp_1.0.6RC1
   box/hobot_interactions/gesture_control:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/gesture_control.git
@@ -134,7 +134,7 @@ repositories:
   box/hobot_interactions/parking_search:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/parking_search.git
-    version: hhp_1.0.6
+    version: hhp_1.0.6RC1
   box/hobot_slam/orb_slam3:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_slam/orb_slam3.git
