@@ -1,0 +1,22 @@
+auth: 
+  username: nuo.wu
+  password: 
+
+project: demo
+group: public
+status: snapshot
+platform: linux
+category: project
+arch: arm
+vendor: general
+overwrite: "false"
+toolchain: basic 
+version: test-1.0.6
+scm_type: git
+scm_build_id: "11"
+scm_committer: jingyi.wang
+scm_commit_id: ebc25adbd1a6217e2608895e73bec802352df970
+scm_commit_time: "2018-05-06T15:04:08+08:00"
+scm_desc: test upload
+filename: output.zip
+file: ../output.zip

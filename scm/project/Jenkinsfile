@@ -1,0 +1,97 @@
+pipeline {
+    agent {
+        kubernetes {
+            label "${UUID.randomUUID().toString()}"
+            yaml """
+                metadata:
+                  labels:
+                    some-label: some-label-value
+                    class: KubernetesDeclarativeAgentTest
+                  namespace: scm
+                spec:               
+                  nodeSelector:
+                    jenkins-ci: "true"
+                  containers:
+                    - name: tros
+                      image: hub.hobot.cc/hhp-ubuntu20.04_tros/ubuntu20.04_tros:1.0
+                      command:
+                      - cat
+                      tty: true
+                      env:
+                        - name: CONTAINER_ENV_VAR
+                          value: tros
+            """
+        }
+    }
+
+    stages {
+        stage('prepare') {
+            steps {
+                container('tros'){
+                    script{
+                        git(branch: 'develop',
+                        credentialsId: 'test',
+                        url: 'https://gitlab.hobot.cc/robot_dev_platform/robot_dev_config.git')
+                        sh"""
+                            ls
+                            mkdir hhp
+                            cd hhp
+                            mkdir cc_ws
+                            mv ../sysroot_docker.tar.gz cc_ws
+                            cd cc_ws
+                            tar -zxvf sysroot_docker.tar.gz
+                            mkdir tros_ws
+                            cd tros_ws
+                            git config --global credential.helper store
+                            git clone https://nuo.wu%40horizon.ai:Zxq990303%40@c-gitlab.horizon.ai/HHP/robot_dev_config.git -b develop
+                            mkdir src
+                            vcs-import --input ./robot_dev_config/ros2_alpha.repos src
+                            ./robot_dev_config/minimal_build.sh
+                            export TARGET_ARCH=aarch64
+                            export TARGET_TRIPLE=aarch64-linux-gnu
+                            export CROSS_COMPILE=/usr/bin/aarch64-linux-gnu-
+                            colcon build \
+                            --merge-install \
+                            --cmake-force-configure \
+                            --cmake-args \
+                                --no-warn-unused-cli \
+                                -DCMAKE_TOOLCHAIN_FILE=`pwd`/robot_dev_config/aarch64_toolchainfile.cmake \
+                                -DTHIRDPARTY=ON \
+                                -DBUILD_TESTING:BOOL=OFF \
+                                -DCMAKE_BUILD_RPATH="`pwd`/build/poco_vendor/poco_external_project_install/lib/;`pwd`/build/libyaml_vendor/libyaml_install/lib/"
+                        """
+                    }
+                }
+            }    
+        }
+    }
+    post {
+        failure {
+            container('tros') {
+                script {
+                    sh """
+                    curl -X POST -v http://cmo-message.hobot.cc:5000/feishu -H "Content-Type: application/json" -d '{
+                        "user":"nuo.wu",
+                        "msg_type":"text",
+                        "content": {"text": "failure"}
+                    }'
+                    """    
+                }    
+            }
+        }
+        success {
+            container('tros') {
+                script {
+                    sh """
+                    curl -X POST -v http://cmo-message.hobot.cc:5000/feishu -H "Content-Type: application/json" -d '{
+                        "user":"nuo.wu",
+                        "msg_type":"text",
+                        "content": {"text": "success"}
+                        }'
+                    """    
+                }    
+            }
+        }
+
+    }    
+}

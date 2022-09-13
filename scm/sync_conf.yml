@@ -1,0 +1,7 @@
+ - sync:
+    proposer: nuo.wu
+    project: robot_dev_config
+    src_repo: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/body_tracking.git
+    src_branch: feature-sync
+    dst_repo: https://gitlab.hobot.cc/robot_dev_platform/box/hobot_interactions/body_tracking.git
+    dst_branch: feature-sync

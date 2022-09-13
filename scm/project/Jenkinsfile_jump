@@ -1,0 +1,50 @@
+pipeline {
+    agent {
+        kubernetes {
+            label "${UUID.randomUUID().toString()}"
+            yamlFile 'scm/cicd_common_tool.yaml'
+        }
+    }
+    parameters {
+        string defaultValue: '', description: 'Enter PH DIFF_ID', name: 'DIFF_ID', trim: true
+        string defaultValue: '', description: 'Enter PH PHID', name: 'PHID', trim: true
+        string defaultValue: '', description: 'Enter PH REVISION ID', name: 'REVISION_ID', trim: true
+    }
+    stages{
+        stage('jump') {
+            agent {
+                kubernetes {
+                    label "${UUID.randomUUID().toString()}"
+                    yamlFile 'scm/cicd_common_tool.yaml' 
+                }
+            }
+            steps {
+                container('build') {
+                    script {
+                        branch = sh (script: 'curl -s https://cr.hobot.cc/api/differential.query -d api.token=api-ojyrmpxgp4zwelvzgikelwywjz7x -d ids[0]=$REVISION_ID | python3 -c "import sys, json; print(json.load(sys.stdin)[\'result\'][0][\'branch\'])"',returnStdout: true).trim().replaceAll("/", "%2F")
+                        println(branch)
+                        build job: 'template/job/'+branch, 
+                                    wait: false, 
+                                    parameters: [
+                                        [$class: 'StringParameterValue', name: 'DIFF_ID', value: "${env.DIFF_ID}"], 
+                                        [$class: 'StringParameterValue', name: 'PHID', value: "${env.PHID}"], 
+                                        [$class: 'StringParameterValue', name: 'REVISION_ID', value: "${env.REVISION_ID}"], 
+                                    ]
+                    }
+                }
+            }
+        }
+    }
+    post {
+        failure {
+            script {
+                step([$class: 'PhabricatorNotifier', commentOnSuccess: true, commentWithConsoleLinkOnFailure: true])
+            }
+        }
+        aborted {
+            script {
+                step([$class: 'PhabricatorNotifier', commentOnSuccess: true, commentWithConsoleLinkOnFailure: true])
+            }
+        }
+    }
+}
