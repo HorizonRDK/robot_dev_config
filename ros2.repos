@@ -67,10 +67,6 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_cv.git
     version: develop
-  box/hobot_hdmi:
-    type: git
-    url: https://c-gitlab.horizon.ai/HHP/box/hobot_hdmi.git
-    version: develop
   box/hobot_msgs:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_msgs.git
@@ -82,6 +78,10 @@ repositories:
   box/hobot_codec:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_codec.git
+    version: develop
+  box/hobot_hdmi:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/box/hobot_hdmi.git
     version: develop
   box/hobot_audio:
     type: git
@@ -143,6 +143,18 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_slam/orb_slam3.git
     version: develop
+  box/ros-navigation/angles:
+    type: git
+    url: https://c-gitlab.horizon.ai/third_party/ros-navigation/angles.git
+    version: 1.12.6
+  box/ros-navigation/BehaviorTree.CPP:
+    type: git
+    url: https://c-gitlab.horizon.ai/third_party/ros-navigation/BehaviorTree.CPP.git
+    version: 3.6.1
+  box/ros-navigation/navigation2:
+    type: git
+    url: https://c-gitlab.horizon.ai/third_party/ros-navigation/navigation2.git
+    version: foxy-devel
   app/xr_robot:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/app/xr_robot.git
@@ -450,4 +462,8 @@ repositories:
   tools/hobot_image_publisher:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/tools/hobot_image_publisher.git
+    version: develop
+  ../../sysroot_docker:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/sysroot_docker.git
     version: develop

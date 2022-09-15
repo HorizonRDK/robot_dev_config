@@ -466,4 +466,4 @@ repositories:
   ../../sysroot_docker:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/sysroot_docker.git
-    version: hhp_1.0.6
+    version: tros_1.1.1
