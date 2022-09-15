@@ -143,21 +143,17 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_slam/orb_slam3.git
     version: hhp_1.0.6
-  box/angles:
+  box/ros-navigation/angles:
     type: git
-    url: https://c-gitlab.horizon.ai/HHP/box/angles.git
-    version: foxy-devel
-  box/laser_geometry:
+    url: https://c-gitlab.horizon.ai/third_party/ros-navigation/angles.git
+    version: 1.12.6
+  box/ros-navigation/BehaviorTree.CPP:
     type: git
-    url: https://c-gitlab.horizon.ai/HHP/box/laser_geometry.git
-    version: foxy
-  box/BehaviorTree.CPP:
-    type: git
-    url: https://c-gitlab.horizon.ai/HHP/box/behaviortree.cpp.git
+    url: https://c-gitlab.horizon.ai/third_party/ros-navigation/BehaviorTree.CPP.git
     version: 3.6.1
-  box/navigation2:
+  box/ros-navigation/navigation2:
     type: git
-    url: https://c-gitlab.horizon.ai/HHP/box/navigation2.git
+    url: https://c-gitlab.horizon.ai/third_party/ros-navigation/navigation2.git
     version: tros_1.1.1
   app/xr_robot:
     type: git
