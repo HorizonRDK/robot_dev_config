@@ -63,6 +63,7 @@ docker run -it --rm --entrypoint="/bin/bash" -v PC本地目录:docker目录 imag
 export TARGET_ARCH=aarch64
 export TARGET_TRIPLE=aarch64-linux-gnu
 export CROSS_COMPILE=/usr/bin/$TARGET_TRIPLE-
+export ROS_VERSION=2
 cd /mnt/test/cc_ws/tros_ws
 ## 清除配置选项
 ./robot_dev_config/clear_COLCON_IGNORE.sh
