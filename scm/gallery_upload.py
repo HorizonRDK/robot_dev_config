@@ -93,7 +93,7 @@ class GalleryUpload(object):
                 'text/plain')
             # upload_cfg['filename'] =
             # '-'.join([upload_cfg['project'],upload_cfg['version']]) + '.zip'
-            upload_cfg['filename'] = 'file.zip'
+            upload_cfg['filename'] = 'file.tar.gz'
             logger.info(upload_cfg)
             multipart_data = MultipartEncoder(fields=upload_cfg)
             header_data = {
