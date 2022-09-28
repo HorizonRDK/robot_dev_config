@@ -134,7 +134,7 @@ repositories:
   box/hobot_interactions/audio_tracking:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/audio_tracking.git
-    version: tros_1.1.1
+    version: tros_1.1.2
   box/hobot_interactions/parking_search:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/parking_search.git
