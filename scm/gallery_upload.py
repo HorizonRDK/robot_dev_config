@@ -1,3 +1,4 @@
+# coding:utf-8
 import logging
 from logging.handlers import RotatingFileHandler
 import sys
@@ -58,7 +59,7 @@ class GalleryUpload(object):
             r = requests.post(
                 'http://gallery.hobot.cc/api/auth/token-create',
                 json=self.cfg_runtime['auth'])
-            token = r.json()
+            token = json.loads(r.content.decode('utf-8'))
             logger.info(token)
             if r.status_code != 200:
                 logger.error('auth fail')
