@@ -119,6 +119,10 @@ repositories:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/parking_perception.git
     version: hhp_1.0.6RC1
+  box/hobot_perception/mono2d_trash_detection:
+    type: git
+    url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono2d_trash_detection.git
+    version: tros_1.1.3
   box/hobot_interactions/gesture_control:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/gesture_control.git
