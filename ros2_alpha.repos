@@ -62,7 +62,7 @@ repositories:
   box/hobot_dnn:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_dnn.git
-    version: tros_1.1.2
+    version: tros_1.1.2rc1
   box/hobot_cv:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_cv.git
@@ -70,7 +70,7 @@ repositories:
   box/hobot_msgs:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_msgs.git
-    version: hhp_1.0.6
+    version: tros_1.1.2rc1
   box/hobot_websocket:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_websocket.git
@@ -98,11 +98,11 @@ repositories:
   box/hobot_perception/hand_lmk_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/hand_lmk_detection.git
-    version: tros_1.1.2
+    version: tros_1.1.2rc1
   box/hobot_perception/hand_gesture_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/hand_gesture_detection.git
-    version: hhp_1.0.5
+    version: tros_1.1.2rc1
   box/hobot_perception/hobot_falldown_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/hobot_falldown_detection.git
@@ -110,7 +110,7 @@ repositories:
   box/hobot_perception/mono3d_indoor_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono3d_indoor_detection.git
-    version: hhp_1.0.6
+    version: tros_1.1.2rc1
   box/hobot_perception/elevation_net:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/elevation_net.git
@@ -146,7 +146,7 @@ repositories:
   box/hobot_slam/orb_slam3:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_slam/orb_slam3.git
-    version: hhp_1.0.6
+    version: tros_1.1.2rc1
   box/ros-navigation/angles:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros-navigation/angles.git
@@ -166,7 +166,7 @@ repositories:
   app/line_follower:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/app/line_follower.git
-    version: hhp_1.0.6
+    version: tros_1.1.2rc1
   box/ros-perception/laser_geometry:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros-perception/laser_geometry.git
