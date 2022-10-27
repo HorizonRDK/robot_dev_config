@@ -62,7 +62,7 @@ repositories:
   box/hobot_dnn:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_dnn.git
-    version: tros_1.1.2rc1
+    version: tros_1.1.2rc2
   box/hobot_cv:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_cv.git
@@ -86,7 +86,7 @@ repositories:
   box/hobot_audio:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_audio.git
-    version: tros_1.1.1
+    version: tros_1.1.1RC1
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono2d_body_detection.git
