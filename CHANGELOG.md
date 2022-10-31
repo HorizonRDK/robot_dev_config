@@ -1,5 +1,28 @@
 # Changelog for TogetherROS
 
+v1.1.2 (2022-10-29)
+------------------
+
+  1. hobot_dnn
+
+    默认推理模式由同步模式变更为效率更高的异步模式。
+    当模型文件中只包含一个模型时，可以不指定model_name模型名配置项。
+    算法推理任务支持指定BPU核，默认使用负载均衡模式，满足算法部署性能调优需求。
+    自适应支持多核模型推理。
+    简化重构内置的算法输出解析方法，降低使用和理解难度。
+    新增dnn_node_sample package示例，帮助用户参考部署算法模型。
+    example示例使用板端安装在/app/model/basic/路径下的模型文件。
+
+  2. hobot_msgs，roi感知消息Roi.msg和属性感知消息Attribute.msg中增加置信度信息，提升算法开发效率。
+  3. hobot_cv，修复极端情况下内存状态异常导致的图片处理失败的问题，同时增加异常恢复机制；修复BPU加速处理图片对16字节宽度对齐限制的问题。
+  4. hobot_sensor、hobot_websocket、hobot_sensors、hobot_image_publisher，优化log提示信息，帮助用户快速定位问题。
+  5. hand_lmk_detection，修复算法推理压力大时crash的问题。
+  6. hand_gesture_detection，修复内存泄漏问题。
+  7. parking_perception，修复launch文件设置错误问题
+  8. mono2d_trash_detection，新增2D垃圾检测算法示例，基于PaddlePaddle开源框架、地平线AI工具链和TogetherROS实现算法训练、模型转换和算法部署的全流程功能。
+  9. tros_toolkit，简化TogetherROS源码编译流程。
+
+
 v1.1.1 (2022-09-21)
 ------------------
 
