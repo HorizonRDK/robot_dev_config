@@ -3,8 +3,11 @@ touch \
     ./src/ament/google_benchmark_vendor/COLCON_IGNORE \
     ./src/ament/googletest/COLCON_IGNORE \
     ./src/ament/googletest/googletest/COLCON_IGNORE \
+    ./src/app/line_follower \
+    ./src/app/xr_robot \
     ./src/box/ros-perception/COLCON_IGNORE \
     ./src/box/ros-planning/COLCON_IGNORE \
+    ./src/box/hobot_audio/COLCON_IGNORE \
     ./src/box/hobot_interactions/COLCON_IGNORE \
     ./src/box/hobot_perception/COLCON_IGNORE \
     ./src/box/hobot_dnn/dnn_benchmark_example/COLCON_IGNORE \
@@ -13,6 +16,8 @@ touch \
     ./src/box/hobot_codec/COLCON_IGNORE \
     ./src/box/hobot_hdmi/COLCON_IGNORE \
     ./src/box/hobot_cv/COLCON_IGNORE \
+    ./src/box/hobot_slam/COLCON_IGNORE \
+    ./src/box/ros-navigation/COLCON_IGNORE \
     ./src/app/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/ros2trace/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/tracetools_launch/COLCON_IGNORE \
@@ -70,5 +75,6 @@ touch \
     ./src/tros/tlsf/COLCON_IGNORE \
     ./src/tros/urdf/COLCON_IGNORE \
     ./src/tools/benchmark/COLCON_IGNORE \
+    ./src/tools/hobot_image_publisher/COLCON_IGNORE \
     ./src/eProsima/compatibility/COLCON_IGNORE
     
