@@ -1,5 +1,14 @@
 # Changelog for TogetherROS
 
+v1.1.3 (2022-11-28)
+------------------
+
+  1. hobot_dnn，修复内置的算法前处理GetNV12PyramidFromNV12Img接口导致图片padding区域乱码问题。
+  2. hobot_cv，新增图片padding功能；新增nv12格式图片处理功能。
+  3. hobot_codec，优化输出日志，帮助异常情况下快速定位问题原因。
+  4. hobot_sensor，支持imx219, imx477, ov5647型号mipi摄像头。
+
+
 v1.1.2 (2022-10-29)
 ------------------
 
