@@ -54,36 +54,39 @@ class GalleryUpload(object):
         logger.info(self.cfg_runtime)
 
     def auth(self):
-        try:
-            logger.info('auth')
-            r = requests.post(
-                'http://gallery.hobot.cc/api/auth/token-create',
-                json=self.cfg_runtime['auth'])
-            token = json.loads(r.content.decode('utf-8'))
-            logger.info(token)
-            if r.status_code != 200:
-                logger.error('auth fail')
-                sys.exit(1)
-            logger.info('refresh token')
-            r = requests.post(
-                'http://gallery.hobot.cc/api/auth/token-refresh',
-                json=token)
-            logger.info(r.json())
-            if r.status_code != 200:
-                logger.error('token refresh fail')
-                sys.exit(1)
-            logger.info('verify token')
-            r = requests.post(
-                'http://gallery.hobot.cc/api/auth/token-verify',
-                json=token)
-            logger.info(r.json())
-            if r.status_code != 200:
-                logger.error('token verify fail')
-                sys.exit(1)
-            self.token = r.json()
-        except Exception as e:
-            logger.error(e)
-            sys.exit(1)
+        attempts = 0
+        success = False
+        while attempts < 3 and not success:
+            try:
+                logger.info('auth')
+                r = requests.post(
+                    'http://gallery.hobot.cc/api/auth/token-create',
+                    json=self.cfg_runtime['auth'])
+                token = json.loads(r.content.decode('utf-8'))
+                logger.info(token)
+                if r.status_code != 200:
+                    logger.error('auth fail')
+                logger.info('refresh token')
+                r = requests.post(
+                    'http://gallery.hobot.cc/api/auth/token-refresh',
+                    json=token)
+                logger.info(r.json())
+                if r.status_code != 200:
+                    logger.error('token refresh fail')
+                logger.info('verify token')
+                r = requests.post(
+                    'http://gallery.hobot.cc/api/auth/token-verify',
+                    json=token)
+                logger.info(r.json())
+                if r.status_code != 200:
+                    logger.error('token verify fail')
+                self.token = r.json()
+                success = True
+            except Exception as e:
+            	attempts += 1
+                if attempts==3:
+                    logger.error(e)
+                    sys.exit(1)
 
     def upload(self):
         try:
