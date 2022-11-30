@@ -83,8 +83,8 @@ class GalleryUpload(object):
                 self.token = r.json()
                 success = True
             except Exception as e:
-            	attempts += 1
-                if attempts==3:
+                attempts += 1
+                if attempts == 3:
                     logger.error(e)
                     sys.exit(1)
 
