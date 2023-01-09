@@ -9,7 +9,7 @@ cat <<EOF
 
 Usage: bash -e $0 <options>
 available options:
--p|--platform: set platform ([X3|J5|X86]), default is X3
+-p|--platform: set platform ([X3|J5|X86])
 -h|--help
 EOF
 exit
@@ -55,7 +55,7 @@ if [ $platform == "X86" ]; then
   echo "build X86"
   ln -s `pwd`/../sysroot_docker/usr_x86 `pwd`/../sysroot_docker/usr
 
-  # ## 开始编译
+  ## 开始编译
   colcon build --packages-select dnn_node --cmake-args -DPLATFORM_X86=ON -DTHIRD_PARTY=`pwd`/../sysroot_docker
   
 else
