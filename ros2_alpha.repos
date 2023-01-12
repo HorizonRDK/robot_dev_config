@@ -58,7 +58,7 @@ repositories:
   box/hobot_sensors:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_sensors.git
-    version: tros_1.1.4
+    version: tros_1.1.4rc1
   box/hobot_dnn:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_dnn.git
@@ -66,7 +66,7 @@ repositories:
   box/hobot_cv:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_cv.git
-    version: tros_1.1.4
+    version: tros_1.1.4rc1
   box/hobot_msgs:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_msgs.git
@@ -78,7 +78,7 @@ repositories:
   box/hobot_codec:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_codec.git
-    version: tros_1.1.3rc1
+    version: tros_1.1.4rc1
   box/hobot_hdmi:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_hdmi.git
@@ -466,7 +466,7 @@ repositories:
   tools/hobot_image_publisher:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/tools/hobot_image_publisher.git
-    version: tros_1.1.4
+    version: tros_1.1.4rc1
   ../../sysroot_docker:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/sysroot_docker.git
