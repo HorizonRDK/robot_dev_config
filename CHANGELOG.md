@@ -1,5 +1,16 @@
 # Changelog for TogetherROS
 
+v1.1.4 (2023-01-13)
+------------------
+
+  1. hobot_dnn，dnn_node_example删除未使用的GetNV12Tensor接口；dnn_node修复部分内置算法后处理中LoadConfig无返回值的问题。
+  2. hobot_cv，新增hobot_cv_benchmark测评工具。
+  3. hobot_sensors，新增mipi_cam自适应不同类型摄像头功能，完善错误log提示。
+  4. hobot_image_publisher，新增MP4, H264和H265格式视频发布功能。
+  5. mono2d_body_detection，修复在BPU压力大时，后处理中AI结果排序算法异常导致的无AI结果发布的问题。
+  6. sysroot_docker，升级1.1.4版本的系统库和头文件，同时增加ffmpeg库相关文件。
+
+
 v1.1.3 (2022-11-28)
 ------------------
 
