@@ -13,7 +13,6 @@ touch \
     ./src/box/hobot_dnn/dnn_benchmark_example/COLCON_IGNORE \
     ./src/box/hobot_dnn/dnn_node_example/COLCON_IGNORE \
     ./src/box/hobot_dnn/dnn_node_sample/COLCON_IGNORE \
-    ./src/box/hobot_codec/COLCON_IGNORE \
     ./src/box/hobot_hdmi/COLCON_IGNORE \
     ./src/box/hobot_cv/COLCON_IGNORE \
     ./src/box/hobot_slam/COLCON_IGNORE \
