@@ -62,12 +62,15 @@ echo "build platform " $platform
 if [ $platform == "X86" ]; then
   echo "build X86"
   ln -s `pwd`/../sysroot_docker/usr_x86 `pwd`/../sysroot_docker/usr
-
+  # 只编译x86平台的package
+  ./robot_dev_config/x86_build.sh
   echo "PACKAGE_SELECTION: $PACKAGE_SELECTION"
-  
+
   ## 开始编译
-  colcon build $PACKAGE_SELECTION --cmake-args -DPLATFORM_X86=ON -DTHIRD_PARTY=`pwd`/../sysroot_docker
-  
+  colcon build $PACKAGE_SELECTION --cmake-force-configure --cmake-args \
+    --no-warn-unused-cli -DTHIRDPARTY=ON -DBUILD_TESTING:BOOL=OFF \
+    -DPLATFORM_X86=ON -DTHIRD_PARTY=`pwd`/../sysroot_docker
+
 else
   ## 配置交叉编译工具链
   export TARGET_ARCH=aarch64
