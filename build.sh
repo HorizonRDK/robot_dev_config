@@ -67,7 +67,7 @@ if [ $platform == "X86" ]; then
   echo "PACKAGE_SELECTION: $PACKAGE_SELECTION"
 
   ## 开始编译
-  colcon build $PACKAGE_SELECTION --cmake-force-configure --cmake-args \
+  colcon build $PACKAGE_SELECTION --merge-install --cmake-force-configure --cmake-args \
     --no-warn-unused-cli -DTHIRDPARTY=ON -DBUILD_TESTING:BOOL=OFF \
     -DPLATFORM_X86=ON -DTHIRD_PARTY=`pwd`/../sysroot_docker
 
