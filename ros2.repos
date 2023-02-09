@@ -90,7 +90,7 @@ repositories:
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono2d_body_detection.git
-    version: develop
+    version: feature-platform
   box/hobot_perception/mot:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mot.git
@@ -98,11 +98,11 @@ repositories:
   box/hobot_perception/hand_lmk_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/hand_lmk_detection.git
-    version: develop
+    version: feature-platform
   box/hobot_perception/hand_gesture_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/hand_gesture_detection.git
-    version: develop
+    version: feature-platform
   box/hobot_perception/hobot_falldown_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/hobot_falldown_detection.git
@@ -110,19 +110,19 @@ repositories:
   box/hobot_perception/mono3d_indoor_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono3d_indoor_detection.git
-    version: develop
+    version: feature-platform
   box/hobot_perception/elevation_net:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/elevation_net.git
-    version: develop
+    version: feature-platform
   box/hobot_perception/parking_perception:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/parking_perception.git
-    version: develop
+    version: feature-platform
   box/hobot_perception/mono2d_trash_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono2d_trash_detection.git
-    version: develop
+    version: feature-platform
   box/hobot_interactions/gesture_control:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_interactions/gesture_control.git
@@ -466,7 +466,7 @@ repositories:
   tools/hobot_image_publisher:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/tools/hobot_image_publisher.git
-    version: develop
+    version: feature-platform
   ../../sysroot_docker:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/sysroot_docker.git
