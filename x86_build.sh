@@ -15,7 +15,6 @@ touch \
     ./src/box/hobot_sensors/rgbd_sensor/COLCON_IGNORE \
     ./src/box/hobot_hdmi/COLCON_IGNORE \
     ./src/box/hobot_audio/COLCON_IGNORE \
-    ./src/box/hobot_perception/COLCON_IGNORE \
     ./src/box/hobot_interactions/COLCON_IGNORE \
     ./src/box/hobot_slam/COLCON_IGNORE \
     ./src/app/xr_robot/COLCON_IGNORE \
