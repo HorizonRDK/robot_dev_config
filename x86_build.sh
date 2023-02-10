@@ -20,6 +20,4 @@ touch \
     ./src/app/xr_robot/COLCON_IGNORE \
     ./src/app/line_follower/COLCON_IGNORE \
     ./src/tools/benchmark/COLCON_IGNORE \
-    ./src/box/hobot_cv/COLCON_IGNORE \
-    ./src/box/hobot_dnn/COLCON_IGNORE \
     ./src/box/ros-navigation/COLCON_IGNORE \
