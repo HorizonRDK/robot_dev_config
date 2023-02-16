@@ -5,11 +5,13 @@ build.sh 编译脚本
 
 aarch64_toolchainfile.cmake 用于TROS交叉编译
 
-all_build.sh 编译配置脚本，完整编译
+all_build.sh x3编译配置脚本，完整编译
+
+j5_build.sh j5编译配置脚本，完整编译
+
+x86_build.sh x86编译配置脚本，完整编译
 
 clear_COLCON_IGNORE.sh 重制编译配置脚本
-
-Dockerfile_ubuntu20.04_pc 用于制作ubuntu20.04 PC docker镜像
 
 minimal_build.sh 编译配置脚本，最小化编译
 
@@ -24,15 +26,11 @@ cd /mnt/data/kairui.wang/test
 mkdir -p cc_ws/tros_ws/src
 cd cc_ws/tros_ws
 ## 获取配置文件
-git clone http://gitlab.hobot.cc/robot_dev_platform/robot_dev_config.git -b develop
+git clone https://c-gitlab.horizon.ai/HHP/robot_dev_config.git -b develop
 ## 安装vcs工具
 sudo pip install -U vcstool 
 ## 拉取代码
 vcs-import src < ./robot_dev_config/ros2.repos 
-## 拷贝sysroot
-cd ../
-cp tros_ws/robot_dev_config/sysroot_docker.tar.gz .
-tar -xvf sysroot_docker.tar.gz
 ```
 整个工程目录结构如下
 ```
