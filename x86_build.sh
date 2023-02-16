@@ -18,6 +18,9 @@ touch \
     ./src/box/hobot_interactions/COLCON_IGNORE \
     ./src/box/hobot_slam/COLCON_IGNORE \
     ./src/box/hobot_perception/mot/COLCON_IGNORE \
+    ./src/box/hobot_perception/hand_gesture_detection/COLCON_IGNORE \
+    ./src/box/hobot_perception/hand_lmk_detection/COLCON_IGNORE \
+    ./src/box/hobot_perception/hobot_falldown_detection/COLCON_IGNORE \
     ./src/app/xr_robot/COLCON_IGNORE \
     ./src/app/line_follower/COLCON_IGNORE \
     ./src/tools/benchmark/COLCON_IGNORE \
