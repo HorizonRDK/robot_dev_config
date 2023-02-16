@@ -26,7 +26,7 @@ repositories:
   ament/uncrustify_vendor:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ament/uncrustify_vendor.git
-    version: v1.0RC1
+    version: tros_1.1.6a
   eProsima/Fast-CDR:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/eProsima/fast-cdr.git
@@ -34,11 +34,11 @@ repositories:
   eProsima/Fast-DDS:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/eProsima/fast-dds.git
-    version: v1.0RC1
+    version: tros_1.1.6a
   eProsima/foonathan_memory_vendor:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/eProsima/foonathan_memory_vendor.git
-    version: v1.0RC1
+    version: tros_1.1.6a
   eProsima/compatibility:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/eProsima/compatibility.git
@@ -202,7 +202,7 @@ repositories:
   ros/resource_retriever:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros/resource_retriever.git
-    version: v1.0RC1
+    version: tros_1.1.6a
   ros/robot_state_publisher:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros/robot_state_publisher.git
@@ -238,7 +238,7 @@ repositories:
   tros/console_bridge_vendor:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros2/console_bridge_vendor.git
-    version: v1.0RC1
+    version: tros_1.1.6a
   tros/cross_compile:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros2/cross_compile.git
@@ -274,7 +274,7 @@ repositories:
   tros/libyaml_vendor:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros2/libyaml_vendor.git
-    version: v1.0RC1
+    version: tros_1.1.6a
   tros/message_filters:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros2/message_filters.git
@@ -370,7 +370,7 @@ repositories:
   tros/rosbag2:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros2/rosbag2.git
-    version: v1.0RC1
+    version: tros_1.1.6a
   tros/rosidl:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros2/rosidl.git
@@ -414,7 +414,7 @@ repositories:
   tros/spdlog_vendor:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros2/spdlog_vendor.git
-    version: v1.0RC1
+    version: tros_1.1.6a
   tros/sros2:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros2/sros2.git
@@ -434,7 +434,7 @@ repositories:
   tros/tinyxml_vendor:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros2/tinyxml_vendor.git
-    version: v1.0RC1
+    version: tros_1.1.6a
   tros/tlsf:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros2/tlsf.git
@@ -450,7 +450,7 @@ repositories:
   tros/yaml_cpp_vendor:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros2/yaml_cpp_vendor.git
-    version: v1.0RC1
+    version: tros_1.1.6a
   tros_achieve_3rd:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/tros_achieve_3rd.git
@@ -458,11 +458,11 @@ repositories:
   tools/Breakpad:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/tools/Breakpad.git
-    version: dev-tros-aiot  
+    version: dev-tros-aiot
   tools/FlameGraph:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/tools/flamegraph.git
-    version: master   
+    version: master
   tools/hobot_image_publisher:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/tools/hobot_image_publisher.git
