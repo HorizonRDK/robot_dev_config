@@ -1,5 +1,8 @@
 # robot_dev_config
 ## 文件说明
+
+build.sh 编译脚本
+
 aarch64_toolchainfile.cmake 用于TROS交叉编译
 
 all_build.sh 编译配置脚本，完整编译
@@ -38,7 +41,9 @@ tar -xvf sysroot_docker.tar.gz
 │   │   ├── etc
 │   │   ├── lib -> usr/lib
 │   │   ├── opt
-│   │   └── usr
+│   │   ├── usr_j5
+│   │   ├── usr_x3
+│   │   └── usr_x86
 │   └── tros_ws
 │       ├── robot_dev_config
 │       └── src
@@ -59,27 +64,12 @@ docker run -it --rm --entrypoint="/bin/bash" -v PC本地目录:docker目录 imag
 
 3. 交叉编译。该步骤均在docker中完成
 ```
-## 配置交叉编译工具链
-export TARGET_ARCH=aarch64
-export TARGET_TRIPLE=aarch64-linux-gnu
-export CROSS_COMPILE=/usr/bin/$TARGET_TRIPLE-
-export ROS_VERSION=2
+## 切到编译路径下
 cd /mnt/test/cc_ws/tros_ws
-## 清除配置选项
-./robot_dev_config/clear_COLCON_IGNORE.sh
-## 配置编译选项，若需要最小化部署包则使用minimal_build.sh
-./robot_dev_config/all_build.sh
-## 开始编译
-colcon build \
-  --merge-install \
-  --cmake-force-configure \
-  --cmake-args \
-    --no-warn-unused-cli \
-    -DCMAKE_TOOLCHAIN_FILE=`pwd`/robot_dev_config/aarch64_toolchainfile.cmake \
-    -DTHIRDPARTY=ON \
-    -DBUILD_TESTING:BOOL=OFF \
-    -DCMAKE_BUILD_RPATH="`pwd`/build/poco_vendor/poco_external_project_install/lib/;`pwd`/build/libyaml_vendor/libyaml_install/lib/"
-```
+
+## 使用build.sh脚本编译，通过-p选项指定编译平台[X3|J5|X86]
+## 例如编译X3平台TROS的命令为
+bash robot_dev_config/build.sh -p X3
 
 **注意：编译过程中，要确保同一个终端中执行olcon build命令之前已执行执行export环境变量命令**
 
