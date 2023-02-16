@@ -62,11 +62,11 @@ repositories:
   box/hobot_dnn:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_dnn.git
-    version: feature-platform
+    version: develop
   box/hobot_cv:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_cv.git
-    version: feature-platform
+    version: develop
   box/hobot_msgs:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_msgs.git
@@ -74,11 +74,11 @@ repositories:
   box/hobot_websocket:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_websocket.git
-    version: feature-platform
+    version: develop
   box/hobot_codec:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_codec.git
-    version: feature-platform
+    version: develop
   box/hobot_hdmi:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_hdmi.git
@@ -90,7 +90,7 @@ repositories:
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono2d_body_detection.git
-    version: feature-platform
+    version: develop
   box/hobot_perception/mot:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mot.git
@@ -98,11 +98,11 @@ repositories:
   box/hobot_perception/hand_lmk_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/hand_lmk_detection.git
-    version: feature-platform
+    version: develop
   box/hobot_perception/hand_gesture_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/hand_gesture_detection.git
-    version: feature-platform
+    version: develop
   box/hobot_perception/hobot_falldown_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/hobot_falldown_detection.git
@@ -110,15 +110,15 @@ repositories:
   box/hobot_perception/mono3d_indoor_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono3d_indoor_detection.git
-    version: feature-platform
+    version: develop
   box/hobot_perception/elevation_net:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/elevation_net.git
-    version: feature-platform
+    version: develop
   box/hobot_perception/parking_perception:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/parking_perception.git
-    version: feature-platform
+    version: develop
   box/hobot_perception/mono2d_trash_detection:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_perception/mono2d_trash_detection.git
@@ -310,7 +310,7 @@ repositories:
   tros/rclcpp:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/tros/rclcpp.git
-    version: feature-platform
+    version: develop
   tros/rclpy:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/ros2/rclpy.git
@@ -458,16 +458,16 @@ repositories:
   tools/Breakpad:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/tools/Breakpad.git
-    version: dev-tros-aiot  
+    version: dev-tros-aiot
   tools/FlameGraph:
     type: git
     url: https://c-gitlab.horizon.ai/third_party/tools/flamegraph.git
-    version: master   
+    version: master
   tools/hobot_image_publisher:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/tools/hobot_image_publisher.git
-    version: feature-platform
+    version: develop
   ../../sysroot_docker:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/sysroot_docker.git
-    version: feature-platform
+    version: develop
