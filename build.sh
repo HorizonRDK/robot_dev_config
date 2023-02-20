@@ -11,6 +11,7 @@ Usage: bash -e $0 <options>
 available options:
 -p|--platform: set platform ([X3|J5|X86])
 -s|--selction: add colcon build --packages-select [PKG_NAME]
+-g|--build_testing: compile gtest cases ([ON|OFF])
 -h|--help
 EOF
 exit
@@ -24,7 +25,8 @@ fi
 PACKAGE_SELECTION=""
 
 PLATFORM_OPTS=(X3 J5 X86)
-GETOPT_ARGS=`getopt -o p:s:h -al platform:,selction:,help -- "$@"`
+BUILD_TESTING_OPTS=(OFF ON)
+GETOPT_ARGS=`getopt -o p:s:g:h -al platform:,selction:,build_testing:,help -- "$@"`
 eval set -- "$GETOPT_ARGS"
 
 while [ -n "$1" ]
@@ -44,6 +46,14 @@ do
       echo "colcon build selction: $selction"
       PACKAGE_SELECTION="--packages-select $selction"
       ;;
+    -g|--build_testing)
+      build_testing=$2
+      shift 2
+      if [[ ! "${BUILD_TESTING_OPTS[@]}" =~ $build_testing ]] ; then
+        echo "invalid build_testing: $build_testing"
+        show_usage
+      fi
+      ;;
     -h|--help) show_usage; break;;
     --) break ;;
     *) echo $1,$2 show_usage; break;;
@@ -56,7 +66,12 @@ export ROS_VERSION=2
 ## 清除配置选项
 ./robot_dev_config/clear_COLCON_IGNORE.sh
 ## 配置编译选项，若需要最小化部署包则使用minimal_build.sh
-./robot_dev_config/all_build.sh
+if [ $build_testing == "ON" ]; then
+  echo "open build gtest"
+  ./robot_dev_config/all_gtest_build.sh
+else
+  ./robot_dev_config/all_build.sh
+fi
 
 echo "build platform " $platform
 if [ $platform == "X86" ]; then
@@ -103,7 +118,7 @@ else
       -DCMAKE_TOOLCHAIN_FILE=`pwd`/robot_dev_config/aarch64_toolchainfile.cmake \
       -DPLATFORM_${platform}=ON \
       -DTHIRDPARTY=ON \
-      -DBUILD_TESTING:BOOL=OFF \
+      -DBUILD_TESTING=$build_testing \
       -DCMAKE_BUILD_RPATH="`pwd`/build/poco_vendor/poco_external_project_install/lib/;`pwd`/build/libyaml_vendor/libyaml_install/lib/"
 
 fi
