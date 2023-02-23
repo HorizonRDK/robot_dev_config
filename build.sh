@@ -75,6 +75,7 @@ if [ $platform == "X86" ]; then
       -DTHIRDPARTY=ON \
       -DBUILD_TESTING:BOOL=OFF \
       -DPLATFORM_X86=ON \
+      -DBUILD_HBMEM=ON \
       -DTHIRD_PARTY=`pwd`/../sysroot_docker
 
 else
