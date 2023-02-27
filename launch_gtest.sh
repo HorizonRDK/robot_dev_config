@@ -1,12 +1,13 @@
 #!/bin/bash
 
-source install/setup.bash
+source ./setup.bash
 total_gtest=0
 fault_gtest_num=0
+passed_gtest_num=0
 fault_gtest_case=""
 error_info="error"
 
-find_path=`find install/lib/ -name gtest_*`
+find_path=`find ./lib/ -name gtest_*`
 arr=(${find_path// / })
 
 for i in ${arr[@]}
@@ -16,24 +17,23 @@ do
     $i
     if [ $? != 0 ]
     then
-	fault_gtest_num=$((fault_gtest_num+1))
-	fault_gtest_case="${fault_gtest_case}${i}\n"
+	    fault_gtest_num=$((fault_gtest_num+1))
+	    fault_gtest_case="${fault_gtest_case}"$'\n'
+	    fault_gtest_case="${fault_gtest_case}${i}"
+    else
+        passed_gtest_num=$((passed_gtest_num+1))
     fi
 done
 
-echo "total gtest case num: ${total_gtest}"
-echo "fault gtest case num: ${fault_gtest_num}"
+passed_rate=$(echo "scale=4; (${passed_gtest_num}/${total_gtest}) * 100" | bc)
 
+echo "----------------------------------------"
+echo "本次测试结果："
+echo "总用例数: ${total_gtest}"
+echo "通过用例：${passed_gtest_num}"
+echo "失败用例：${fault_gtest_num}"
+echo "通过率(%): ${passed_rate}"
 if [ $fault_gtest_num != 0 ]
 then
-    echo "fault gtest case: ${fault_gtest_case}"
+    echo "运行失败用例列举: ${fault_gtest_case}"
 fi
-
-
-#pwd_path=`pwd`
-
-#result=`date`
-
-#echo ${find_path}
-
-#echo $pwd_path

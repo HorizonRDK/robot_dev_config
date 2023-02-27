@@ -416,3 +416,6 @@ cp build/test_rclcpp/*.so install/lib
 mkdir install/lib/test_rclcpp
 cp build/test_rclcpp/gtest_* install/lib/test_rclcpp
 
+#cp launch gtest bash
+cp ./robot_dev_config/launch_gtest.sh install/
+
