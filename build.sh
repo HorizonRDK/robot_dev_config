@@ -11,7 +11,7 @@ Usage: bash -e $0 <options>
 available options:
 -p|--platform: set platform ([X3|J5|X86])
 -s|--selction: add colcon build --packages-select [PKG_NAME]
--g|--build_testing: compile gtest cases ([ON|OFF])
+-g|--build_testing: compile gtest cases,default value is OFF ([ON|OFF])
 -h|--help
 EOF
 exit
@@ -66,11 +66,10 @@ export ROS_VERSION=2
 ## 清除配置选项
 ./robot_dev_config/clear_COLCON_IGNORE.sh
 ## 配置编译选项，若需要最小化部署包则使用minimal_build.sh
+./robot_dev_config/all_build.sh
 if [ $build_testing == "ON" ]; then
   echo "open build gtest"
-  ./robot_dev_config/all_gtest_build.sh
-else
-  ./robot_dev_config/all_build.sh
+  rm ./src/tros/performance_test_fixture/COLCON_IGNORE
 fi
 
 echo "build platform " $platform

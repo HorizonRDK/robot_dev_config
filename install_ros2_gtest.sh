@@ -275,6 +275,7 @@ cp_gtest_file
 
 #tros/rcutils
 mkdir install/lib/rcutils
+cp build/rcutils/*.so install/lib
 build_path=build/rcutils
 install_path=install/lib/rcutils
 cp_gtest_file

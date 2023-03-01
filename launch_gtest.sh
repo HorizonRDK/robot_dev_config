@@ -1,13 +1,43 @@
 #!/bin/bash
 
-source ./setup.bash
+function show_usage() {
+cat <<EOF
+
+Usage: bash -e $0 <options>
+available options:
+-s|--selction: select package to launch
+-h|--help
+EOF
+exit
+
+}
+
+PACKAGE_SELECTION=""
+
+GETOPT_ARGS=`getopt -o s:h -al selction:,help -- "$@"`
+eval set -- "$GETOPT_ARGS"
+
+while [ -n "$1" ]
+do
+ case "$1" in
+    -s|--selction)
+      selction=$2
+      shift 2
+      echo "launch $selction gtest cases"
+      PACKAGE_SELECTION="$selction"
+      ;;
+    -h|--help) show_usage; break;;
+     --) break ;;
+     *) echo $1,$2 show_usage; break;;
+  esac
+done
+
 total_gtest=0
 fault_gtest_num=0
 passed_gtest_num=0
 fault_gtest_case=""
-error_info="error"
 
-find_path=`find ./lib/ -name gtest_*`
+find_path=`find ./lib/${PACKAGE_SELECTION} -name gtest_*`
 arr=(${find_path// / })
 
 for i in ${arr[@]}
@@ -27,7 +57,7 @@ done
 
 passed_rate=$(echo "scale=4; (${passed_gtest_num}/${total_gtest}) * 100" | bc)
 
-echo "----------------------------------------"
+echo "------------------------------------------------------------------------------"
 echo "本次测试结果："
 echo "总用例数: ${total_gtest}"
 echo "通过用例：${passed_gtest_num}"
