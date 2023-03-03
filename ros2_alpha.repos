@@ -78,7 +78,7 @@ repositories:
   box/hobot_codec:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_codec.git
-    version: tros_1.1.6a
+    version: tros_1.1.6b
   box/hobot_hdmi:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_hdmi.git
