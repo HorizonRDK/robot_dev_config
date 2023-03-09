@@ -92,21 +92,24 @@ echo "Architecture: $Architecture"
 if [ -e ${tmp_dir}/${template} ]; then
   echo "backup file ${tmp_dir}/${template}"
   mkdir -p backup
-  mv ${tmp_dir}/${template} backup/${template}_`date +%Y-%m-%d_%H_%M_%S`
+  mv ${tmp_dir}/${template} backup/${template}_`date +%Y-%m-%d_%H-%M-%S`
 fi
 
 # 4. copy template to tmp dir
 mkdir -p ${tmp_dir}
 cp -r ${bash_dir}/${template}_${platform} ${tmp_dir}/${template}
 
+# remove .gitkeep files
+rm `find ${tmp_dir}/${template} -name .gitkeep`
+
 # 5. update infos in template
 sed -i "s#^Version:.*#Version: ${Version}#g" ${tmp_dir}/${template}/DEBIAN/control
 sed -i "s#^Depends:.*#Depends: ${Depends}#g" ${tmp_dir}/${template}/DEBIAN/control
 sed -i "s#^Architecture:.*#Architecture: ${Architecture}#g" ${tmp_dir}/${template}/DEBIAN/control
-sed -i "s#^Date:.*#Date: `date +%Y-%m-%d_%H_%M_%S`#g" ${tmp_dir}/${template}/DEBIAN/control
+sed -i "s#^Date:.*#Date: `date +%Y-%m-%d_%H-%M-%S`#g" ${tmp_dir}/${template}/DEBIAN/control
 
 # 6. copy binary to template
-cp -r $binary/* ${tmp_dir}/${template}/opt/${template}/
+cp -r $binary ${tmp_dir}/${template}/opt/${template}
 if [ $? != 0 ]; then
  exit
 fi
