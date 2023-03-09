@@ -1,0 +1,11 @@
+Package: tros
+Version: 
+Section: utils 
+Architecture: arm64
+Installed-Size: 1500000
+Date:
+Pre-Depends: hhp-verify
+Depends: 
+Maintainer: kairui.wang <kairui.wang@horizon.ai style="word-wrap: break-word;"> 
+APT-Sources: http://archive.sunrisepi.tech/ubuntu-ports focal/main arm64 Packages
+Description: TogetherROS

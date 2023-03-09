@@ -69,7 +69,7 @@ cd /mnt/test/cc_ws/tros_ws
 ## 例如编译X3平台TROS的命令为
 bash robot_dev_config/build.sh -p X3
 
-**注意：编译过程中，要确保同一个终端中执行olcon build命令之前已执行执行export环境变量命令**
+**注意：编译过程中，要确保同一个终端中执行colcon build命令之前已执行执行export环境变量命令**
 
 编译成功后会提示总计N packages编译通过
 
@@ -99,7 +99,29 @@ ros2 run examples_rclcpp_minimal_subscriber subscriber_member_function
 
   第4步编译完成后得到install目录，执行./minimal_deploy.sh -d install_path
 
-6. FAQ
+6. 编译deb安装包
+
+交叉编译完成后，在tros_ws路径下编译deb安装包。
+
+前置条件：编译环境已安装jq（`sudo apt-get install jq`）
+
+编译X3平台deb安装包：
+
+```shell
+
+bash robot_dev_config/deploy/build_binary.sh -p X3 -t tros -b install
+
+```
+
+编译X86平台deb安装包：
+
+```shell
+
+bash robot_dev_config/deploy/build_binary.sh -p X86 -t tros -b install
+
+```
+
+7. FAQ
 Q: git获取代码重复提示输入账户、密码
 A: 
 ```
