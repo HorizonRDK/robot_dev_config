@@ -1,0 +1,12 @@
+Package: tros
+Version: 
+Section: utils 
+Architecture: amd64
+Installed-Size: 1500000
+Date:
+Pre-Depends: 
+Depends: 
+Maintainer: kairui.wang <kairui.wang@horizon.ai>
+APT-Manual-Installed: yes
+APT-Sources: http://archive.sunrisepi.tech/ubuntu-sim-beta focal/main amd64 Packages
+Description: TogetherROS
