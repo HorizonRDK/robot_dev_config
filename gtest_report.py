@@ -91,7 +91,7 @@ def search_files_with_suffix(folder_path, suffix, numlist):
                       for error in error_list:
                         message = error.getAttribute("message")
                         print("error message: {%s}"%(message))
-              print("----------------------------------\n") 
+              print("-----------------------------------------------------")
 
 
 
@@ -101,5 +101,5 @@ if __name__ == "__main__":
     suffix = ".gtest.xml"
     numlist = [0,0,0,0] #[tests, errors, failures, skipped]
     search_files_with_suffix(folder_path, suffix, numlist)
-    print("=============================")
+    print("====================================================")
     print("Summary: %d tests, %d errors, %d failures, %d skipped"%(numlist[0], numlist[1], numlist[2], numlist[3]))

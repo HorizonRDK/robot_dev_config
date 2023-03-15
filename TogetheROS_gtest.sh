@@ -31,4 +31,10 @@ do
   esac
 done
 
+if [ $PACKAGE_SELECTION == "" ]; then
+  colcon test --merge-install
+else
+  colcon test --merge-install --packages-select ${PACKAGE_SELECTION}
+fi
+
 python3 ./robot_dev_config/gtest_report.py ./build/${PACKAGE_SELECTION}
