@@ -1,6 +1,5 @@
 import sys
 import os
-# import xml.sax
 from xml.dom.minidom import parse
 import xml.dom.minidom
 
@@ -34,7 +33,10 @@ def search_files_with_suffix(folder_path, suffix, numlist):
             numlist[2] = numlist[2] + failures
             numlist[3] = numlist[3] + skipped
             if failures !=0 or errors !=0:
-              print("%s: %d tests, %d errors, %d failures, %d skipped"%(fullPath, tests, errors, failures, skipped))
+              package_start_index = fullPath.index('build/') + 6
+              package_end_index = fullPath.index('test_results/') - 1
+              package_name=fullPath[package_start_index:package_end_index]
+              # print("package %s: %d tests, %d errors, %d failures, %d skipped"%(package_name, tests, errors, failures, skipped))
               testsuites_nodename = Testsuites.nodeName
               if testsuites_nodename == "testsuites":
                 testsuites_name = Testsuites.getAttribute("name")
@@ -53,7 +55,7 @@ def search_files_with_suffix(folder_path, suffix, numlist):
                       testcase_name = testcase.getAttribute("name")
                       failure_list = testcase.getElementsByTagName("failure")
                       if len(failure_list) != 0:
-                        print("%s.%s.%s"%(testsuites_name,testsuite_name,testcase_name))
+                        print("package: %s testsuites: %s testsuite: %s testcase: %s"%(package_name,testsuites_name,testsuite_name,testcase_name))
                       for failure in failure_list:
                         message = failure.getAttribute("message")
                         print("failure message: {%s}"%(message))
@@ -63,7 +65,7 @@ def search_files_with_suffix(folder_path, suffix, numlist):
                       testcase_name = testcase.getAttribute("name")
                       error_list = testcase.getElementsByTagName("error")
                       if len(error_list) != 0:
-                        print("%s.%s.%s"%(testsuites_name,testsuite_name,testcase_name))
+                        print("package: %s testsuites: %s testsuite: %s testcase: %s"%(package_name,testsuites_name,testsuite_name,testcase_name))
                       for error in error_list:
                         message = error.getAttribute("message")
                         print("error message: {%s}"%(message))
@@ -75,7 +77,7 @@ def search_files_with_suffix(folder_path, suffix, numlist):
                       testcase_name = testcase.getAttribute("name")
                       failure_list = testcase.getElementsByTagName("failure")
                       if len(failure_list) != 0:
-                        print("%s.%s"%(testsuite_name,testcase_name))
+                        print("package: %s testsuite: %s testcase: %s"%(package_name,testsuite_name,testcase_name))
                       for failure in failure_list:
                         message = failure.getAttribute("message")
                         print("failure message: {%s}"%(message))
@@ -85,11 +87,11 @@ def search_files_with_suffix(folder_path, suffix, numlist):
                       testcase_name = testcase.getAttribute("name")
                       error_list = testcase.getElementsByTagName("error")
                       if len(error_list) != 0:
-                        print("%s.%s"%(testsuite_name,testcase_name))
+                        print("package: %s testsuite: %s testcase: %s"%(package_name,testsuite_name,testcase_name))
                       for error in error_list:
                         message = error.getAttribute("message")
                         print("error message: {%s}"%(message))
-              print("\n")    
+              print("----------------------------------\n") 
 
 
 
@@ -99,5 +101,5 @@ if __name__ == "__main__":
     suffix = ".gtest.xml"
     numlist = [0,0,0,0] #[tests, errors, failures, skipped]
     search_files_with_suffix(folder_path, suffix, numlist)
-    print("----------------------------------------------------------\n")
+    print("=============================")
     print("Summary: %d tests, %d errors, %d failures, %d skipped"%(numlist[0], numlist[1], numlist[2], numlist[3]))
