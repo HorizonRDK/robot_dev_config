@@ -2,13 +2,13 @@
 	"tros": {
         "Version": "1.1.6",
         "X3": {
-            "BSP": "x3_ubuntu_v1.1.5",
+            "BSP": "x3_ubuntu_v1.1.6",
             "Depends": [
                 "symlinks",
                 "locales",
                 "hhp-verify",
                 "hobot-models-basic",
-                "hobot-arm64-libs (>= 1.1.5)"
+                "hobot-arm64-libs (>= 1.1.6)"
             ]
         },
         "X86" : {
