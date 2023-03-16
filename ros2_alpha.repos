@@ -78,7 +78,7 @@ repositories:
   box/hobot_codec:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_codec.git
-    version: tros_1.1.6b
+    version: tros_1.1.6
   box/hobot_hdmi:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/box/hobot_hdmi.git
@@ -466,7 +466,7 @@ repositories:
   tools/hobot_image_publisher:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/tools/hobot_image_publisher.git
-    version: tros_1.1.6a
+    version: tros_1.1.6
   ../../sysroot_docker:
     type: git
     url: https://c-gitlab.horizon.ai/HHP/sysroot_docker.git
