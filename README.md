@@ -131,3 +131,17 @@ gitlab添加pub key
 git config --global credential.helper store
 ```
 尝试拉一个repo，输入账户密码，后面不再需要重复输入密码
+
+## 单元测试说明
+1. 通过build.sh编译脚本的-g选项打开测试用例的编译，例如打开X3平台的测试用例编译
+```
+./robot_dev_config/build.sh -p X3 -g ON
+```
+
+2. 单元测试需要推送到开发板上运行，且推送到开发板上的路径需要与交叉编译的路径保持一致。
+
+3. 使用TogetheROS_gtest.sh脚本运行单元测试，默认进行所有package的单元测试。用户可通过选项-s选择单独的package进行测试。例如
+```
+./robot_dev_config/TogetheROS_gtest.sh -s rclcpp
+```
+运行结束后，会输出出现错误的测试case以及错误信息，并统计测试结果。
