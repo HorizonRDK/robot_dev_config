@@ -104,7 +104,7 @@ def search_files_with_suffix(folder_path, suffix, numlist):
 
 if __name__ == "__main__":
     folder_path = sys.argv[1]
-    # 不存在，直接退出
+    # 路径不存在，直接退出
     if not os.path.exists(folder_path):
       print("%s does not exist"%(folder_path))
       exit(0)
