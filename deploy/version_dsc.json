@@ -13,12 +13,7 @@
         },
         "X86" : {
             "Depends": [
-                "symlinks",
-                "locales",
-                "libasio-dev",
                 "libtinyxml2-dev",
-                "libcunit1-dev",
-                "python3-sip-dev",
                 "libyaml-dev",
                 "libzstd-dev",
                 "libeigen3-dev",
@@ -33,10 +28,7 @@
                 "python3-lark",
                 "libspdlog-dev",
                 "google-mock",
-                "clang-format",
                 "python3-flake8",
-                "libbenchmark-dev",
-                "python3-pygraphviz",
                 "python3-pydot",
                 "python3-psutil",
                 "libfreetype6-dev",
