@@ -104,6 +104,10 @@ def search_files_with_suffix(folder_path, suffix, numlist):
 
 if __name__ == "__main__":
     folder_path = sys.argv[1]
+    # 不存在，直接退出
+    if not os.path.exists(folder_path):
+      print("%s does not exist"%(folder_path))
+      exit(0)
     suffix = ".gtest.xml"
     numlist = [0,0,0,0] #[tests, errors, failures, skipped]
     error_info = search_files_with_suffix(folder_path, suffix, numlist)
