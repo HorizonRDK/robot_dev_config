@@ -4,6 +4,7 @@ from xml.dom.minidom import parse
 import xml.dom.minidom
 
 def search_files_with_suffix(folder_path, suffix, numlist):
+    error_info = ""
     # count = 0
     # 获取文件夹中所有文件或子文件夹
     dirs = os.listdir(folder_path)
@@ -11,7 +12,7 @@ def search_files_with_suffix(folder_path, suffix, numlist):
         fullPath = folder_path + '/' + currentFile
         if os.path.isdir(fullPath):
             # count = count + 
-            search_files_with_suffix(fullPath, suffix, numlist)
+            error_info += search_files_with_suffix(fullPath, suffix, numlist)
         elif currentFile.find(suffix) != -1:
             # 解析xml文件
             DomTree = xml.dom.minidom.parse(fullPath)
@@ -36,7 +37,6 @@ def search_files_with_suffix(folder_path, suffix, numlist):
               package_start_index = fullPath.index('build/') + 6
               package_end_index = fullPath.index('test_results/') - 1
               package_name=fullPath[package_start_index:package_end_index]
-              # print("package %s: %d tests, %d errors, %d failures, %d skipped"%(package_name, tests, errors, failures, skipped))
               testsuites_nodename = Testsuites.nodeName
               if testsuites_nodename == "testsuites":
                 testsuites_name = Testsuites.getAttribute("name")
@@ -55,20 +55,22 @@ def search_files_with_suffix(folder_path, suffix, numlist):
                       testcase_name = testcase.getAttribute("name")
                       failure_list = testcase.getElementsByTagName("failure")
                       if len(failure_list) != 0:
-                        print("package: %s testsuites: %s testsuite: %s testcase: %s"%(package_name,testsuites_name,testsuite_name,testcase_name))
+                        package_info = "package: " + package_name + "\ntestsuites: " + testsuites_name + "\ntestsuite: " + testsuite_name + "\ntestcase: " + testcase_name + "\n"
+                        error_info += package_info
                       for failure in failure_list:
                         message = failure.getAttribute("message")
-                        print("failure message: {%s}"%(message))
+                        error_info = error_info + "failure message: " + message + "\n"
                   if testsuite_errors != 0:
                     testcase_list = testsuite.getElementsByTagName("testcase")
                     for testcase in testcase_list:
                       testcase_name = testcase.getAttribute("name")
                       error_list = testcase.getElementsByTagName("error")
                       if len(error_list) != 0:
-                        print("package: %s testsuites: %s testsuite: %s testcase: %s"%(package_name,testsuites_name,testsuite_name,testcase_name))
+                        package_info = "package: " + package_name + "\ntestsuites: " + testsuites_name + "\ntestsuite: " + testsuite_name + "\ntestcase: " + testcase_name + "\n"
+                        error_info += package_info
                       for error in error_list:
                         message = error.getAttribute("message")
-                        print("error message: {%s}"%(message))
+                        error_info = error_info + "error message: " + message + "\n"
               elif testsuites_nodename == "testsuite":
                   testsuite_name = Testsuites.getAttribute("name")
                   if failures != 0:
@@ -77,21 +79,25 @@ def search_files_with_suffix(folder_path, suffix, numlist):
                       testcase_name = testcase.getAttribute("name")
                       failure_list = testcase.getElementsByTagName("failure")
                       if len(failure_list) != 0:
-                        print("package: %s testsuite: %s testcase: %s"%(package_name,testsuite_name,testcase_name))
+                        package_info = "package: " + package_name + "\ntestsuite: " + testsuite_name + "\ntestcase: " + testcase_name + "\n"
+                        error_info += package_info
                       for failure in failure_list:
                         message = failure.getAttribute("message")
-                        print("failure message: {%s}"%(message))
+                        error_info = error_info + "failure message: " + message + "\n"
                   if errors != 0:
                     testcase_list = Testsuites.getElementsByTagName("testcase")
                     for testcase in testcase_list:
                       testcase_name = testcase.getAttribute("name")
                       error_list = testcase.getElementsByTagName("error")
                       if len(error_list) != 0:
-                        print("package: %s testsuite: %s testcase: %s"%(package_name,testsuite_name,testcase_name))
+                        package_info = "package: " + package_name + "\ntestsuite: " + testsuite_name + "\ntestcase: " + testcase_name + "\n"
+                        error_info += package_info
                       for error in error_list:
                         message = error.getAttribute("message")
-                        print("error message: {%s}"%(message))
-              print("-----------------------------------------------------")
+                        error_info = error_info + "error message: " + message + "\n"
+              error_info += "-----------------------------------------------------\n"
+    return error_info
+
 
 
 
@@ -100,6 +106,7 @@ if __name__ == "__main__":
     folder_path = sys.argv[1]
     suffix = ".gtest.xml"
     numlist = [0,0,0,0] #[tests, errors, failures, skipped]
-    search_files_with_suffix(folder_path, suffix, numlist)
-    print("====================================================")
+    error_info = search_files_with_suffix(folder_path, suffix, numlist)
     print("Summary: %d tests, %d errors, %d failures, %d skipped"%(numlist[0], numlist[1], numlist[2], numlist[3]))
+    print("====================================================")
+    print(error_info)

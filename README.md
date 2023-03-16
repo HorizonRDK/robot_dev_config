@@ -140,8 +140,8 @@ git config --global credential.helper store
 
 2. 单元测试需要推送到开发板上运行，且推送到开发板上的路径需要与交叉编译的路径保持一致。
 
-3. 使用TogetheROS_gtest.sh脚本运行单元测试，默认进行所有package的单元测试。用户可通过选项-s选择单独的package进行测试。例如
+3. 使用run_gtest.sh脚本运行单元测试，默认进行所有package的单元测试。用户可通过选项-s选择单独的package进行测试。例如
 ```
-./robot_dev_config/TogetheROS_gtest.sh -s rclcpp
+./robot_dev_config/run_gtest.sh -s rclcpp
 ```
-运行结束后，会输出出现错误的测试case以及错误信息，并统计测试结果。
+运行结束后，会统计测试结果，并输出出现错误的测试case以及错误信息。
