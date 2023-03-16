@@ -25,3 +25,4 @@ touch \
     ./src/app/line_follower/COLCON_IGNORE \
     ./src/tools/benchmark/COLCON_IGNORE \
     ./src/box/ros-navigation/COLCON_IGNORE \
+    ./src/box/hobot_sensors/imu_sensor/COLCON_IGNORE
