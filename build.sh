@@ -107,19 +107,136 @@ else
     # 只编译J5平台的package
     ./robot_dev_config/j5_build.sh
   fi
-  
-  echo "PACKAGE_SELECTION: $PACKAGE_SELECTION"
-  
-  ## 开始交叉编译
-  colcon build $PACKAGE_SELECTION \
-    --merge-install \
-    --cmake-force-configure \
-    --cmake-args \
-      --no-warn-unused-cli \
-      -DCMAKE_TOOLCHAIN_FILE=`pwd`/robot_dev_config/aarch64_toolchainfile.cmake \
-      -DPLATFORM_${platform}=ON \
-      -DTHIRDPARTY=ON \
-      -DBUILD_TESTING=$build_testing \
-      -DCMAKE_BUILD_RPATH="`pwd`/build/poco_vendor/poco_external_project_install/lib/;`pwd`/build/libyaml_vendor/libyaml_install/lib/"
+
+  if [[ "$platform" == "X3" && "$PACKAGE_SELECTION" =~ "hobot_audio" ]]; then
+    echo "单独编译hobot_audio，安装目录为install_audio"
+    echo "注意该步骤会同步编译一份安装到install目录，打包tors deb操作要在该步骤之前！"
+    DIRECTORY="install"
+    if [ ! -d "$DIRECTORY" ]; then
+        echo "请先运行全量编译！"
+        exit 1
+    fi
+
+    colcon build \
+      --packages-select=hobot_audio \
+      --merge-install \
+      --cmake-force-configure \
+      --cmake-args \
+        --no-warn-unused-cli \
+        -DCMAKE_TOOLCHAIN_FILE=`pwd`/robot_dev_config/aarch64_toolchainfile.cmake \
+        -DPLATFORM_${platform}=ON \
+        -DTHIRDPARTY=ON \
+        -DBUILD_TESTING=$build_testing \
+        -DCMAKE_BUILD_RPATH="`pwd`/build/poco_vendor/poco_external_project_install/lib/;`pwd`/build/libyaml_vendor/libyaml_install/lib/"
+
+    source install/setup.bash
+
+    colcon build \
+      --packages-select=hobot_audio \
+      --build-base=build_audio \
+      --install-base=install_audio \
+      --merge-install \
+      --cmake-force-configure \
+      --cmake-args \
+        --no-warn-unused-cli \
+        -DCMAKE_TOOLCHAIN_FILE=`pwd`/robot_dev_config/aarch64_toolchainfile.cmake \
+        -DPLATFORM_${platform}=ON \
+        -DTHIRDPARTY=ON \
+        -DBUILD_TESTING=$build_testing \
+        -DCMAKE_BUILD_RPATH="`pwd`/build/poco_vendor/poco_external_project_install/lib/;`pwd`/build/libyaml_vendor/libyaml_install/lib/"
+
+  elif [[ "$platform" == "X3" && "$PACKAGE_SELECTION" =~ orb_slam3|orb_slam3_example_ros2|hobot_slam ]]; then
+    echo "单独编译hobot_slam，安装目录为install_orb-slam3"
+    echo "注意该步骤会同步编译一份安装到install目录，打包tors deb操作要在该步骤之前！"
+    DIRECTORY="install"
+    if [ ! -d "$DIRECTORY" ]; then
+        echo "请先运行全量编译！"
+        exit 1
+    fi
+
+    colcon build \
+      --packages-select orb_slam3 orb_slam3_example_ros2 \
+      --merge-install \
+      --cmake-force-configure \
+      --cmake-args \
+        --no-warn-unused-cli \
+        -DCMAKE_TOOLCHAIN_FILE=`pwd`/robot_dev_config/aarch64_toolchainfile.cmake \
+        -DPLATFORM_${platform}=ON \
+        -DTHIRDPARTY=ON \
+        -DBUILD_TESTING=$build_testing \
+        -DCMAKE_BUILD_RPATH="`pwd`/build/poco_vendor/poco_external_project_install/lib/;`pwd`/build/libyaml_vendor/libyaml_install/lib/"
+
+    source install/setup.bash
+    colcon build \
+      --packages-select orb_slam3 orb_slam3_example_ros2 \
+      --build-base=build_orb-slam3 \
+      --install-base=install_orb-slam3 \
+      --merge-install \
+      --cmake-force-configure \
+      --cmake-args \
+        --no-warn-unused-cli \
+        -DCMAKE_TOOLCHAIN_FILE=`pwd`/robot_dev_config/aarch64_toolchainfile.cmake \
+        -DPLATFORM_${platform}=ON \
+        -DTHIRDPARTY=ON \
+        -DBUILD_TESTING=$build_testing \
+        -DCMAKE_BUILD_RPATH="`pwd`/build/poco_vendor/poco_external_project_install/lib/;`pwd`/build/libyaml_vendor/libyaml_install/lib/"
+
+  elif [[ "$platform" == "X3" && "$PACKAGE_SELECTION" =~ "performance_test" ]]; then
+    echo "单独编译performance_test，安装目录为install_performance_test"
+    echo "注意该步骤会同步编译一份安装到install目录，打包tors deb操作要在该步骤之前！"
+    DIRECTORY="install"
+    if [ ! -d "$DIRECTORY" ]; then
+        echo "请先运行全量编译！"
+        exit 1
+    fi
+
+    colcon build \
+      --packages-select=performance_test \
+      --merge-install \
+      --cmake-force-configure \
+      --cmake-args \
+        --no-warn-unused-cli \
+        -DCMAKE_TOOLCHAIN_FILE=`pwd`/robot_dev_config/aarch64_toolchainfile.cmake \
+        -DPLATFORM_${platform}=ON \
+        -DTHIRDPARTY=ON \
+        -DBUILD_TESTING=$build_testing \
+        -DCMAKE_BUILD_RPATH="`pwd`/build/poco_vendor/poco_external_project_install/lib/;`pwd`/build/libyaml_vendor/libyaml_install/lib/"
+
+    source install/setup.bash
+
+    colcon build \
+      --packages-select=performance_test \
+      --build-base=build_performance_test \
+      --install-base=install_performance_test \
+      --merge-install \
+      --cmake-force-configure \
+      --cmake-args \
+        --no-warn-unused-cli \
+        -DCMAKE_TOOLCHAIN_FILE=`pwd`/robot_dev_config/aarch64_toolchainfile.cmake \
+        -DPLATFORM_${platform}=ON \
+        -DTHIRDPARTY=ON \
+        -DBUILD_TESTING=$build_testing \
+        -DCMAKE_BUILD_RPATH="`pwd`/build/poco_vendor/poco_external_project_install/lib/;`pwd`/build/libyaml_vendor/libyaml_install/lib/"
+
+  else
+    # x3 默认不编译hobot_audio，hobot_slam，performance_test
+    if [[ "$platform" == "X3" ]]; then
+      touch src/box/hobot_audio/COLCON_IGNORE
+      touch src/box/hobot_slam/orb_slam3/COLCON_IGNORE
+      touch src/tools/benchmark/performance_test/COLCON_IGNORE
+    fi
+
+    colcon build $PACKAGE_SELECTION \
+          --merge-install \
+          --cmake-force-configure \
+          --cmake-args \
+            --no-warn-unused-cli \
+            -DCMAKE_TOOLCHAIN_FILE=`pwd`/robot_dev_config/aarch64_toolchainfile.cmake \
+            -DPLATFORM_${platform}=ON \
+            -DTHIRDPARTY=ON \
+            -DBUILD_TESTING=$build_testing \
+            -DCMAKE_BUILD_RPATH="`pwd`/build/poco_vendor/poco_external_project_install/lib/;`pwd`/build/libyaml_vendor/libyaml_install/lib/"
+
+  fi
 
 fi

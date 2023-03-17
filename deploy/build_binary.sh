@@ -8,7 +8,8 @@ Architecture=arm64
 Package=tros
 template=""
 binary=""
-tmp_dir=./tmp
+tmp_dir=../tmp
+backup_dir=../backup
 #*******************
 
 function show_usage() {
@@ -91,8 +92,8 @@ echo "Architecture: $Architecture"
 # 3. backup files in tmp dir
 if [ -e ${tmp_dir}/${template} ]; then
   echo "backup file ${tmp_dir}/${template}"
-  mkdir -p backup
-  mv ${tmp_dir}/${template} backup/${template}_`date +%Y-%m-%d_%H-%M-%S`
+  mkdir -p ${backup_dir}
+  mv ${tmp_dir}/${template} ${backup_dir}/${template}_`date +%Y-%m-%d_%H-%M-%S`
 fi
 
 # 4. copy template to tmp dir
