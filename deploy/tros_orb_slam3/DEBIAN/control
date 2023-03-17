@@ -1,8 +1,8 @@
 Package: tros-orb-slam3
-Version: 1.0.6
+Version: 1.1.6
 Section: utils 
 Architecture: arm64
 Installed-Size: 750000000
-Depends: tros (>=1.1.2) 
-Maintainer: kairui.wang <kairui.wang@horizon.ai style="word-wrap: break-word;"> 
-Description: TogetherROS
+Depends: tros (>=1.1.6) 
+Maintainer: kairui.wang <kairui.wang@horizon.ai> 
+Description: TogetherROS ORB SLAM3
