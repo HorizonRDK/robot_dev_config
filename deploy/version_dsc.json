@@ -13,6 +13,7 @@
         },
         "X86" : {
             "Depends": [
+                "hobot-models-basic",
                 "libtinyxml2-dev",
                 "libyaml-dev",
                 "libzstd-dev",
