@@ -81,6 +81,8 @@ if [ $platform == "X86" ]; then
   ./robot_dev_config/x86_build.sh
   echo "PACKAGE_SELECTION: $PACKAGE_SELECTION"
 
+  mkdir -p install && cp ./robot_dev_config/create_soft_link.py install/
+
   ## 开始编译
   colcon build $PACKAGE_SELECTION \
     --merge-install \
@@ -225,6 +227,8 @@ else
       touch src/box/hobot_slam/orb_slam3/COLCON_IGNORE
       touch src/tools/benchmark/performance_test/COLCON_IGNORE
     fi
+
+    mkdir -p install && cp ./robot_dev_config/create_soft_link.py install/
 
     colcon build $PACKAGE_SELECTION \
           --merge-install \
