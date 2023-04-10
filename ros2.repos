@@ -433,8 +433,8 @@ repositories:
     version: 0.7.4
   tros/tinyxml_vendor:
     type: git
-    url: https://github.com/ros2/tinyxml_vendor.git
-    version: 0.8.2
+    url: https://github.com/HorizonRoboticsRDK/tinyxml_vendor.git
+    version: feature-tros
   tros/tlsf:
     type: git
     url: https://github.com/ros2/tlsf.git
