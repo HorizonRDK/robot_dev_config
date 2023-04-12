@@ -10,14 +10,12 @@ touch \
     ./src/box/hobot_audio/COLCON_IGNORE \
     ./src/box/hobot_interactions/COLCON_IGNORE \
     ./src/box/hobot_perception/COLCON_IGNORE \
-    ./src/box/hobot_dnn/dnn_benchmark_example/COLCON_IGNORE \
     ./src/box/hobot_dnn/dnn_node_example/COLCON_IGNORE \
     ./src/box/hobot_dnn/dnn_node_sample/COLCON_IGNORE \
     ./src/box/hobot_hdmi/COLCON_IGNORE \
     ./src/box/hobot_cv/COLCON_IGNORE \
     ./src/box/hobot_slam/COLCON_IGNORE \
     ./src/box/hobot_sensors/COLCON_IGNORE \
-    ./src/box/hobot_dnn/COLCON_IGNORE \
     ./src/box/ros-navigation/COLCON_IGNORE \
     ./src/app/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/ros2trace/COLCON_IGNORE \
