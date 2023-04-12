@@ -78,7 +78,7 @@ repositories:
   box/hobot_codec:
     type: git
     url: https://github.com/HorizonRoboticsRDK/hobot_codec.git
-    version: tros_1.1.6
+    version: tros_1.1.7
   box/hobot_hdmi:
     type: git
     url: https://github.com/HorizonRoboticsRDK/hobot_hdmi.git
@@ -466,7 +466,7 @@ repositories:
   tools/hobot_image_publisher:
     type: git
     url: https://github.com/HorizonRoboticsRDK/hobot_image_publisher.git
-    version: tros_1.1.6rc1
+    version: tros_1.1.7
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRoboticsRDK/sysroot_docker.git
