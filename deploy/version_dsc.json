@@ -6,7 +6,6 @@
             "Depends": [
                 "symlinks",
                 "locales",
-                "hhp-verify",
                 "hobot-models-basic",
                 "hobot-arm64-libs (>= 1.1.6)"
             ]

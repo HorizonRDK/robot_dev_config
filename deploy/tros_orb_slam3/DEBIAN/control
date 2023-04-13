@@ -5,4 +5,4 @@ Architecture: arm64
 Installed-Size: 750000000
 Depends: tros (>=1.1.7) 
 Maintainer: kairui.wang <kairui.wang@horizon.ai> 
-Description: TogetherROS ORB SLAM3
+Description: TogetheROS ORB SLAM3
