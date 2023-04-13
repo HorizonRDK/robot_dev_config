@@ -113,6 +113,43 @@ bash robot_dev_config/deploy/build_binary.sh -p X3 -t tros -b install
 
 ```
 
+编译X3平台hobbot_audio deb安装包:
+
+```shell
+
+bash robot_dev_config/build.sh -p X3 -s hobot_audio
+
+更新deploy/tros_hobot_audio/DEBIAN/control和deploy/build_extern_binary.sh中的版本信息
+
+bash robot_dev_config/deploy/build_extern_binary.sh tros_hobot_audio
+
+```
+
+编译X3平台orb_slam3 deb安装包:
+
+```shell
+
+bash robot_dev_config/build.sh -p X3 -s orb_slam3_example_ros2
+
+更新deploy/tros_orb_slam3/DEBIAN/control和deploy/build_extern_binary.sh中的版本信息
+
+bash robot_dev_config/deploy/build_extern_binary.sh tros_orb_slam3
+
+```
+
+编译X3平台performance_test deb安装包:
+
+```shell
+
+bash robot_dev_config/build.sh -p X3 -s performance_test
+
+更新deploy/tros_performance_test/DEBIAN/control和deploy/build_extern_binary.sh中的版本信息
+
+bash robot_dev_config/deploy/build_extern_binary.sh tros_performance_test
+
+```
+
+
 编译X86平台deb安装包：
 
 ```shell
