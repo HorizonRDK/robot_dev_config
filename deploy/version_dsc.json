@@ -1,6 +1,6 @@
 {
 	"tros": {
-        "Version": "1.1.6",
+        "Version": "1.1.7",
         "X3": {
             "BSP": "x3_ubuntu_v1.1.6",
             "Depends": [
@@ -68,10 +68,10 @@
         }
     },
 	"hobot_audio": {
-        "Version": "1.1.6",
+        "Version": "1.1.7",
         "X3": {
             "Depends": [
-                "tros (>= 1.1.6)"
+                "tros (>= 1.1.7)"
             ]
         },
         "X86" : {

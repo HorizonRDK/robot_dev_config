@@ -23,7 +23,7 @@ case $package_name in
         ;;
 esac
 
-version=1.1.6
+version=1.1.7
 architecture=arm64
 
 tmp_dir=../tmp
