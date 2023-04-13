@@ -86,7 +86,7 @@ repositories:
   box/hobot_audio:
     type: git
     url: https://github.com/HorizonRoboticsRDK/hobot_audio.git
-    version: tros_1.1.5
+    version: tros_1.1.7
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://github.com/HorizonRoboticsRDK/mono2d_body_detection.git
