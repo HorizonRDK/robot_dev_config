@@ -1,8 +1,8 @@
 Package: tros-performance-test
-Version: 1.1.6
+Version: 1.1.7
 Section: utils 
 Architecture: arm64
 Installed-Size: 58000000
-Depends: tros (>=1.1.6) 
+Depends: tros (>=1.1.7) 
 Maintainer: kairui.wang <kairui.wang@horizon.ai"> 
 Description: TogetherROS Performance Test
