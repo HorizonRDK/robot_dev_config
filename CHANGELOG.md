@@ -1,4 +1,4 @@
-# Changelog for TogetherROS
+# Changelog for TogetheROS
 
 v1.1.6 (2023-03-28)
 ------------------
@@ -56,8 +56,8 @@ v1.1.2 (2022-10-29)
   5. hand_lmk_detection，修复算法推理压力大时crash的问题。
   6. hand_gesture_detection，修复内存泄漏问题。
   7. parking_perception，修复launch文件设置错误问题
-  8. mono2d_trash_detection，新增2D垃圾检测算法示例，基于PaddlePaddle开源框架、地平线AI工具链和TogetherROS实现算法训练、模型转换和算法部署的全流程功能。
-  9. tros_toolkit，简化TogetherROS源码编译流程。
+  8. mono2d_trash_detection，新增2D垃圾检测算法示例，基于PaddlePaddle开源框架、地平线AI工具链和TogetheROS实现算法训练、模型转换和算法部署的全流程功能。
+  9. tros_toolkit，简化TogetheROS源码编译流程。
 
 
 v1.1.1 (2022-09-21)

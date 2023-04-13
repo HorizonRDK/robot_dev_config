@@ -9,4 +9,4 @@ Depends:
 Maintainer: kairui.wang <kairui.wang@horizon.ai>
 APT-Manual-Installed: yes
 APT-Sources: http://archive.sunrisepi.tech/ubuntu-sim focal/main amd64 Packages
-Description: TogetherROS
+Description: TogetheROS
