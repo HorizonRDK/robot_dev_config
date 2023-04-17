@@ -62,7 +62,7 @@ repositories:
   box/hobot_dnn:
     type: git
     url: https://github.com/HorizonRoboticsRDK/hobot_dnn.git
-    version: develop
+    version: feature-j5
   box/hobot_cv:
     type: git
     url: https://github.com/HorizonRoboticsRDK/hobot_cv.git
