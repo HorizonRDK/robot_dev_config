@@ -131,6 +131,7 @@ Usage: ./robot_dev_config/build_deb.sh platform package_name
 
 其中：
 platform，目前只支持 x3和x86，j5还暂未支持
+
 package_name，支持如下：
 
 - ros-base，ros2相关的基础包都打包到ros-base中
@@ -141,8 +142,8 @@ package_name，支持如下：
 
 注意：
 
-- 打包ros-base或tros时，需要修改build_deb.sh中的版本号，分别tros_package_version和ros_base_package_version。
-- 打包单独某一个包时，确保该包依赖的包已打包，脚本目前未实现自动打包依赖包功能
+- 打包ros-base或tros时，需要修改build_deb.sh中的版本号，tros版本号定义使用变量tros_package_version，ros-base使用ros_base_package_version。
+- 单独打包某一个包时，确保该包依赖的包已打包，脚本目前未实现自动打包依赖包功能。
 
 1. FAQ
 Q: git获取代码重复提示输入账户、密码
