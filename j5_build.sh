@@ -5,18 +5,17 @@ touch \
     ./src/ament/googletest/googletest/COLCON_IGNORE \
     ./src/app/line_follower \
     ./src/app/xr_robot \
-    ./src/box/ros-planning/COLCON_IGNORE \
     ./src/box/hobot_audio/COLCON_IGNORE \
-    ./src/box/hobot_interactions/COLCON_IGNORE \
+    ./src/box/hobot_interactions/audio_control/COLCON_IGNORE \
+    ./src/box/hobot_interactions/audio_tracking/COLCON_IGNORE \
+    ./src/box/hobot_interactions/parking_search/COLCON_IGNORE \
     ./src/box/hobot_perception/hobot_falldown_detection/COLCON_IGNORE \
     ./src/box/hobot_perception/mono2d_trash_detection/COLCON_IGNORE \
     ./src/box/hobot_perception/elevation_net/COLCON_IGNORE \
     ./src/box/hobot_perception/mono3d_indoor_detection/COLCON_IGNORE \
     ./src/box/hobot_perception/parking_perception/COLCON_IGNORE \
     ./src/box/hobot_hdmi/COLCON_IGNORE \
-    ./src/box/hobot_slam/COLCON_IGNORE \
     ./src/box/hobot_sensors/COLCON_IGNORE \
-    ./src/box/ros-navigation/COLCON_IGNORE \
     ./src/app/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/ros2trace/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/tracetools_launch/COLCON_IGNORE \
