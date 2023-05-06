@@ -451,10 +451,6 @@ repositories:
     type: git
     url: https://github.com/ros2/yaml_cpp_vendor.git
     version: 7.0.2
-  tros_achieve_3rd:
-    type: git
-    url: https://github.com/HorizonRDK/tros_achieve_3rd.git
-    version: v1.0RC1
   tools/Breakpad:
     type: git
     url: https://github.com/HorizonRDK/Breakpad.git
