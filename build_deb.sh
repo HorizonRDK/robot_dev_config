@@ -210,7 +210,7 @@ function create_ros_base_deb_package {
     cd "${tmp_dir}/${ros_base_package_name}/" || exit
 
     if [ "$platform" == "X3" ]; then
-        deb_dependencies="locales, hhp-verify, hobot-arm64-libs (>= 1.1.6)"
+        deb_dependencies="locales, hhp-verify, hobot-multimedia-dev"
 
         # 创建control文件
         cat >DEBIAN/control <<EOF
