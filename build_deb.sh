@@ -6,10 +6,10 @@ platform=X3
 build_testing=OFF
 
 tros_package_name="tros"
-tros_package_version="1.1.8"
+tros_package_version="2.0.0"
 
 ros_base_package_name="${tros_package_name}-ros-base"
-ros_base_package_version="1.1.6"
+ros_base_package_version="2.0.0"
 
 # 打印脚本使用方法
 usage() {
@@ -62,6 +62,7 @@ ros_base_packages=()
 deb_build_packages=()
 deb_build_packages_path=()
 tros_package_exclude=("hobot_audio" "orb_slam3" "orb_slam3_example_ros2" "performance_test")
+depended_bsp_packages=("hobot-multimedia-dev" "hobot-multimedia" "hobot-dnn" "hobot-camera")
 
 # 更新列表信息
 readarray -t ros_base_packages <"${pwd_dir}/robot_dev_config/ros_base_packages_${platform}.list"
@@ -424,15 +425,15 @@ function create_deb_package() {
 
     # 解析依赖
     if [ "$(xmllint --xpath 'count(//depend)' "${pkg}/package.xml")" -gt 0 ]; then
-        depend_list=$(xmllint --nowarning --xpath '//depend/text()' "${pkg}/package.xml")
+        depend_list=$(xmllint --nowarning --xpath '//depend[not(@condition) or @condition="$PLATFORM == '$platform'"]/text()' "${pkg}/package.xml")
     fi
 
     if [ "$(xmllint --xpath 'count(//build_depend)' "${pkg}/package.xml")" -gt 0 ]; then
-        build_depend_list=$(xmllint --nowarning --xpath '//build_depend/text()' "${pkg}/package.xml")
+        build_depend_list=$(xmllint --nowarning --xpath '//build_depend[not(@condition) or @condition="$PLATFORM == '$platform'"]/text()' "${pkg}/package.xml")
     fi
 
     if [ "$(xmllint --xpath 'count(//exec_depend)' "${pkg}/package.xml")" -gt 0 ]; then
-        exec_depend_list=$(xmllint --nowarning --xpath '//exec_depend/text()' "${pkg}/package.xml")
+        exec_depend_list=$(xmllint --nowarning --xpath '//exec_depend[not(@condition) or @condition="$PLATFORM == '$platform'"]/text()' "${pkg}/package.xml")
     fi
 
     # 将依赖放入一个数组
@@ -455,6 +456,10 @@ function create_deb_package() {
             # 替换包名中的 '_' 为 '-'
             depend_package=${depend_package//_/\-}
             deb_dependencies+=" ${tros_package_name}-${depend_package},"
+        elif [[ " ${depended_bsp_packages[*]} " =~ ${depend_package} ]]; then
+            # 替换包名中的 '_' 为 '-'
+            depend_package=${depend_package//_/\-}
+            deb_dependencies+=" ${depend_package},"
         fi
     done
 
