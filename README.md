@@ -18,7 +18,7 @@ minimal_build.sh 编译配置脚本，最小化编译
 
 minimal_deploy.sh 部署剪裁脚本，用于最小化部署
 
-build_deb.sh 拆分安装包后的打包脚本
+build_deb.sh 单独安装包打包脚本
 
 ## 交叉编译说明
 
@@ -32,7 +32,7 @@ cd /mnt/data/kairui.wang/test
 mkdir -p cc_ws/tros_ws/src
 cd cc_ws/tros_ws
 ## 获取配置文件
-git clone https://c-gitlab.horizon.ai/HHP/robot_dev_config.git -b develop
+git clone https://github.com/HorizonRDK/robot_dev_config.git -b develop
 ## 安装vcs工具
 sudo pip install -U vcstool 
 ## 拉取代码
@@ -130,6 +130,7 @@ Usage: ./robot_dev_config/build_deb.sh platform package_name
 ```
 
 其中：
+
 platform，目前只支持 x3和x86，j5还暂未支持
 
 package_name，支持如下：
