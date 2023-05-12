@@ -119,7 +119,7 @@ ros2 run examples_rclcpp_minimal_subscriber subscriber_member_function
 
 6. 编译deb安装包
 
-使用build_deb.sh编译deb安装包，建议在单独工程目录进行，不要使用开发调试工程目录。
+使用build_deb.sh编译deb安装包，建议在单独工程目录进行，不要使用开发调试工程目录，打包脚本会自动编译，打包前不需要运行编译脚本。
 
 脚本读取源码package.xml文件中的name，version，description，和maintainer信息，以及depend信息，提交或更新源码时必须要修改相关信息。脚本使用方法：
 
