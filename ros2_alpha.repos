@@ -58,95 +58,95 @@ repositories:
   box/hobot_sensors:
     type: git
     url: https://github.com/HorizonRDK/hobot_sensors.git
-    version: tros_1.1.6
+    version: tros_2.0.0
   box/hobot_dnn:
     type: git
     url: https://github.com/HorizonRDK/hobot_dnn.git
-    version: tros_1.1.7
+    version: tros_2.0.0
   box/hobot_cv:
     type: git
     url: https://github.com/HorizonRDK/hobot_cv.git
-    version: tros_1.1.6a
+    version: tros_2.0.0
   box/hobot_msgs:
     type: git
     url: https://github.com/HorizonRDK/hobot_msgs.git
-    version: tros_1.1.2rc1
+    version: tros_2.0.0
   box/hobot_websocket:
     type: git
     url: https://github.com/HorizonRDK/hobot_websocket.git
-    version: tros_1.1.6rc1
+    version: tros_2.0.0
   box/hobot_codec:
     type: git
     url: https://github.com/HorizonRDK/hobot_codec.git
-    version: tros_1.1.7
+    version: tros_2.0.0
   box/hobot_hdmi:
     type: git
     url: https://github.com/HorizonRDK/hobot_hdmi.git
-    version: hhp_1.0.4
+    version: tros_2.0.0
   box/hobot_audio:
     type: git
     url: https://github.com/HorizonRDK/hobot_audio.git
-    version: tros_1.1.7
+    version: tros_2.0.0
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_body_detection.git
-    version: tros_1.1.6rc1
+    version: tros_2.0.0
   box/hobot_perception/mot:
     type: git
     url: https://github.com/HorizonRDK/mot.git
-    version: v0.0.1
+    version: tros_2.0.0
   box/hobot_perception/hand_lmk_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_lmk_detection.git
-    version: tros_1.1.4
+    version: tros_2.0.0
   box/hobot_perception/hand_gesture_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_gesture_detection.git
-    version: tros_1.1.2rc1
+    version: tros_2.0.0
   box/hobot_perception/hobot_falldown_detection:
     type: git
     url: https://github.com/HorizonRDK/hobot_falldown_detection.git
-    version: hhp_1.0.5
+    version: tros_2.0.0
   box/hobot_perception/mono3d_indoor_detection:
     type: git
     url: https://github.com/HorizonRDK/mono3d_indoor_detection.git
-    version: tros_1.1.6a
+    version: tros_2.0.0
   box/hobot_perception/elevation_net:
     type: git
     url: https://github.com/HorizonRDK/elevation_net.git
-    version: tros_1.1.6a
+    version: tros_2.0.0
   box/hobot_perception/parking_perception:
     type: git
     url: https://github.com/HorizonRDK/parking_perception.git
-    version: tros_1.1.6rc1
+    version: tros_2.0.0
   box/hobot_perception/mono2d_trash_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_trash_detection.git
-    version: tros_1.1.6a
+    version: tros_2.0.0
   box/hobot_interactions/gesture_control:
     type: git
     url: https://github.com/HorizonRDK/gesture_control.git
-    version: hhp_1.0.5
+    version: tros_2.0.0
   box/hobot_interactions/body_tracking:
     type: git
     url: https://github.com/HorizonRDK/body_tracking.git
-    version: hhp_1.0.6
+    version: tros_2.0.0
   box/hobot_interactions/audio_control:
     type: git
     url: https://github.com/HorizonRDK/audio_control.git
-    version: hhp_1.0.6
+    version: tros_2.0.0
   box/hobot_interactions/audio_tracking:
     type: git
     url: https://github.com/HorizonRDK/audio_tracking.git
-    version: tros_1.1.2
+    version: tros_2.0.0
   box/hobot_interactions/parking_search:
     type: git
     url: https://github.com/HorizonRDK/parking_search.git
-    version: hhp_1.0.6RC1
+    version: tros_2.0.0
   box/hobot_slam/orb_slam3:
     type: git
     url: https://github.com/HorizonRDK/orb_slam3.git
-    version: tros_1.1.2rc1
+    version: tros_2.0.0
   box/ros-navigation/angles:
     type: git
     url: https://github.com/ros/angles.git
@@ -162,11 +162,11 @@ repositories:
   app/xr_robot:
     type: git
     url: https://github.com/HorizonRDK/xr_robot.git
-    version: v1.0RC1
+    version: tros_2.0.0
   app/line_follower:
     type: git
     url: https://github.com/HorizonRDK/line_follower.git
-    version: tros_1.1.2rc1
+    version: tros_2.0.0
   box/ros-perception/laser_geometry:
     type: git
     url: https://github.com/ros-perception/laser_geometry.git
@@ -226,7 +226,7 @@ repositories:
   tools/benchmark:
     type: git
     url: https://github.com/HorizonRDK/benchmark.git
-    version: hhp_1.0.0
+    version: tros_2.0.0
   tros/ament_cmake_ros:
     type: git
     url: https://github.com/ros2/ament_cmake_ros.git
@@ -466,7 +466,7 @@ repositories:
   tools/hobot_image_publisher:
     type: git
     url: https://github.com/HorizonRDK/hobot_image_publisher.git
-    version: tros_1.1.7
+    version: tros_2.0.0
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRDK/sysroot_docker.git
