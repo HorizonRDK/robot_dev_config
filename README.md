@@ -1,4 +1,5 @@
 # robot_dev_config
+
 ## 文件说明
 
 build.sh 编译脚本
@@ -17,23 +18,30 @@ minimal_build.sh 编译配置脚本，最小化编译
 
 minimal_deploy.sh 部署剪裁脚本，用于最小化部署
 
+build_deb.sh 单独安装包打包脚本
+
 ## 交叉编译说明
+
 ### 基于ubuntu20.04 docker
+
 1. 本地创建开发目录结构，获取源码。这里以/mnt/data/kairui.wang/test为例
-```
+
+```bash
 ## 创建目录
 cd /mnt/data/kairui.wang/test
 mkdir -p cc_ws/tros_ws/src
 cd cc_ws/tros_ws
 ## 获取配置文件
-git clone https://c-gitlab.horizon.ai/HHP/robot_dev_config.git -b develop
+git clone https://github.com/HorizonRDK/robot_dev_config.git -b develop
 ## 安装vcs工具
 sudo pip install -U vcstool 
 ## 拉取代码
 vcs-import src < ./robot_dev_config/ros2.repos 
 ```
+
 整个工程目录结构如下
-```
+
+```text
 ├── cc_ws
 │   ├── sysroot_docker
 │   │   ├── etc
@@ -46,12 +54,14 @@ vcs-import src < ./robot_dev_config/ros2.repos
 │       ├── robot_dev_config
 │       └── src
 ```
+
 **注意：目录结构需要保持一致**
 
 **注意：vcs import过程中打印.表示成功拉取repo，如果打印E表示该repo拉取失败可以通过执行后的log看到具体失败的repo，碰到这种情况可以尝试删除src里面的内容重新vcs import或者手动拉取失败的repo**
 
 2. 使用docker镜像
-```
+
+```bash
 ## 加载docker镜像
 docker load --input ubuntu20.04_tros.tar
 ## 查看对应的image ID
@@ -61,7 +71,8 @@ docker run -it --rm --entrypoint="/bin/bash" -v PC本地目录:docker目录 imag
 ```
 
 3. 交叉编译。该步骤均在docker中完成
-```
+
+```bash
 ## 切到编译路径下
 cd /mnt/test/cc_ws/tros_ws
 
@@ -78,15 +89,22 @@ bash robot_dev_config/build.sh -p X3
 将编译生成的install目录放入开发板中（开发板ubuntu20.04环境）
 
 打开一个terminator
-```
+```bash
+
 source ./local_setup.bash
 ros2 run examples_rclcpp_minimal_publisher publisher_member_function
+
 ```
+
 打开另一个terminator
-```
+
+```bash
+
 source ./local_setup.bash
 ros2 run examples_rclcpp_minimal_subscriber subscriber_member_function
+
 ```
+
 可以看到subscriber已经收到了消息
 
 5. 最小部署包
@@ -101,84 +119,60 @@ ros2 run examples_rclcpp_minimal_subscriber subscriber_member_function
 
 6. 编译deb安装包
 
-交叉编译完成后，在tros_ws路径下编译deb安装包。
+使用build_deb.sh编译deb安装包，建议在单独工程目录进行，不要使用开发调试工程目录。
 
-前置条件：编译环境已安装jq（`sudo apt-get install jq`）
+脚本读取源码package.xml文件中的name，version，description，和maintainer信息，以及depend信息，提交或更新源码时必须要修改相关信息。脚本使用方法：
 
-编译X3平台deb安装包：
-
-```shell
-
-bash robot_dev_config/deploy/build_binary.sh -p X3 -t tros -b install
-
+```text
+Usage: ./robot_dev_config/build_deb.sh platform package_name
+  platform: One of x3, j5, or x86
+  package_name: ros-base, tros, others, all, or select package name
 ```
 
-编译X3平台hobbot_audio deb安装包:
+其中：
 
-```shell
+platform，目前只支持 x3和x86，j5还暂未支持
 
-bash robot_dev_config/build.sh -p X3 -s hobot_audio
+package_name，支持如下：
 
-更新deploy/tros_hobot_audio/DEBIAN/control和deploy/build_extern_binary.sh中的版本信息
+- ros-base，ros2相关的基础包都打包到ros-base中
+- tros, 整体所有包整合到一起的安装包，依赖当前平台所有编译生成的安装包
+- others，打包除了ros-base之外的所有安装包
+- all，打包当前平台所有的安装包
+- select package name，具体要打包的安装包，该包源码必须在src目录下，一般使用该方式更新软件包
 
-bash robot_dev_config/deploy/build_extern_binary.sh tros_hobot_audio
+注意：
 
-```
+- 打包ros-base或tros时，需要修改build_deb.sh中的版本号，tros版本号定义使用变量tros_package_version，ros-base使用ros_base_package_version。
+- 单独打包某一个包时，确保该包依赖的包已打包，脚本目前未实现自动打包依赖包功能。
 
-编译X3平台orb_slam3 deb安装包:
-
-```shell
-
-bash robot_dev_config/build.sh -p X3 -s orb_slam3_example_ros2
-
-更新deploy/tros_orb_slam3/DEBIAN/control和deploy/build_extern_binary.sh中的版本信息
-
-bash robot_dev_config/deploy/build_extern_binary.sh tros_orb_slam3
-
-```
-
-编译X3平台performance_test deb安装包:
-
-```shell
-
-bash robot_dev_config/build.sh -p X3 -s performance_test
-
-更新deploy/tros_performance_test/DEBIAN/control和deploy/build_extern_binary.sh中的版本信息
-
-bash robot_dev_config/deploy/build_extern_binary.sh tros_performance_test
-
-```
-
-
-编译X86平台deb安装包：
-
-```shell
-
-bash robot_dev_config/deploy/build_binary.sh -p X86 -t tros -b install
-
-```
-
-7. FAQ
+1. FAQ
 Q: git获取代码重复提示输入账户、密码
-A: 
-```
+A:
+
+```bash
 apt install ssh
 ssh-keygen -t rsa -C 'xxx@e-mail.com'
 gitlab添加pub key
 git config --global credential.helper store
 ```
+
 尝试拉一个repo，输入账户密码，后面不再需要重复输入密码
 
 ## 单元测试说明
+
 1. 通过build.sh编译脚本的-g选项打开测试用例的编译，例如打开X3平台的测试用例编译
-```
+
+```bash
 ./robot_dev_config/build.sh -p X3 -g ON
 ```
 
 2. 单元测试需要推送到开发板上运行，且推送到开发板上的路径需要与交叉编译的路径保持一致。
 
 3. 使用run_gtest.sh脚本运行单元测试，默认进行所有package的单元测试。用户可通过选项-s选择单独的package进行测试。例如
-```
+
+```bash
 ./robot_dev_config/run_gtest.sh -s rclcpp
 ```
+
 运行结束后，会统计测试结果，并输出出现错误的测试case以及错误信息。
