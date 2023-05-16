@@ -451,10 +451,6 @@ repositories:
     type: git
     url: https://github.com/ros2/yaml_cpp_vendor.git
     version: 7.0.2
-  tools/Breakpad:
-    type: git
-    url: https://github.com/HorizonRDK/Breakpad.git
-    version: dev-tros-aiot
   tools/FlameGraph:
     type: git
     url: https://github.com/brendangregg/FlameGraph.git
