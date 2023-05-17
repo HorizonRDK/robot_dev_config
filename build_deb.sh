@@ -209,6 +209,9 @@ function create_ros_base_deb_package {
     # 进入编译后的目录，复制文件到deb目录下
     cd "${tmp_dir}/${ros_base_package_name}/" || exit
 
+    version_date=$(date +'%Y%m%d%H%M%S')
+    ros_base_package_version="$ros_base_package_version-$version_date"
+
     if [ "$platform" == "X3" ]; then
         deb_dependencies="hobot-multimedia-dev"
 
@@ -219,7 +222,6 @@ Version: $ros_base_package_version
 Architecture: arm64
 Depends: ${deb_dependencies}
 Maintainer: kairui.wang <kairui.wang@horizon.ai>
-APT-Sources: http://archive.sunrisepi.tech/ubuntu-ports focal/main arm64 Packages
 Description: TogetheROS Bot Base
 EOF
 
@@ -246,7 +248,6 @@ Version: $ros_base_package_version
 Architecture: amd64
 Depends: ${deb_dependencies}
 Maintainer: kairui.wang <kairui.wang@horizon.ai>
-APT-Sources: http://archive.sunrisepi.tech/ubuntu-sim focal/main amd64 Packages
 Description: TogetheROS Bot Base
 EOF
 
@@ -291,6 +292,9 @@ function create_tros_deb_package {
         deb_dependencies+=", "$package_name_deb
     done
 
+    version_date=$(date +'%Y%m%d%H%M%S')
+    tros_package_version="$tros_package_version-$version_date"
+
     # 创建control文件
     cat >DEBIAN/control <<EOF
 Package: $tros_package_name
@@ -298,7 +302,6 @@ Version: $tros_package_version
 Architecture: $arch
 Depends: ${deb_dependencies}
 Maintainer: kairui.wang <kairui.wang@horizon.ai>
-APT-Sources: http://archive.sunrisepi.tech/ubuntu-sim focal/main amd64 Packages
 Description: TogetheROS Bot
 EOF
 
@@ -475,6 +478,9 @@ function create_deb_package() {
 
     # 进入编译后的目录，复制文件到deb目录下
     cd "${tmp_dir}/${package_name_deb}/" || exit
+
+    version_date=$(date +'%Y%m%d%H%M%S')
+    package_version="$package_version-$version_date"
 
     # 创建control文件
     cat >DEBIAN/control <<EOF
