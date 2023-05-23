@@ -58,11 +58,11 @@ repositories:
   box/hobot_sensors:
     type: git
     url: https://github.com/HorizonRDK/hobot_sensors.git
-    version: tros_2.0.0
+    version: tros_2.0.0rc1
   box/hobot_dnn:
     type: git
     url: https://github.com/HorizonRDK/hobot_dnn.git
-    version: tros_2.0.0
+    version: tros_2.0.0rc1
   box/hobot_cv:
     type: git
     url: https://github.com/HorizonRDK/hobot_cv.git
@@ -74,11 +74,11 @@ repositories:
   box/hobot_websocket:
     type: git
     url: https://github.com/HorizonRDK/hobot_websocket.git
-    version: tros_2.0.0
+    version: tros_2.0.0rc1
   box/hobot_codec:
     type: git
     url: https://github.com/HorizonRDK/hobot_codec.git
-    version: tros_2.0.0
+    version: tros_2.0.0rc1
   box/hobot_hdmi:
     type: git
     url: https://github.com/HorizonRDK/hobot_hdmi.git
@@ -90,7 +90,7 @@ repositories:
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_body_detection.git
-    version: tros_2.0.0
+    version: tros_2.0.0rc1
   box/hobot_perception/mot:
     type: git
     url: https://github.com/HorizonRDK/mot.git
@@ -110,7 +110,7 @@ repositories:
   box/hobot_perception/mono3d_indoor_detection:
     type: git
     url: https://github.com/HorizonRDK/mono3d_indoor_detection.git
-    version: tros_2.0.0
+    version: tros_2.0.0rc1
   box/hobot_perception/elevation_net:
     type: git
     url: https://github.com/HorizonRDK/elevation_net.git
@@ -118,7 +118,7 @@ repositories:
   box/hobot_perception/parking_perception:
     type: git
     url: https://github.com/HorizonRDK/parking_perception.git
-    version: tros_2.0.0
+    version: tros_2.0.0rc1
   box/hobot_perception/mono2d_trash_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_trash_detection.git
@@ -462,7 +462,7 @@ repositories:
   tools/hobot_image_publisher:
     type: git
     url: https://github.com/HorizonRDK/hobot_image_publisher.git
-    version: tros_2.0.0
+    version: tros_2.0.0rc1
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRDK/sysroot_docker.git
