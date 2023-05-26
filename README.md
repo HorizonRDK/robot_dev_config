@@ -146,8 +146,10 @@ package_name，支持如下：
 - 打包ros-base或tros时，需要修改build_deb.sh中的版本号，tros版本号定义使用变量tros_package_version，ros-base使用ros_base_package_version。
 - 单独打包某一个包时，确保该包依赖的包已打包，脚本目前未实现自动打包依赖包功能。
 
-1. FAQ
+7. FAQ
+
 Q: git获取代码重复提示输入账户、密码
+
 A:
 
 ```bash
@@ -176,3 +178,8 @@ git config --global credential.helper store
 ```
 
 运行结束后，会统计测试结果，并输出出现错误的测试case以及错误信息。
+
+## 版本说明
+
+- tros_1.1.6及以前的1.0版本需要使用相同版本的系统镜像
+- tros_2.0.0等2.0版本需要使用配套的2.0的系统镜像
