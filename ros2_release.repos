@@ -434,7 +434,7 @@ repositories:
   tros/tinyxml_vendor:
     type: git
     url: https://github.com/HorizonRDK/tinyxml_vendor.git
-    version: tros_1.1.6a
+    version: tros_2.0.0
   tros/tlsf:
     type: git
     url: https://github.com/ros2/tlsf.git
@@ -451,10 +451,6 @@ repositories:
     type: git
     url: https://github.com/ros2/yaml_cpp_vendor.git
     version: 7.0.2
-  tros_achieve_3rd:
-    type: git
-    url: https://github.com/HorizonRDK/tros_achieve_3rd.git
-    version: v1.0RC1
   tools/FlameGraph:
     type: git
     url: https://github.com/brendangregg/FlameGraph.git

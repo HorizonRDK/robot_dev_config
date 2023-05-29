@@ -156,7 +156,7 @@ A:
 git config --global credential.helper store
 ```
 
-尝试拉一个repo，输入账户密码（不是GitHub账号密码，而是个人token），后面不再需要重复输入密码
+尝试拉一个repo，输入Username和Password（Password不是GitHub账号密码，而是个人token），后面不再需要重复输入密码，如何创建token可参考GitHub官方文档[Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 
 ## 单元测试说明
 
