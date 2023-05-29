@@ -18,17 +18,17 @@ minimal_build.sh 编译配置脚本，最小化编译
 
 minimal_deploy.sh 部署剪裁脚本，用于最小化部署
 
-build_deb.sh 单独安装包打包脚本
+build_deb.sh 应用独立打包脚本
 
 ## 交叉编译说明
 
 ### 基于ubuntu20.04 docker
 
-1. 本地创建开发目录结构，获取源码。这里以/mnt/data/kairui.wang/test为例
+1. 本地创建开发目录结构，获取源码。这里以/mnt/data/test为例
 
 ```bash
 ## 创建目录
-cd /mnt/data/kairui.wang/test
+cd /mnt/data/test
 mkdir -p cc_ws/tros_ws/src
 cd cc_ws/tros_ws
 ## 获取配置文件
@@ -66,8 +66,8 @@ vcs-import src < ./robot_dev_config/ros2.repos
 docker load --input ubuntu20.04_tros.tar
 ## 查看对应的image ID
 docker images
-## 启动docker挂载目录
-docker run -it --rm --entrypoint="/bin/bash" -v PC本地目录:docker目录 imageID，这里以docker run -it --rm --entrypoint="/bin/bash" -v /mnt/data/kairui.wang/test:/mnt/test 725ec5a56ede 为例
+## 启动docker挂载目录，docker run -it --rm --entrypoint="/bin/bash" -v PC本地目录:docker目录 imageID
+docker run -it --rm --entrypoint="/bin/bash" -v /mnt/data/test:/mnt/test 725ec5a56ede
 ```
 
 3. 交叉编译。该步骤均在docker中完成
@@ -121,7 +121,7 @@ ros2 run examples_rclcpp_minimal_subscriber subscriber_member_function
 
 使用build_deb.sh编译deb安装包，建议在单独工程目录进行，不要使用开发调试工程目录，打包脚本会自动编译，打包前不需要运行编译脚本。
 
-脚本读取源码package.xml文件中的name，version，description，和maintainer信息，以及depend信息，提交或更新源码时必须要修改相关信息。脚本使用方法：
+脚本读取源码package.xml文件中的name，version，description，maintainer和depend信息，提交或更新源码时必须要修改相关信息。脚本使用方法：
 
 ```text
 Usage: ./robot_dev_config/build_deb.sh platform package_name
@@ -131,7 +131,7 @@ Usage: ./robot_dev_config/build_deb.sh platform package_name
 
 其中：
 
-platform，目前只支持 x3和x86，j5还暂未支持
+platform，目前只支持 x3和x86，j5暂未支持
 
 package_name，支持如下：
 
@@ -146,18 +146,17 @@ package_name，支持如下：
 - 打包ros-base或tros时，需要修改build_deb.sh中的版本号，tros版本号定义使用变量tros_package_version，ros-base使用ros_base_package_version。
 - 单独打包某一个包时，确保该包依赖的包已打包，脚本目前未实现自动打包依赖包功能。
 
-1. FAQ
+7. FAQ
+
 Q: git获取代码重复提示输入账户、密码
+
 A:
 
 ```bash
-apt install ssh
-ssh-keygen -t rsa -C 'xxx@e-mail.com'
-gitlab添加pub key
 git config --global credential.helper store
 ```
 
-尝试拉一个repo，输入账户密码，后面不再需要重复输入密码
+尝试拉一个repo，输入Username和Password（Password不是GitHub账号密码，而是个人token），后面不再需要重复输入密码，如何创建token可参考GitHub官方文档[Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 
 ## 单元测试说明
 
@@ -176,3 +175,8 @@ git config --global credential.helper store
 ```
 
 运行结束后，会统计测试结果，并输出出现错误的测试case以及错误信息。
+
+## 版本说明
+
+- tros_1.1.6及以前的1.x版本需要使用相同版本1.x的系统镜像
+- tros_2.0.0等2.x版本需要使用配套的2.x版本系统镜像
