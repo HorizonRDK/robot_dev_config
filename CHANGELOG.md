@@ -1,5 +1,17 @@
 # Changelog for TogetheROS
 
+v2.0.0 (2023-05-29)
+------------------
+
+  1. 代码托管平台更换为GitHub。
+  2. hobot_dnn，修复X86平台hobot_dnn DDR模型推理失败问题，修复MobileNet_SSD后处理崩溃问题。
+  3. hobot_audio增加语音ASR识别结果输出。
+  4. 更换应用打包方式为各个Node独立打包，新增打包脚本实现该功能。
+  5. 更新应用launch启动方式，直接包含依赖的Node Launch脚本。
+  6. webscoket更新web显示地平线LOGO
+  7. 2.0.0版本使用独立的软件源和文档链接
+
+
 v1.1.6 (2023-03-28)
 ------------------
 
