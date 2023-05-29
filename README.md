@@ -62,8 +62,10 @@ vcs-import src < ./robot_dev_config/ros2.repos
 2. 使用docker镜像
 
 ```bash
+## 获取用于交叉编译的docker
+wget http://archive.sunrisepi.tech/TogetheROS/cross_compile_docker/pc_tros_v1.0.5.tar.gz
 ## 加载docker镜像
-docker load --input ubuntu20.04_tros.tar
+docker load --input pc_tros_v1.0.5.tar.gz
 ## 查看对应的image ID
 docker images
 ## 启动docker挂载目录，docker run -it --rm --entrypoint="/bin/bash" -v PC本地目录:docker目录 imageID
@@ -79,6 +81,7 @@ cd /mnt/test/cc_ws/tros_ws
 ## 使用build.sh脚本编译，通过-p选项指定编译平台[X3|J5|X86]
 ## 例如编译X3平台TROS的命令为
 bash robot_dev_config/build.sh -p X3
+```
 
 **注意：编译过程中，要确保同一个终端中执行colcon build命令之前已执行执行export环境变量命令**
 
