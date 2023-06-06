@@ -87,10 +87,6 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/hobot_audio.git
     version: develop
-  box/hobot_agent:
-    type: git
-    url: https://github.com/HorizonRDK/hobot_agent.git
-    version: develop
   box/hobot_trigger:
     type: git
     url: https://github.com/HorizonRDK/hobot_trigger.git
