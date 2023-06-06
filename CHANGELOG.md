@@ -1,5 +1,12 @@
 # Changelog for TogetheROS
 
+v2.0.1 (2023-06-05)
+------------------
+
+  1. rosbag2_storage_mcap, 新增ros2官方repo, rosbag数据播放记录支持mcap格式。
+  2. hobot_trigger, 新增trigger基础应用示例,支持trigger时间触发与数据记录
+
+
 v2.0.0 (2023-05-29)
 ------------------
 
