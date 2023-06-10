@@ -96,7 +96,9 @@ function ros_base_colcon_ignore {
             ./src/box/hobot_sensors/COLCON_IGNORE \
             ./src/box/hobot_slam/COLCON_IGNORE \
             ./src/box/hobot_websocket/COLCON_IGNORE \
+            ./src/box/hobot_trigger/COLCON_IGNORE \
             ./src/tools/hobot_image_publisher/COLCON_IGNORE \
+            ./src/tools/hobot_visualization/COLCON_IGNORE \
             ./src/tools/benchmark/performance_test/COLCON_IGNORE
     elif [ "$platform" == "X86" ]; then
         touch \
@@ -122,7 +124,9 @@ function ros_base_colcon_ignore {
             ./src/box/hobot_sensors/COLCON_IGNORE \
             ./src/box/hobot_slam/COLCON_IGNORE \
             ./src/box/hobot_websocket/COLCON_IGNORE \
+            ./src/box/hobot_trigger/COLCON_IGNORE \
             ./src/tools/hobot_image_publisher/COLCON_IGNORE \
+            ./src/tools/hobot_visualization/COLCON_IGNORE \
             ./src/tools/benchmark/COLCON_IGNORE \
             ./src/box/ros-navigation/COLCON_IGNORE \
             ./src/tools/benchmark/performance_test/COLCON_IGNORE

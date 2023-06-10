@@ -90,7 +90,7 @@ repositories:
   box/hobot_trigger:
     type: git
     url: https://github.com/HorizonRDK/hobot_trigger.git
-    version: tros_2.0.1
+    version: tros_2.0.0
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_body_detection.git
@@ -374,11 +374,11 @@ repositories:
   tros/rosbag2:
     type: git
     url: https://github.com/ros2/rosbag2.git
-    version: 0.3.8
+    version: 0.3.9
   tros/rosbag2_storage_mcap:
     type: git
     url: https://github.com/ros-tooling/rosbag2_storage_mcap.git
-    version: 0.4.0
+    version: 0.6.0
   tros/rosidl:
     type: git
     url: https://github.com/ros2/rosidl.git
@@ -470,7 +470,7 @@ repositories:
   tools/hobot_visualization:
     type: git
     url: https://github.com/HorizonRDK/hobot_visualization.git
-    version: tros_2.0.1
+    version: tros_2.0.0
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRDK/sysroot_docker.git
