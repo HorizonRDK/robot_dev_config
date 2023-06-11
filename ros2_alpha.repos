@@ -373,12 +373,8 @@ repositories:
     version: 0.2.1
   tros/rosbag2:
     type: git
-    url: https://github.com/ros2/rosbag2.git
-    version: 0.3.9
-  tros/rosbag2_storage_mcap:
-    type: git
-    url: https://github.com/ros-tooling/rosbag2_storage_mcap.git
-    version: 0.6.0
+    url: https://github.com/HorizonRDK/rosbag2.git
+    version: tros_2.0.0
   tros/rosidl:
     type: git
     url: https://github.com/ros2/rosidl.git
