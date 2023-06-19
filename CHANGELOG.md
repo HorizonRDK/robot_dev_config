@@ -1,6 +1,6 @@
 # Changelog for TogetheROS
 
-v2.0.1 (2023-06-05)
+v2.0.1 (2023-06-10)
 ------------------
 
   1. rosbag2_storage_mcap, 新增ros2官方repo, rosbag数据播放记录支持mcap格式。
