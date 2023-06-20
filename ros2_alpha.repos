@@ -62,7 +62,7 @@ repositories:
   box/hobot_dnn:
     type: git
     url: https://github.com/HorizonRDK/hobot_dnn.git
-    version: tros_2.0.0rc1
+    version: tros_2.1.0
   box/hobot_cv:
     type: git
     url: https://github.com/HorizonRDK/hobot_cv.git
@@ -126,7 +126,7 @@ repositories:
   box/hobot_perception/mono2d_trash_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_trash_detection.git
-    version: tros_2.0.0
+    version: tros_2.1.0
   box/hobot_interactions/gesture_control:
     type: git
     url: https://github.com/HorizonRDK/gesture_control.git
@@ -470,4 +470,4 @@ repositories:
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRDK/sysroot_docker.git
-    version: tros_1.1.6b
+    version: tros_2.1.0
