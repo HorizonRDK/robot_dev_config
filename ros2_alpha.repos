@@ -122,7 +122,7 @@ repositories:
   box/hobot_perception/parking_perception:
     type: git
     url: https://github.com/HorizonRDK/parking_perception.git
-    version: tros_2.0.0rc1
+    version: tros_2.0.1
   box/hobot_perception/mono2d_trash_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_trash_detection.git
@@ -462,7 +462,7 @@ repositories:
   tools/hobot_image_publisher:
     type: git
     url: https://github.com/HorizonRDK/hobot_image_publisher.git
-    version: tros_2.0.0rc1
+    version: tros_2.0.1
   tools/hobot_visualization:
     type: git
     url: https://github.com/HorizonRDK/hobot_visualization.git
