@@ -58,7 +58,7 @@ repositories:
   box/hobot_sensors:
     type: git
     url: https://github.com/HorizonRDK/hobot_sensors.git
-    version: tros_2.0.0rc1
+    version: tros_2.0.1
   box/hobot_dnn:
     type: git
     url: https://github.com/HorizonRDK/hobot_dnn.git
@@ -86,7 +86,7 @@ repositories:
   box/hobot_audio:
     type: git
     url: https://github.com/HorizonRDK/hobot_audio.git
-    version: tros_2.0.0
+    version: tros_2.1.0
   box/hobot_trigger:
     type: git
     url: https://github.com/HorizonRDK/hobot_trigger.git
