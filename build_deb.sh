@@ -26,7 +26,7 @@ fi
 
 # 获取输入参数
 platform=$1
-package_name=$2
+package_build_name=$2
 
 pwd_dir=$PWD
 tmp_dir=${pwd_dir}/../tmp/${platform}
@@ -66,6 +66,29 @@ depended_bsp_packages=("hobot-multimedia-dev" "hobot-multimedia" "hobot-dnn" "ho
 
 # 更新列表信息
 readarray -t ros_base_packages <"${pwd_dir}/robot_dev_config/ros_base_packages_${platform}.list"
+
+# 函数：判断字符串是否在字符串列表中
+# 参数：
+#   $1: 待判断的字符串
+#   $2: 字符串列表
+# 返回值：
+#   0: 字符串存在于列表中
+#   1: 字符串不存在于列表中
+function is_string_in_list() {
+    local search_str="$1"
+    shift
+    local list=("$@")
+
+    for item in "${list[@]}"
+    do
+        if [[ "$item" == "$search_str" ]]; then
+            return 0
+        fi
+    done
+
+    return 1
+}
+
 
 function clear_colcon_ignore {
     find "${pwd_dir}/src" -name "COLCON_IGNORE" -print0 | xargs -0 rm
@@ -134,6 +157,7 @@ function ros_base_colcon_ignore {
 }
 
 function update_deb_build_packages {
+    cd "$pwd_dir" || exit
     clear_colcon_ignore
     if [ "$platform" == "X3" ]; then
         "${pwd_dir}"/robot_dev_config/all_build.sh
@@ -157,7 +181,7 @@ function update_deb_build_packages {
         pkg_path=${row[1]}
         pkg_path="${pkg_dir}/${pkg_path}"
 
-        if [[ " ${ros_base_packages[*]} " =~ ${pkg_name} ]]; then
+        if is_string_in_list "$pkg_name" "${ros_base_packages[@]}"; then
             continue
         fi
 
@@ -169,6 +193,8 @@ function update_deb_build_packages {
 update_deb_build_packages
 
 function build_ros_base() {
+    cd "$pwd_dir" || exit
+
     clear_colcon_ignore
 
     # 删除原有编译目录，重新编译
@@ -180,7 +206,27 @@ function build_ros_base() {
         rm -rf build
     fi
 
-    ros_base_colcon_ignore
+    pkg_dir="${pwd_dir}/src"
+
+    cd "$pkg_dir" || exit
+    # 查找所有存在package.xml的包
+    readarray -t pkg_all_list < <(colcon list)
+
+    # 遍历所有包
+    for i in "${!pkg_all_list[@]}"; do
+        # 将行按空格分割成数组
+        row=(${pkg_all_list[i]//  / })
+        pkg_name=${row[0]}
+        pkg_path=${row[1]}
+
+        if is_string_in_list "$pkg_name" "${ros_base_packages[@]}"; then
+            continue
+        fi
+
+        touch "$pkg_path"/COLCON_IGNORE
+    done
+
+    cd "$pwd_dir" || exit
 
     if [ "$platform" == "X3" ]; then
         colcon build \
@@ -208,13 +254,26 @@ function build_ros_base() {
 }
 
 function create_ros_base_deb_package {
-    mkdir -p "${tmp_dir}/${ros_base_package_name}/DEBIAN"
-    pwd_dir=$PWD
-    # 进入编译后的目录，复制文件到deb目录下
-    cd "${tmp_dir}/${ros_base_package_name}/" || exit
-
     version_date=$(date +'%Y%m%d%H%M%S')
     ros_base_package_version="$ros_base_package_version-$version_date"
+    ros_base_temporary_directory_name=${ros_base_package_name}_${ros_base_package_version}
+
+    cd "$pwd_dir" || exit
+    mkdir -p "${tmp_dir}/${ros_base_temporary_directory_name}/opt"
+
+    cp -rf "${pwd_dir}"/install "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt
+    mv "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/install "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
+
+    bash "${pwd_dir}"/robot_dev_config/deploy/install_deps_setup.sh "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
+    if [ "$platform" == "X3" ]; then
+        cp "${pwd_dir}"/robot_dev_config/deploy/check_version.sh "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
+    fi
+    cp "${pwd_dir}"/robot_dev_config/create_soft_link.py "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
+
+    mkdir -p "${tmp_dir}/${ros_base_temporary_directory_name}/DEBIAN"
+    cd "${tmp_dir}/${ros_base_temporary_directory_name}/" || exit
+
+    install_size=$(du -sk opt | cut -f1)
 
     if [ "$platform" == "X3" ]; then
         deb_dependencies="hobot-multimedia-dev"
@@ -227,20 +286,8 @@ Architecture: arm64
 Depends: ${deb_dependencies}
 Maintainer: kairui.wang <kairui.wang@horizon.ai>
 Description: TogetheROS Bot Base
+Installed-Size: $install_size
 EOF
-
-        #         # 创建postinst文件
-        #         cat >DEBIAN/postinst <<EOF
-        # #!/bin/bash
-
-        # sudo locale-gen en_US en_US.UTF-8
-        # sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-        # export LANG=en_US.UTF-8
-        # if [ -e "/sys/class/socinfo/soc_uid" ]; then
-        # 	sudo hhp_verify
-        # fi
-        # EOF
-        #         chmod 755 DEBIAN/postinst
 
     elif [ "$platform" == "X86" ]; then
         deb_dependencies="libtinyxml2-dev, libyaml-dev, libzstd-dev, libeigen3-dev, libxml2-utils, libtinyxml-dev, libssl-dev, python3-numpy, libconsole-bridge-dev, pydocstyle, libgtest-dev, cppcheck, python3-lark, libspdlog-dev, google-mock, python3-flake8, python3-pydot, python3-psutil, libfreetype6-dev, libxaw7-dev, libxrandr-dev, python3-pytest-mock, python3-mypy, default-jdk, libcunit1-dev, libopencv-dev, python3-ifcfg, python3-matplotlib, graphviz, uncrustify, python3-lxml, libcppunit-dev, libcurl4-openssl-dev, python3-mock, python3-nose, libsqlite3-dev, pyflakes3, clang-tidy, python3-lttng, liblog4cxx-dev, python3-babeltrace, python3-pycodestyle, libboost-dev, libboost-python-dev, python3-opencv, libboost-python1.71.0"
@@ -253,23 +300,13 @@ Architecture: amd64
 Depends: ${deb_dependencies}
 Maintainer: kairui.wang <kairui.wang@horizon.ai>
 Description: TogetheROS Bot Base
+Installed-Size: $install_size
 EOF
 
     fi
 
-    cd "$pwd_dir" || exit
-    mkdir -p "${tmp_dir}/${ros_base_package_name}/opt"
-    cp -rf "${pwd_dir}"/install "${tmp_dir}"/"${ros_base_package_name}"/opt
-    mv "${tmp_dir}"/"${ros_base_package_name}"/opt/install "${tmp_dir}"/"${ros_base_package_name}"/opt/tros
-
-    bash "${pwd_dir}"/robot_dev_config/deploy/install_deps_setup.sh "${tmp_dir}"/"${ros_base_package_name}"/opt/tros
-    if [ "$platform" == "X3" ]; then
-        cp "${pwd_dir}"/robot_dev_config/deploy/check_version.sh "${tmp_dir}"/"${ros_base_package_name}"/opt/tros
-    fi
-    cp "${pwd_dir}"/robot_dev_config/create_soft_link.py "${tmp_dir}"/"${ros_base_package_name}"/opt/tros
-
     mkdir -p "$deb_dir"
-    fakeroot dpkg-deb --build "${tmp_dir}/${ros_base_package_name}" "${deb_dir}"
+    fakeroot dpkg-deb --build "${tmp_dir}/${ros_base_temporary_directory_name}" "${deb_dir}"
 
     echo "已打包完成 $ros_base_package_name"
 }
@@ -281,23 +318,24 @@ function create_tros_deb_package {
         arch=amd64
     fi
 
-    mkdir -p "${tmp_dir}/${tros_package_name}/DEBIAN"
-    pwd_dir=$PWD
+    version_date=$(date +'%Y%m%d%H%M%S')
+    tros_package_version="$tros_package_version-$version_date"
+
+    tros_temporary_directory_name=${tros_package_name}_${tros_package_version}
+    mkdir -p "${tmp_dir}/${tros_temporary_directory_name}/DEBIAN"
+
     # 进入编译后的目录，复制文件到deb目录下
-    cd "${tmp_dir}/${tros_package_name}/" || exit
+    cd "${tmp_dir}/${tros_temporary_directory_name}/" || exit
 
     deb_dependencies="hobot-models-basic, ${ros_base_package_name}"
     for package in "${deb_build_packages[@]}"; do
-        if [[ " ${tros_package_exclude[*]} " =~ $package ]]; then
+        if is_string_in_list "$package" "${tros_package_exclude[@]}"; then
             continue
         fi
 
         package_name_deb="${tros_package_name}-${package//_/\-}"
         deb_dependencies+=", "$package_name_deb
     done
-
-    version_date=$(date +'%Y%m%d%H%M%S')
-    tros_package_version="$tros_package_version-$version_date"
 
     # 创建control文件
     cat >DEBIAN/control <<EOF
@@ -307,13 +345,16 @@ Architecture: $arch
 Depends: ${deb_dependencies}
 Maintainer: kairui.wang <kairui.wang@horizon.ai>
 Description: TogetheROS Bot
+Installed-Size: 0
 EOF
 
     mkdir -p "$deb_dir"
-    fakeroot dpkg-deb --build "${tmp_dir}/${tros_package_name}" "${deb_dir}"
+    fakeroot dpkg-deb --build "${tmp_dir}/${tros_temporary_directory_name}" "${deb_dir}"
 }
 
 function build_all() {
+    cd "$pwd_dir" || exit
+
     clear_colcon_ignore
 
     if [ "$platform" == "X3" ]; then
@@ -345,8 +386,51 @@ function build_all() {
     fi
 }
 
+
+function all_build_deb_package() {
+    local pkg="$1"
+
+    cd "$pwd_dir" || exit
+    source install/setup.bash
+
+    # 解析包名
+    package_name=$(xmllint --xpath 'string(/package/name/text())' "${pkg}/package.xml")
+
+    if [ "$platform" == "X3" ]; then
+        colcon build \
+            --packages-select="$package_name" \
+            --build-base=build_temp_${platform}/build_"${package_name}" \
+            --install-base=install_temp_${platform}/install_"${package_name}" \
+            --merge-install \
+            --cmake-force-configure \
+            --cmake-args \
+            --no-warn-unused-cli \
+            -DCMAKE_TOOLCHAIN_FILE="$(pwd)/robot_dev_config/aarch64_toolchainfile.cmake" \
+            -DPLATFORM_${platform}=ON \
+            -DTHIRDPARTY=ON \
+            -DBUILD_TESTING=$build_testing \
+            -DCMAKE_BUILD_RPATH="$(pwd)/build/poco_vendor/poco_external_project_install/lib/;$(pwd)/build/libyaml_vendor/libyaml_install/lib/"
+    elif [ "$platform" == "X86" ]; then
+        colcon build \
+            --packages-select="$package_name" \
+            --build-base=build_temp_${platform}/build_"${package_name}" \
+            --install-base=install_temp_${platform}/install_"${package_name}" \
+            --merge-install \
+            --cmake-force-configure \
+            --cmake-args \
+            --no-warn-unused-cli \
+            -DTHIRDPARTY=ON \
+            -DBUILD_TESTING:BOOL=OFF \
+            -DPLATFORM_X86=ON \
+            -DBUILD_HBMEM=ON \
+            -DTHIRD_PARTY="$(pwd)/../sysroot_docker"
+    fi
+}
+
 function build_deb_package() {
     local pkg="$1"
+
+    cd "$pwd_dir" || exit
 
     # 解析包名
     package_name=$(xmllint --xpath 'string(/package/name/text())' "${pkg}/package.xml")
@@ -430,6 +514,9 @@ function create_deb_package() {
     package_maintainer_email=$(xmllint --xpath 'string(/package/maintainer/@email)' "${pkg}/package.xml")
     package_maintainer="$package_maintainer_content <$package_maintainer_email>"
 
+    depend_list=""
+    build_depend_list=""
+    exec_depend_list=""
     # 解析依赖
     if [ "$(xmllint --xpath 'count(//depend)' "${pkg}/package.xml")" -gt 0 ]; then
         depend_list=$(xmllint --nowarning --xpath '//depend[not(@condition) or @condition="$PLATFORM == '$platform'"]/text()' "${pkg}/package.xml")
@@ -454,16 +541,16 @@ function create_deb_package() {
     ros_base_added=false
     deb_dependencies=""
     for depend_package in "${dependencies[@]}"; do
-        if [[ " ${ros_base_packages[*]} " =~ ${depend_package} ]]; then
+        if is_string_in_list "$depend_package" "${ros_base_packages[@]}"; then
             if ! $ros_base_added; then
                 deb_dependencies+=" ${ros_base_package_name},"
                 ros_base_added=true
             fi
-        elif [[ " ${deb_build_packages[*]} " =~ ${depend_package} ]]; then
+        elif is_string_in_list "$depend_package" "${deb_build_packages[@]}"; then
             # 替换包名中的 '_' 为 '-'
             depend_package=${depend_package//_/\-}
             deb_dependencies+=" ${tros_package_name}-${depend_package},"
-        elif [[ " ${depended_bsp_packages[*]} " =~ ${depend_package} ]]; then
+        elif is_string_in_list "$depend_package" "${depended_bsp_packages[@]}"; then
             # 替换包名中的 '_' 为 '-'
             depend_package=${depend_package//_/\-}
             deb_dependencies+=" ${depend_package},"
@@ -477,14 +564,34 @@ function create_deb_package() {
 
     package_name_deb="${tros_package_name}-${package_name//_/\-}"
 
-    pwd_dir=$PWD
-    mkdir -p "${tmp_dir}/${package_name_deb}/DEBIAN"
-
-    # 进入编译后的目录，复制文件到deb目录下
-    cd "${tmp_dir}/${package_name_deb}/" || exit
-
     version_date=$(date +'%Y%m%d%H%M%S')
     package_version="$package_version-$version_date"
+
+    cd "$pwd_dir" || exit
+    package_temporary_directory_name=${package_name_deb}_${package_version}
+    package_install_directory="${tmp_dir}/${package_temporary_directory_name}/opt/tros"
+    mkdir -p "$package_install_directory"
+    install_dir=install_temp_${platform}
+    if [ -d ${install_dir}/install_"${package_name}"/bin ]; then
+        cp -rf ${install_dir}/install_"${package_name}"/bin "$package_install_directory"
+    fi
+
+    if [ -d ${install_dir}/install_"${package_name}"/lib ]; then
+        cp -rf ${install_dir}/install_"${package_name}"/lib "$package_install_directory"
+    fi
+
+    if [ -d ${install_dir}/install_"${package_name}"/share ]; then
+        cp -rf ${install_dir}/install_"${package_name}"/share "$package_install_directory"
+    fi
+
+    if [ -d ${install_dir}/install_"${package_name}"/include ]; then
+        cp -rf ${install_dir}/install_"${package_name}"/include "$package_install_directory"
+    fi
+
+    mkdir -p "${tmp_dir}/${package_temporary_directory_name}/DEBIAN"
+    cd "${tmp_dir}/${package_temporary_directory_name}/" || exit
+
+    install_size=$(du -sk opt | cut -f1)
 
     # 创建control文件
     cat >DEBIAN/control <<EOF
@@ -494,30 +601,12 @@ Architecture: $arch
 Depends: ${deb_dependencies}
 Maintainer: $package_maintainer
 Description: $package_description
+Installed-Size: $install_size
 EOF
-
-    cd "$pwd_dir" || exit
-    mkdir -p "${tmp_dir}/${package_name_deb}/opt/tros"
-    install_dir=install_temp_${platform}
-    if [ -d ${install_dir}/install_"${package_name}"/bin ]; then
-        cp -rf ${install_dir}/install_"${package_name}"/bin "${tmp_dir}"/"${package_name_deb}"/opt/tros
-    fi
-
-    if [ -d ${install_dir}/install_"${package_name}"/lib ]; then
-        cp -rf ${install_dir}/install_"${package_name}"/lib "${tmp_dir}"/"${package_name_deb}"/opt/tros
-    fi
-
-    if [ -d ${install_dir}/install_"${package_name}"/share ]; then
-        cp -rf ${install_dir}/install_"${package_name}"/share "${tmp_dir}"/"${package_name_deb}"/opt/tros
-    fi
-
-    if [ -d ${install_dir}/install_"${package_name}"/include ]; then
-        cp -rf ${install_dir}/install_"${package_name}"/include "${tmp_dir}"/"${package_name_deb}"/opt/tros
-    fi
 
     mkdir -p "$deb_dir"
     # 打包成deb包
-    fakeroot dpkg-deb --build "${tmp_dir}/${package_name_deb}" "${deb_dir}"
+    fakeroot dpkg-deb --build "${tmp_dir}/${package_temporary_directory_name}" "${deb_dir}"
 }
 
 function pack_tros_packages {
@@ -526,7 +615,7 @@ function pack_tros_packages {
 
     for pkg in "${deb_build_packages_path[@]}"; do
         echo "处理包: $pkg"
-        build_deb_package "$pkg"
+        all_build_deb_package "$pkg"
         create_deb_package "$pkg"
         count=$((count + 1))
     done
@@ -545,7 +634,7 @@ function pack_tros_package_select {
     # 获取$deb_build_packages_path列表相同位置的结果
     index=0
     for i in "${!deb_build_packages[@]}"; do
-        if [[ "${deb_build_packages[$i]}" = "$package_name" ]]; then
+        if [[ "${deb_build_packages[$i]}" = "$package_build_name" ]]; then
             index=$i
             break
         fi
@@ -554,7 +643,7 @@ function pack_tros_package_select {
     echo "处理包: $pkg"
     build_deb_package "$pkg"
     create_deb_package "$pkg"
-    echo "已打包完成 $package_name"
+    echo "已打包完成 $package_build_name"
 }
 
 # 更新ros_base_packages前，需要先更新ros_base_colcon_ignore
@@ -567,26 +656,26 @@ function update_ros_base_packages {
     cd "$pwd_dir" || exit
 }
 
-if [ "$package_name" == "update_ros_base_packages" ]; then
+if [ "$package_build_name" == "update_ros_base_packages" ]; then
     update_ros_base_packages
     exit
 fi
 
 # 根据platform设置环境变量
-if [ "$package_name" == "ros-base" ]; then
+if [ "$package_build_name" == "ros-base" ]; then
     build_ros_base
     create_ros_base_deb_package
-elif [ "$package_name" == "others" ]; then
+elif [ "$package_build_name" == "others" ]; then
     pack_tros_packages
-elif [ "$package_name" == "tros" ]; then
+elif [ "$package_build_name" == "tros" ]; then
     create_tros_deb_package
-elif [ "$package_name" == "all" ]; then
+elif [ "$package_build_name" == "all" ]; then
     build_ros_base
     create_ros_base_deb_package
     pack_tros_packages
     create_tros_deb_package
 else
-    if [[ " ${deb_build_packages[*]} " =~ $package_name ]]; then
+    if is_string_in_list "$package_build_name" "${deb_build_packages[@]}"; then
         pack_tros_package_select
     else
         echo "Invalid package_name."
