@@ -61,7 +61,7 @@ fi
 ros_base_packages=()
 deb_build_packages=()
 deb_build_packages_path=()
-tros_package_exclude=("hobot_audio" "orb_slam3" "orb_slam3_example_ros2" "performance_test")
+tros_package_exclude=("hobot_audio" "orb_slam3" "orb_slam3_example_ros2" "performance_test" "agent_node")
 depended_bsp_packages=("hobot-multimedia-dev" "hobot-multimedia" "hobot-dnn" "hobot-camera")
 
 # 更新列表信息
