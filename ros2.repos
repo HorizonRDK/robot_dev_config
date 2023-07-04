@@ -479,10 +479,6 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/hobot_usb_cam.git
     version: develop
-  box/hobot_sensor/hobot_image_subscribe_example:
-    type: git
-    url: https://github.com/HorizonRDK/hobot_image_subscribe_example.git
-    version: develop
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRDK/sysroot_docker.git
