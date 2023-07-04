@@ -59,6 +59,7 @@ ament_pycodestyle
 ament_pyflakes
 ament_uncrustify
 ament_xmllint
+bag_recorder_nodes
 builtin_interfaces
 class_loader
 common_interfaces
@@ -123,6 +124,7 @@ lifecycle
 lifecycle_msgs
 logging_demo
 map_msgs
+mcap_vendor
 message_filters
 mimick_vendor
 move_base_msgs
@@ -192,6 +194,8 @@ rosbag2_converter_default_plugins
 rosbag2_cpp
 rosbag2_storage
 rosbag2_storage_default_plugins
+rosbag2_storage_mcap
+rosbag2_storage_mcap_testdata
 rosbag2_test_common
 rosbag2_tests
 rosbag2_transport
