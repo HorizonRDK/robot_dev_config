@@ -20,6 +20,7 @@ usage() {
 
 # 确保输入参数正确
 if [ $# -ne 2 ]; then
+    echo "params num [$#] is invalid, which should 2"
     usage
     exit 1
 fi
@@ -149,6 +150,34 @@ function ros_base_colcon_ignore {
             ./src/tools/benchmark/COLCON_IGNORE \
             ./src/box/ros-navigation/COLCON_IGNORE \
             ./src/tools/benchmark/performance_test/COLCON_IGNORE
+    elif [ "$platform" == "J5" ]; then
+        touch \
+            ./src/tros/performance_test_fixture/COLCON_IGNORE \
+            ./src/tros/rviz/COLCON_IGNORE \
+            ./src/tools/benchmark/performance_test_ros1_msgs/COLCON_IGNORE \
+            ./src/tools/benchmark/performance_test_ros1_publisher/COLCON_IGNORE \
+            ./src/ros/ros_tutorials/COLCON_IGNORE \
+            ./src/tros/ros1_bridge/COLCON_IGNORE \
+            ./src/eProsima/compatibility/COLCON_IGNORE \
+            ./src/box/ros-navigation/navigation2/nav2_system_tests/COLCON_IGNORE \
+            ./src/box/ros-navigation/navigation2/nav2_rviz_plugins/COLCON_IGNORE \
+            ./src/box/ros-navigation/navigation2/smac_planner/COLCON_IGNORE \
+            ./src/app/COLCON_IGNORE \
+            ./src/box/hobot_audio/COLCON_IGNORE \
+            ./src/box/hobot_codec/COLCON_IGNORE \
+            ./src/box/hobot_cv/COLCON_IGNORE \
+            ./src/box/hobot_dnn/COLCON_IGNORE \
+            ./src/box/hobot_hdmi/COLCON_IGNORE \
+            ./src/box/hobot_interactions/COLCON_IGNORE \
+            ./src/box/hobot_msgs/COLCON_IGNORE \
+            ./src/box/hobot_perception/COLCON_IGNORE \
+            ./src/box/hobot_sensors/COLCON_IGNORE \
+            ./src/box/hobot_slam/COLCON_IGNORE \
+            ./src/box/hobot_websocket/COLCON_IGNORE \
+            ./src/box/hobot_trigger/COLCON_IGNORE \
+            ./src/tools/hobot_image_publisher/COLCON_IGNORE \
+            ./src/tools/hobot_visualization/COLCON_IGNORE \
+            ./src/tools/benchmark/performance_test/COLCON_IGNORE
     fi
 }
 
@@ -159,6 +188,8 @@ function update_deb_build_packages {
         "${pwd_dir}"/robot_dev_config/all_build.sh
     elif [ "$platform" == "X86" ]; then
         "${pwd_dir}"/robot_dev_config/x86_build.sh
+    elif [ "$platform" == "J5" ]; then
+        "${pwd_dir}"/robot_dev_config/j5_build.sh
     fi
 
     # 定义工作目录和deb包目录
@@ -224,7 +255,7 @@ function build_ros_base() {
 
     cd "$pwd_dir" || exit
 
-    if [ "$platform" == "X3" ]; then
+    if [ "$platform" == "X3" ] || [ "$platform" == "J5" ]; then
         colcon build \
             --merge-install \
             --cmake-force-configure \
@@ -261,9 +292,10 @@ function create_ros_base_deb_package {
     mv "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/install "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
 
     bash "${pwd_dir}"/robot_dev_config/deploy/install_deps_setup.sh "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
-    if [ "$platform" == "X3" ]; then
-        cp "${pwd_dir}"/robot_dev_config/deploy/check_version.sh "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
-    fi
+    # 只有1.0版本tros才需要此脚本
+    # if [ "$platform" == "X3" ]; then
+    #     cp "${pwd_dir}"/robot_dev_config/deploy/check_version.sh "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
+    # fi
     cp "${pwd_dir}"/robot_dev_config/create_soft_link.py "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
 
     mkdir -p "${tmp_dir}/${ros_base_temporary_directory_name}/DEBIAN"
@@ -283,6 +315,30 @@ Depends: ${deb_dependencies}
 Maintainer: kairui.wang <kairui.wang@horizon.ai>
 Description: TogetheROS Bot Base
 Installed-Size: $install_size
+EOF
+
+        #         # 创建postinst文件
+        #         cat >DEBIAN/postinst <<EOF
+        # #!/bin/bash
+
+        # sudo locale-gen en_US en_US.UTF-8
+        # sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+        # export LANG=en_US.UTF-8
+        # if [ -e "/sys/class/socinfo/soc_uid" ]; then
+        # 	sudo hhp_verify
+        # fi
+        # EOF
+        #         chmod 755 DEBIAN/postinst
+
+    elif [ "$platform" == "J5" ]; then
+            # 创建control文件
+            cat >DEBIAN/control <<EOF
+Package: $ros_base_package_name
+Version: $ros_base_package_version
+Architecture: arm64
+Depends: ${deb_dependencies}
+Maintainer: kairui.wang <kairui.wang@horizon.ai>
+Description: TogetheROS Bot Base
 EOF
 
     elif [ "$platform" == "X86" ]; then
@@ -308,7 +364,7 @@ EOF
 }
 
 function create_tros_deb_package {
-    if [ "$platform" == "X3" ]; then
+    if [ "$platform" == "X3" ] || [ "$platform" == "J5" ]; then
         arch=arm64
     elif [ "$platform" == "X86" ]; then
         arch=amd64
@@ -366,6 +422,19 @@ function build_all() {
             -DTHIRDPARTY=ON \
             -DBUILD_TESTING=$build_testing \
             -DCMAKE_BUILD_RPATH="$(pwd)/build/poco_vendor/poco_external_project_install/lib/;$(pwd)/build/libyaml_vendor/libyaml_install/lib/"
+    elif [ "$platform" == "J5" ]; then
+        "${pwd_dir}"/robot_dev_config/j5_build.sh
+
+        colcon build \
+            --merge-install \
+            --cmake-force-configure \
+            --cmake-args \
+            --no-warn-unused-cli \
+            -DCMAKE_TOOLCHAIN_FILE="$(pwd)/robot_dev_config/aarch64_toolchainfile.cmake" \
+            -DPLATFORM_${platform}=ON \
+            -DTHIRDPARTY=ON \
+            -DBUILD_TESTING=$build_testing \
+            -DCMAKE_BUILD_RPATH="$(pwd)/build/poco_vendor/poco_external_project_install/lib/;$(pwd)/build/libyaml_vendor/libyaml_install/lib/"
     elif [ "$platform" == "X86" ]; then
         "${pwd_dir}"/robot_dev_config/x86_build.sh
 
@@ -392,7 +461,7 @@ function all_build_deb_package() {
     # 解析包名
     package_name=$(xmllint --xpath 'string(/package/name/text())' "${pkg}/package.xml")
 
-    if [ "$platform" == "X3" ]; then
+    if [ "$platform" == "X3" ] || [ "$platform" == "J5" ]; then
         colcon build \
             --packages-select="$package_name" \
             --build-base=build_temp_${platform}/build_"${package_name}" \
@@ -431,7 +500,7 @@ function build_deb_package() {
     # 解析包名
     package_name=$(xmllint --xpath 'string(/package/name/text())' "${pkg}/package.xml")
 
-    if [ "$platform" == "X3" ]; then
+    if [ "$platform" == "X3" ] || [ "$platform" == "J5" ]; then
         colcon build \
             --packages-select="$package_name" \
             --merge-install \
@@ -495,7 +564,7 @@ function build_deb_package() {
 function create_deb_package() {
     local pkg="$1"
     local arch=""
-    if [ "$platform" == "X3" ]; then
+    if [ "$platform" == "X3" ] || [ "$platform" == "J5" ]; then
         arch=arm64
     elif [ "$platform" == "X86" ]; then
         arch=amd64
@@ -627,6 +696,8 @@ function pack_tros_package_select {
     clear_colcon_ignore
     if [ "$platform" == "X3" ]; then
         "${pwd_dir}"/robot_dev_config/all_build.sh
+    elif [ "$platform" == "J5" ]; then
+        "${pwd_dir}"/robot_dev_config/j5_build.sh
     elif [ "$platform" == "X86" ]; then
         "${pwd_dir}"/robot_dev_config/x86_build.sh
     fi
