@@ -7,7 +7,6 @@ touch \
     ./src/app/xr_robot \
     ./src/box/hobot_audio/COLCON_IGNORE \
     ./src/box/hobot_interactions/COLCON_IGNORE \
-    ./src/box/hobot_perception/hobot_falldown_detection/COLCON_IGNORE \
     ./src/box/hobot_perception/mono2d_trash_detection/COLCON_IGNORE \
     ./src/box/hobot_perception/elevation_net/COLCON_IGNORE \
     ./src/box/hobot_perception/mono3d_indoor_detection/COLCON_IGNORE \

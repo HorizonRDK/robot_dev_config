@@ -317,19 +317,6 @@ Description: TogetheROS Bot Base
 Installed-Size: $install_size
 EOF
 
-        #         # 创建postinst文件
-        #         cat >DEBIAN/postinst <<EOF
-        # #!/bin/bash
-
-        # sudo locale-gen en_US en_US.UTF-8
-        # sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-        # export LANG=en_US.UTF-8
-        # if [ -e "/sys/class/socinfo/soc_uid" ]; then
-        # 	sudo hhp_verify
-        # fi
-        # EOF
-        #         chmod 755 DEBIAN/postinst
-
     elif [ "$platform" == "J5" ]; then
             # 创建control文件
             cat >DEBIAN/control <<EOF
