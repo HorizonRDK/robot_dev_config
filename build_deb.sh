@@ -104,9 +104,7 @@ function ros_base_colcon_ignore {
             ./src/ros/ros_tutorials/COLCON_IGNORE \
             ./src/tros/ros1_bridge/COLCON_IGNORE \
             ./src/eProsima/compatibility/COLCON_IGNORE \
-            ./src/box/ros-navigation/navigation2/nav2_system_tests/COLCON_IGNORE \
-            ./src/box/ros-navigation/navigation2/nav2_rviz_plugins/COLCON_IGNORE \
-            ./src/box/ros-navigation/navigation2/smac_planner/COLCON_IGNORE \
+            ./src/box/ros-navigation/navigation2/COLCON_IGNORE \
             ./src/app/COLCON_IGNORE \
             ./src/box/hobot_audio/COLCON_IGNORE \
             ./src/box/hobot_codec/COLCON_IGNORE \
@@ -116,7 +114,7 @@ function ros_base_colcon_ignore {
             ./src/box/hobot_interactions/COLCON_IGNORE \
             ./src/box/hobot_msgs/COLCON_IGNORE \
             ./src/box/hobot_perception/COLCON_IGNORE \
-            ./src/box/hobot_sensors/COLCON_IGNORE \
+            ./src/box/hobot_sensor/COLCON_IGNORE \
             ./src/box/hobot_slam/COLCON_IGNORE \
             ./src/box/hobot_websocket/COLCON_IGNORE \
             ./src/box/hobot_trigger/COLCON_IGNORE \
@@ -132,9 +130,7 @@ function ros_base_colcon_ignore {
             ./src/ros/ros_tutorials/COLCON_IGNORE \
             ./src/tros/ros1_bridge/COLCON_IGNORE \
             ./src/eProsima/compatibility/COLCON_IGNORE \
-            ./src/box/ros-navigation/navigation2/nav2_system_tests/COLCON_IGNORE \
-            ./src/box/ros-navigation/navigation2/nav2_rviz_plugins/COLCON_IGNORE \
-            ./src/box/ros-navigation/navigation2/smac_planner/COLCON_IGNORE \
+            ./src/box/ros-navigation/navigation2/COLCON_IGNORE \
             ./src/app/COLCON_IGNORE \
             ./src/box/hobot_audio/COLCON_IGNORE \
             ./src/box/hobot_codec/COLCON_IGNORE \
@@ -144,7 +140,7 @@ function ros_base_colcon_ignore {
             ./src/box/hobot_interactions/COLCON_IGNORE \
             ./src/box/hobot_msgs/COLCON_IGNORE \
             ./src/box/hobot_perception/COLCON_IGNORE \
-            ./src/box/hobot_sensors/COLCON_IGNORE \
+            ./src/box/hobot_sensor/COLCON_IGNORE \
             ./src/box/hobot_slam/COLCON_IGNORE \
             ./src/box/hobot_websocket/COLCON_IGNORE \
             ./src/box/hobot_trigger/COLCON_IGNORE \
@@ -587,6 +583,10 @@ function create_deb_package() {
     if [ -d ${install_dir}/install_"${package_name}"/include ]; then
         cp -rf ${install_dir}/install_"${package_name}"/include "$package_install_directory"
     fi
+
+    cp -rf ${install_dir}/install_"${package_name}"/setup.sh "$package_install_directory"
+    bash "${pwd_dir}"/robot_dev_config/deploy/install_deps_setup.sh "$package_install_directory"
+    rm "$package_install_directory/setup.sh"
 
     mkdir -p "${tmp_dir}/${package_temporary_directory_name}/DEBIAN"
     cd "${tmp_dir}/${package_temporary_directory_name}/" || exit
