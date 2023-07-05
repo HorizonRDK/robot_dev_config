@@ -96,7 +96,7 @@ function clear_colcon_ignore {
 }
 
 function ros_base_colcon_ignore {
-    if [ "$platform" == "X3" ]; then
+    if [ "$platform" == "X3" ] || [ "$platform" == "J5" ]; then
         touch \
             ./src/tros/performance_test_fixture/COLCON_IGNORE \
             ./src/tros/rviz/COLCON_IGNORE \
@@ -149,34 +149,6 @@ function ros_base_colcon_ignore {
             ./src/tools/hobot_visualization/COLCON_IGNORE \
             ./src/tools/benchmark/COLCON_IGNORE \
             ./src/box/ros-navigation/COLCON_IGNORE \
-            ./src/tools/benchmark/performance_test/COLCON_IGNORE
-    elif [ "$platform" == "J5" ]; then
-        touch \
-            ./src/tros/performance_test_fixture/COLCON_IGNORE \
-            ./src/tros/rviz/COLCON_IGNORE \
-            ./src/tools/benchmark/performance_test_ros1_msgs/COLCON_IGNORE \
-            ./src/tools/benchmark/performance_test_ros1_publisher/COLCON_IGNORE \
-            ./src/ros/ros_tutorials/COLCON_IGNORE \
-            ./src/tros/ros1_bridge/COLCON_IGNORE \
-            ./src/eProsima/compatibility/COLCON_IGNORE \
-            ./src/box/ros-navigation/navigation2/nav2_system_tests/COLCON_IGNORE \
-            ./src/box/ros-navigation/navigation2/nav2_rviz_plugins/COLCON_IGNORE \
-            ./src/box/ros-navigation/navigation2/smac_planner/COLCON_IGNORE \
-            ./src/app/COLCON_IGNORE \
-            ./src/box/hobot_audio/COLCON_IGNORE \
-            ./src/box/hobot_codec/COLCON_IGNORE \
-            ./src/box/hobot_cv/COLCON_IGNORE \
-            ./src/box/hobot_dnn/COLCON_IGNORE \
-            ./src/box/hobot_hdmi/COLCON_IGNORE \
-            ./src/box/hobot_interactions/COLCON_IGNORE \
-            ./src/box/hobot_msgs/COLCON_IGNORE \
-            ./src/box/hobot_perception/COLCON_IGNORE \
-            ./src/box/hobot_sensors/COLCON_IGNORE \
-            ./src/box/hobot_slam/COLCON_IGNORE \
-            ./src/box/hobot_websocket/COLCON_IGNORE \
-            ./src/box/hobot_trigger/COLCON_IGNORE \
-            ./src/tools/hobot_image_publisher/COLCON_IGNORE \
-            ./src/tools/hobot_visualization/COLCON_IGNORE \
             ./src/tools/benchmark/performance_test/COLCON_IGNORE
     fi
 }
