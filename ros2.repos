@@ -123,6 +123,18 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/mono2d_trash_detection.git
     version: develop
+  box/hobot_perception/hobot_centerpoint:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_centerpoint.git
+    version: develop
+  box/hobot_perception/hobot_bev:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_bev.git
+    version: develop
+  box/hobot_perception/hobot_stereonet:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_stereonet.git
+    version: develop
   box/hobot_interactions/gesture_control:
     type: git
     url: https://github.com/HorizonRDK/gesture_control.git
@@ -478,6 +490,10 @@ repositories:
   box/hobot_sensor/hobot_usb_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_usb_cam.git
+    version: develop
+  box/hobot_sensor/hobot_stereo_usb_cam:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_stereo_usb_cam.git
     version: develop
   ../../sysroot_docker:
     type: git
