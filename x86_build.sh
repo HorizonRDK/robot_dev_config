@@ -10,9 +10,8 @@ touch \
     ./src/box/ros-navigation/navigation2/nav2_system_tests/COLCON_IGNORE \
     ./src/box/ros-navigation/navigation2/nav2_rviz_plugins/COLCON_IGNORE \
     ./src/box/ros-navigation/navigation2/smac_planner/COLCON_IGNORE \
-    ./src/box/hobot_sensors/image_subscribe_example/COLCON_IGNORE \
-    ./src/box/hobot_sensors/mipi_cam/COLCON_IGNORE \
-    ./src/box/hobot_sensors/rgbd_sensor/COLCON_IGNORE \
+    ./src/box/hobot_sensor/hobot_mipi_cam/COLCON_IGNORE \
+    ./src/box/hobot_sensor/hobot_rgbd_cam/COLCON_IGNORE \
     ./src/box/hobot_hdmi/COLCON_IGNORE \
     ./src/box/hobot_audio/COLCON_IGNORE \
     ./src/box/hobot_interactions/COLCON_IGNORE \
@@ -26,4 +25,4 @@ touch \
     ./src/app/line_follower/COLCON_IGNORE \
     ./src/tools/benchmark/COLCON_IGNORE \
     ./src/box/ros-navigation/COLCON_IGNORE \
-    ./src/box/hobot_sensors/imu_sensor/COLCON_IGNORE
+    ./src/box/hobot_sensor/hobot_imu_sensor/COLCON_IGNORE
