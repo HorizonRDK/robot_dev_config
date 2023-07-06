@@ -14,9 +14,7 @@ touch \
     ./src/box/hobot_dnn/dnn_node_sample/COLCON_IGNORE \
     ./src/box/hobot_hdmi/COLCON_IGNORE \
     ./src/box/hobot_slam/COLCON_IGNORE \
-    ./src/box/hobot_sensor/hobot_image_subscribe_example/COLCON_IGNORE \
     ./src/box/hobot_sensor/hobot_imu_sensor/COLCON_IGNORE \
-    ./src/box/hobot_sensor/hobot_mipi_cam/COLCON_IGNORE \
     ./src/box/hobot_sensor/hobot_rgbd_cam/COLCON_IGNORE \
     ./src/app/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/ros2trace/COLCON_IGNORE \
