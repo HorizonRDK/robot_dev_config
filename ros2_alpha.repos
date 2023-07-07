@@ -90,7 +90,7 @@ repositories:
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_body_detection.git
-    version: tros_2.1.0
+    version: tros_2.2.0
   box/hobot_perception/mot:
     type: git
     url: https://github.com/HorizonRDK/mot.git
@@ -98,11 +98,11 @@ repositories:
   box/hobot_perception/hand_lmk_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_lmk_detection.git
-    version: tros_2.0.0
+    version: tros_2.1.0
   box/hobot_perception/hand_gesture_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_gesture_detection.git
-    version: tros_2.0.0
+    version: tros_2.1.0
   box/hobot_perception/hobot_falldown_detection:
     type: git
     url: https://github.com/HorizonRDK/hobot_falldown_detection.git
