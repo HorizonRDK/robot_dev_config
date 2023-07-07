@@ -159,6 +159,14 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/orb_slam3.git
     version: develop
+  box/hobot_gpt:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_gpt.git
+    version: develop
+  box/hobot_tts:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_tts.git
+    version: develop
   box/ros-navigation/angles:
     type: git
     url: https://github.com/ros/angles.git
