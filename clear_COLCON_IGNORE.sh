@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -name "COLCON_IGNORE" | xargs rm
+find src -name "COLCON_IGNORE" | xargs rm
