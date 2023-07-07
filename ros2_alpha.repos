@@ -55,18 +55,14 @@ repositories:
     type: git
     url: https://github.com/osrf/osrf_testing_tools_cpp.git
     version: 1.3.4
-  box/hobot_sensors:
-    type: git
-    url: https://github.com/HorizonRDK/hobot_sensors.git
-    version: tros_2.0.1
   box/hobot_dnn:
     type: git
     url: https://github.com/HorizonRDK/hobot_dnn.git
-    version: tros_2.1.0
+    version: tros_2.2.0
   box/hobot_cv:
     type: git
     url: https://github.com/HorizonRDK/hobot_cv.git
-    version: tros_2.0.0
+    version: tros_2.1.0
   box/hobot_msgs:
     type: git
     url: https://github.com/HorizonRDK/hobot_msgs.git
@@ -127,6 +123,18 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/mono2d_trash_detection.git
     version: tros_2.1.0
+  box/hobot_perception/hobot_centerpoint:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_centerpoint.git
+    version: tros_2.0.0
+  box/hobot_perception/hobot_bev:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_bev.git
+    version: tros_2.0.0
+  box/hobot_perception/hobot_stereonet:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_stereonet.git
+    version: tros_2.0.0
   box/hobot_interactions/gesture_control:
     type: git
     url: https://github.com/HorizonRDK/gesture_control.git
@@ -467,7 +475,27 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/hobot_visualization.git
     version: tros_2.0.0
+  box/hobot_sensor/hobot_rgbd_cam:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_rgbd_cam.git
+    version: tros_2.0.1
+  box/hobot_sensor/hobot_mipi_cam:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_mipi_cam.git
+    version: tros_2.0.0
+  box/hobot_sensor/hobot_imu_sensor:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_imu_sensor.git
+    version: tros_2.0.0
+  box/hobot_sensor/hobot_usb_cam:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_usb_cam.git
+    version: tros_2.0.1
+  box/hobot_sensor/hobot_stereo_usb_cam:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_stereo_usb_cam.git
+    version: tros_2.0.0
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRDK/sysroot_docker.git
-    version: tros_2.1.0
+    version: tros_2.2.0
