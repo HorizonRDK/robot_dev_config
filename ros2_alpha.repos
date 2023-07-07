@@ -62,7 +62,7 @@ repositories:
   box/hobot_cv:
     type: git
     url: https://github.com/HorizonRDK/hobot_cv.git
-    version: tros_2.0.0
+    version: tros_2.1.0
   box/hobot_msgs:
     type: git
     url: https://github.com/HorizonRDK/hobot_msgs.git
