@@ -187,6 +187,10 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/line_follower.git
     version: tros_2.0.0
+  app/chat_robot:
+    type: git
+    url: https://github.com/HorizonRDK/chat_robot.git
+    version: tros_2.0.0
   box/ros-perception/laser_geometry:
     type: git
     url: https://github.com/ros-perception/laser_geometry.git
