@@ -3,10 +3,10 @@ touch \
     ./src/ament/google_benchmark_vendor/COLCON_IGNORE \
     ./src/ament/googletest/COLCON_IGNORE \
     ./src/ament/googletest/googletest/COLCON_IGNORE \
-    ./src/app/line_follower \
-    ./src/app/xr_robot \
     ./src/box/hobot_audio/COLCON_IGNORE \
-    ./src/box/hobot_interactions/COLCON_IGNORE \
+    ./src/box/hobot_interactions/audio_control/COLCON_IGNORE \
+    ./src/box/hobot_interactions/audio_tracking/COLCON_IGNORE \
+    ./src/box/hobot_interactions/parking_search/COLCON_IGNORE \
     ./src/box/hobot_perception/mono2d_trash_detection/COLCON_IGNORE \
     ./src/box/hobot_perception/elevation_net/COLCON_IGNORE \
     ./src/box/hobot_perception/mono3d_indoor_detection/COLCON_IGNORE \
