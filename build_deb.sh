@@ -538,6 +538,8 @@ function create_deb_package() {
     package_maintainer_email=$(xmllint --xpath 'string(/package/maintainer/@email)' "${pkg}/package.xml")
     package_maintainer="$package_maintainer_content <$package_maintainer_email>"
 
+    package_description=$(echo "$package_description" | sed '/^\s*$/d')
+
     depend_list=""
     build_depend_list=""
     exec_depend_list=""
