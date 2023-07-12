@@ -64,6 +64,7 @@ deb_build_packages=()
 deb_build_packages_path=()
 tros_package_exclude=("hobot_audio" "orb_slam3" "orb_slam3_example_ros2" "performance_test" "agent_node")
 depended_bsp_packages=("hobot-multimedia-dev" "hobot-multimedia" "hobot-dnn" "hobot-camera")
+ros_package_prefix="ros-foxy"
 
 # 更新列表信息
 readarray -t ros_base_packages <"${pwd_dir}/robot_dev_config/ros_base_packages_${platform}.list"
@@ -359,6 +360,12 @@ Description: TogetheROS Bot
 Installed-Size: 0
 EOF
 
+    mkdir -p "${tmp_dir}/${tros_temporary_directory_name}/usr/share/keyrings/"
+    mkdir -p "${tmp_dir}/${tros_temporary_directory_name}/etc/apt/sources.list.d/"
+
+    curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o ./usr/share/keyrings/ros-archive-keyring.gpg
+    echo "deb [arch=arm64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu focal main" | tee ./etc/apt/sources.list.d/ros2.list > /dev/null
+
     mkdir -p "$deb_dir"
     fakeroot dpkg-deb --build "${tmp_dir}/${tros_temporary_directory_name}" "${deb_dir}"
 }
@@ -579,6 +586,8 @@ function create_deb_package() {
         elif is_string_in_list "$depend_package" "${depended_bsp_packages[@]}"; then
             # 替换包名中的 '_' 为 '-'
             depend_package=${depend_package//_/\-}
+            deb_dependencies+=" ${depend_package},"
+        elif [[ $depend_package == $ros_package_prefix* ]]; then
             deb_dependencies+=" ${depend_package},"
         fi
     done
