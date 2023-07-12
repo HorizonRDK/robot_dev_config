@@ -106,7 +106,6 @@ function ros_base_colcon_ignore {
             ./src/ros/ros_tutorials/COLCON_IGNORE \
             ./src/tros/ros1_bridge/COLCON_IGNORE \
             ./src/eProsima/compatibility/COLCON_IGNORE \
-            ./src/box/ros-navigation/navigation2/COLCON_IGNORE \
             ./src/app/COLCON_IGNORE \
             ./src/box/hobot_audio/COLCON_IGNORE \
             ./src/box/hobot_codec/COLCON_IGNORE \
@@ -132,7 +131,6 @@ function ros_base_colcon_ignore {
             ./src/ros/ros_tutorials/COLCON_IGNORE \
             ./src/tros/ros1_bridge/COLCON_IGNORE \
             ./src/eProsima/compatibility/COLCON_IGNORE \
-            ./src/box/ros-navigation/navigation2/COLCON_IGNORE \
             ./src/app/COLCON_IGNORE \
             ./src/box/hobot_audio/COLCON_IGNORE \
             ./src/box/hobot_codec/COLCON_IGNORE \
@@ -149,7 +147,6 @@ function ros_base_colcon_ignore {
             ./src/tools/hobot_image_publisher/COLCON_IGNORE \
             ./src/tools/hobot_visualization/COLCON_IGNORE \
             ./src/tools/benchmark/COLCON_IGNORE \
-            ./src/box/ros-navigation/COLCON_IGNORE \
             ./src/tools/benchmark/performance_test/COLCON_IGNORE
     fi
 }
