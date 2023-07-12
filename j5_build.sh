@@ -33,7 +33,6 @@ touch \
     ./src/tools/hobot_visualization/COLCON_IGNORE \
     ./src/ros/ros_tutorials/COLCON_IGNORE \
     ./src/tros/ros1_bridge/COLCON_IGNORE \
-    ./src/eProsima/compatibility/COLCON_IGNORE \
-    ./src/box/ros-navigation/navigation2/COLCON_IGNORE
+    ./src/eProsima/compatibility/COLCON_IGNORE
 
     
