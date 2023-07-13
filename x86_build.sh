@@ -21,4 +21,7 @@ touch \
     ./src/app/COLCON_IGNORE \
     ./src/tools/benchmark/COLCON_IGNORE \
     ./src/box/hobot_sensor/hobot_imu_sensor/COLCON_IGNORE \
+    ./src/box/hobot_perception/hobot_bev/COLCON_IGNORE \
+    ./src/box/hobot_perception/hobot_stereonet/COLCON_IGNORE \
+    ./src/box/hobot_perception/hobot_centerpoint/COLCON_IGNORE \
     ./src/box/hobot_tts/COLCON_IGNORE
