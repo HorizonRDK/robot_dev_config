@@ -74,7 +74,7 @@ repositories:
   box/hobot_codec:
     type: git
     url: https://github.com/HorizonRDK/hobot_codec.git
-    version: tros_2.0.0rc1
+    version: tros_2.1.0
   box/hobot_hdmi:
     type: git
     url: https://github.com/HorizonRDK/hobot_hdmi.git
@@ -86,11 +86,11 @@ repositories:
   box/hobot_trigger:
     type: git
     url: https://github.com/HorizonRDK/hobot_trigger.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_body_detection.git
-    version: tros_2.1.0
+    version: tros_2.2.0
   box/hobot_perception/mot:
     type: git
     url: https://github.com/HorizonRDK/mot.git
@@ -98,11 +98,11 @@ repositories:
   box/hobot_perception/hand_lmk_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_lmk_detection.git
-    version: tros_2.0.0
+    version: tros_2.1.0
   box/hobot_perception/hand_gesture_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_gesture_detection.git
-    version: tros_2.0.0
+    version: tros_2.1.0
   box/hobot_perception/hobot_falldown_detection:
     type: git
     url: https://github.com/HorizonRDK/hobot_falldown_detection.git
@@ -171,18 +171,6 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/hobot_vio.git
     version: tros_2.0.0
-  box/ros-navigation/angles:
-    type: git
-    url: https://github.com/ros/angles.git
-    version: 1.12.6
-  box/ros-navigation/BehaviorTree.CPP:
-    type: git
-    url: https://github.com/BehaviorTree/BehaviorTree.CPP.git
-    version: 3.6.1
-  box/ros-navigation/navigation2:
-    type: git
-    url: https://github.com/ros-planning/navigation2.git
-    version: foxy-devel
   app/xr_robot:
     type: git
     url: https://github.com/HorizonRDK/xr_robot.git
@@ -190,6 +178,10 @@ repositories:
   app/line_follower:
     type: git
     url: https://github.com/HorizonRDK/line_follower.git
+    version: tros_2.0.0
+  app/chat_robot:
+    type: git
+    url: https://github.com/HorizonRDK/chat_robot.git
     version: tros_2.0.0
   box/ros-perception/laser_geometry:
     type: git
@@ -486,7 +478,7 @@ repositories:
   tools/hobot_visualization:
     type: git
     url: https://github.com/HorizonRDK/hobot_visualization.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   box/hobot_sensor/hobot_rgbd_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_rgbd_cam.git
@@ -494,7 +486,7 @@ repositories:
   box/hobot_sensor/hobot_mipi_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_mipi_cam.git
-    version: tros_2.0.0
+    version: tros_2.1.0
   box/hobot_sensor/hobot_imu_sensor:
     type: git
     url: https://github.com/HorizonRDK/hobot_imu_sensor.git

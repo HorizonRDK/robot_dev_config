@@ -171,18 +171,6 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/hobot_vio.git
     version: develop
-  box/ros-navigation/angles:
-    type: git
-    url: https://github.com/ros/angles.git
-    version: 1.12.6
-  box/ros-navigation/BehaviorTree.CPP:
-    type: git
-    url: https://github.com/BehaviorTree/BehaviorTree.CPP.git
-    version: 3.6.1
-  box/ros-navigation/navigation2:
-    type: git
-    url: https://github.com/ros-planning/navigation2.git
-    version: foxy-devel
   app/xr_robot:
     type: git
     url: https://github.com/HorizonRDK/xr_robot.git
@@ -190,6 +178,10 @@ repositories:
   app/line_follower:
     type: git
     url: https://github.com/HorizonRDK/line_follower.git
+    version: develop
+  app/chat_robot:
+    type: git
+    url: https://github.com/HorizonRDK/chat_robot.git
     version: develop
   box/ros-perception/laser_geometry:
     type: git

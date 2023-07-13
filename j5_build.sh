@@ -3,10 +3,10 @@ touch \
     ./src/ament/google_benchmark_vendor/COLCON_IGNORE \
     ./src/ament/googletest/COLCON_IGNORE \
     ./src/ament/googletest/googletest/COLCON_IGNORE \
-    ./src/app/line_follower \
-    ./src/app/xr_robot \
     ./src/box/hobot_audio/COLCON_IGNORE \
-    ./src/box/hobot_interactions/COLCON_IGNORE \
+    ./src/box/hobot_interactions/audio_control/COLCON_IGNORE \
+    ./src/box/hobot_interactions/audio_tracking/COLCON_IGNORE \
+    ./src/box/hobot_interactions/parking_search/COLCON_IGNORE \
     ./src/box/hobot_perception/mono2d_trash_detection/COLCON_IGNORE \
     ./src/box/hobot_perception/elevation_net/COLCON_IGNORE \
     ./src/box/hobot_perception/mono3d_indoor_detection/COLCON_IGNORE \
@@ -14,6 +14,8 @@ touch \
     ./src/box/hobot_dnn/dnn_node_sample/COLCON_IGNORE \
     ./src/box/hobot_hdmi/COLCON_IGNORE \
     ./src/box/hobot_slam/COLCON_IGNORE \
+    ./src/box/hobot_gpt/COLCON_IGNORE \
+    ./src/box/hobot_tts/COLCON_IGNORE \
     ./src/box/hobot_sensor/hobot_imu_sensor/COLCON_IGNORE \
     ./src/box/hobot_sensor/hobot_rgbd_cam/COLCON_IGNORE \
     ./src/box/hobot_trigger/COLCON_IGNORE \
@@ -31,7 +33,6 @@ touch \
     ./src/tools/hobot_visualization/COLCON_IGNORE \
     ./src/ros/ros_tutorials/COLCON_IGNORE \
     ./src/tros/ros1_bridge/COLCON_IGNORE \
-    ./src/eProsima/compatibility/COLCON_IGNORE \
-    ./src/box/ros-navigation/navigation2/COLCON_IGNORE
+    ./src/eProsima/compatibility/COLCON_IGNORE
 
     
