@@ -1,4 +1,0 @@
-#!/bin/bash
-
-mkdir -p /app/model
-ln -s /opt/hobot/model/x3/basic /app/model/basic
