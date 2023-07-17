@@ -150,7 +150,7 @@ repositories:
   box/hobot_interactions/audio_tracking:
     type: git
     url: https://github.com/HorizonRDK/audio_tracking.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   box/hobot_interactions/parking_search:
     type: git
     url: https://github.com/HorizonRDK/parking_search.git
@@ -162,11 +162,11 @@ repositories:
   box/hobot_gpt:
     type: git
     url: https://github.com/HorizonRDK/hobot_gpt.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   box/hobot_tts:
     type: git
     url: https://github.com/HorizonRDK/hobot_tts.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   box/hobot_vio:
     type: git
     url: https://github.com/HorizonRDK/hobot_vio.git
@@ -182,7 +182,7 @@ repositories:
   app/chat_robot:
     type: git
     url: https://github.com/HorizonRDK/chat_robot.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   box/ros-perception/laser_geometry:
     type: git
     url: https://github.com/ros-perception/laser_geometry.git
