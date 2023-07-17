@@ -10,7 +10,7 @@ cat <<EOF
 
 Usage: bash -e $0 <options>
 available options:
--p|--platform: set platform ([X3|J5|X86])
+-p|--platform: set platform ([X3|X5ultra|X86])
 -s|--selction: add colcon build --packages-select [PKG_NAME]
 -g|--build_testing: compile gtest cases, default value is OFF ([ON|OFF])
 -h|--help
@@ -25,7 +25,7 @@ fi
 
 PACKAGE_SELECTION=""
 
-PLATFORM_OPTS=(X3 J5 X86)
+PLATFORM_OPTS=(X3 X5ultra X86)
 BUILD_TESTING_OPTS=(OFF ON)
 GETOPT_ARGS=`getopt -o p:s:g:h -al platform:,selction:,build_testing:,help -- "$@"`
 eval set -- "$GETOPT_ARGS"
@@ -66,8 +66,6 @@ rm `pwd`/../sysroot_docker/usr
 export ROS_VERSION=2
 ## 清除配置选项
 ./robot_dev_config/clear_COLCON_IGNORE.sh
-## 配置编译选项，若需要最小化部署包则使用minimal_build.sh
-./robot_dev_config/all_build.sh
 if [ $build_testing == "ON" ]; then
   echo "open build gtest"
   rm ./src/tros/performance_test_fixture/COLCON_IGNORE
@@ -103,11 +101,13 @@ else
   if [ $platform == "X3" ]; then
     echo "build X3"
     ln -s `pwd`/../sysroot_docker/usr_x3 `pwd`/../sysroot_docker/usr
-  elif [ $platform == "J5" ]; then
-    echo "build J5"
-    ln -s `pwd`/../sysroot_docker/usr_j5 `pwd`/../sysroot_docker/usr
-    # 只编译J5平台的package
-    ./robot_dev_config/j5_build.sh
+    # 只编译X3平台的package
+    ./robot_dev_config/all_build.sh
+  elif [ $platform == "X5ultra" ]; then
+    echo "build X5ultra"
+    ln -s `pwd`/../sysroot_docker/usr_x5ultra `pwd`/../sysroot_docker/usr
+    # 只编译X5ultra平台的package
+    ./robot_dev_config/x5ultra_build.sh
   fi
 
   if [[ "$platform" == "X3" && "$PACKAGE_SELECTION" =~ "hobot_audio" ]]; then

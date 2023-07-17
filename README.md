@@ -12,7 +12,7 @@ aarch64_toolchainfile.cmake 用于TROS交叉编译
 
 all_build.sh x3编译配置脚本，完整编译
 
-j5_build.sh j5编译配置脚本，完整编译
+x5ultra_build.sh x5ultra编译配置脚本，完整编译
 
 x86_build.sh x86编译配置脚本，完整编译
 
@@ -51,7 +51,7 @@ vcs-import src < ./robot_dev_config/ros2.repos
 │   │   ├── etc
 │   │   ├── lib -> usr/lib
 │   │   ├── opt
-│   │   ├── usr_j5
+│   │   ├── usr_x5ultra
 │   │   ├── usr_x3
 │   │   └── usr_x86
 │   └── tros_ws
@@ -82,7 +82,7 @@ docker run -it --rm --entrypoint="/bin/bash" -v /mnt/data/test:/mnt/test 725ec5a
 ## 切到编译路径下
 cd /mnt/test/cc_ws/tros_ws
 
-## 使用build.sh脚本编译，通过-p选项指定编译平台[X3|J5|X86]
+## 使用build.sh脚本编译，通过-p选项指定编译平台[X3|X5ultra|X86]
 ## 例如编译X3平台TROS的命令为
 bash robot_dev_config/build.sh -p X3
 ```
@@ -132,13 +132,13 @@ ros2 run examples_rclcpp_minimal_subscriber subscriber_member_function
 
 ```text
 Usage: ./robot_dev_config/build_deb.sh platform package_name
-  platform: One of x3, j5, or x86
+  platform: One of x3, x5ultra, or x86
   package_name: ros-base, tros, others, all, or select package name
 ```
 
 其中：
 
-platform，目前只支持 x3和x86，j5暂未支持
+platform，编译平台，支持x3，x5ultra和x86
 
 package_name，支持如下：
 
