@@ -58,11 +58,11 @@ repositories:
   box/hobot_dnn:
     type: git
     url: https://github.com/HorizonRDK/hobot_dnn.git
-    version: tros_2.2.0
+    version: tros_2.2.1
   box/hobot_cv:
     type: git
     url: https://github.com/HorizonRDK/hobot_cv.git
-    version: tros_2.1.0
+    version: tros_2.1.1
   box/hobot_msgs:
     type: git
     url: https://github.com/HorizonRDK/hobot_msgs.git
@@ -74,7 +74,7 @@ repositories:
   box/hobot_codec:
     type: git
     url: https://github.com/HorizonRDK/hobot_codec.git
-    version: tros_2.1.0
+    version: tros_2.1.1
   box/hobot_hdmi:
     type: git
     url: https://github.com/HorizonRDK/hobot_hdmi.git
@@ -86,11 +86,11 @@ repositories:
   box/hobot_trigger:
     type: git
     url: https://github.com/HorizonRDK/hobot_trigger.git
-    version: tros_2.0.1
+    version: tros_2.0.2
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_body_detection.git
-    version: tros_2.2.0
+    version: tros_2.2.1
   box/hobot_perception/mot:
     type: git
     url: https://github.com/HorizonRDK/mot.git
@@ -98,11 +98,11 @@ repositories:
   box/hobot_perception/hand_lmk_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_lmk_detection.git
-    version: tros_2.1.0
+    version: tros_2.1.1
   box/hobot_perception/hand_gesture_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_gesture_detection.git
-    version: tros_2.1.0
+    version: tros_2.1.1
   box/hobot_perception/hobot_falldown_detection:
     type: git
     url: https://github.com/HorizonRDK/hobot_falldown_detection.git
@@ -110,11 +110,11 @@ repositories:
   box/hobot_perception/mono3d_indoor_detection:
     type: git
     url: https://github.com/HorizonRDK/mono3d_indoor_detection.git
-    version: tros_2.0.0rc1
+    version: tros_2.0.1
   box/hobot_perception/elevation_net:
     type: git
     url: https://github.com/HorizonRDK/elevation_net.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   box/hobot_perception/parking_perception:
     type: git
     url: https://github.com/HorizonRDK/parking_perception.git
@@ -126,15 +126,15 @@ repositories:
   box/hobot_perception/hobot_centerpoint:
     type: git
     url: https://github.com/HorizonRDK/hobot_centerpoint.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   box/hobot_perception/hobot_bev:
     type: git
     url: https://github.com/HorizonRDK/hobot_bev.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   box/hobot_perception/hobot_stereonet:
     type: git
     url: https://github.com/HorizonRDK/hobot_stereonet.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   box/hobot_interactions/gesture_control:
     type: git
     url: https://github.com/HorizonRDK/gesture_control.git
@@ -494,12 +494,12 @@ repositories:
   box/hobot_sensor/hobot_usb_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_usb_cam.git
-    version: tros_2.0.1
+    version: tros_2.0.1rc1
   box/hobot_sensor/hobot_stereo_usb_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_stereo_usb_cam.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRDK/sysroot_docker.git
-    version: tros_2.2.0
+    version: tros_2.2.1
