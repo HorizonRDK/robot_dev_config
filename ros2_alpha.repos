@@ -142,7 +142,7 @@ repositories:
   box/hobot_interactions/body_tracking:
     type: git
     url: https://github.com/HorizonRDK/body_tracking.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   box/hobot_interactions/audio_control:
     type: git
     url: https://github.com/HorizonRDK/audio_control.git
