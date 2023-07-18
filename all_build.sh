@@ -9,4 +9,5 @@ touch \
     ./src/box/hobot_perception/hobot_bev/COLCON_IGNORE \
     ./src/box/hobot_perception/hobot_stereonet/COLCON_IGNORE \
     ./src/box/hobot_perception/hobot_centerpoint/COLCON_IGNORE \
+    ./src/box/hobot_sensor/hobot_stereo_usb_cam/COLCON_IGNORE \
     ./src/eProsima/compatibility/COLCON_IGNORE
