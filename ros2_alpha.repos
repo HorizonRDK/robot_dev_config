@@ -486,7 +486,7 @@ repositories:
   box/hobot_sensor/hobot_mipi_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_mipi_cam.git
-    version: tros_2.1.1rc1
+    version: tros_2.1.2
   box/hobot_sensor/hobot_imu_sensor:
     type: git
     url: https://github.com/HorizonRDK/hobot_imu_sensor.git
