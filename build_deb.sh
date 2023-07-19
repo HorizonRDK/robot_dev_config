@@ -14,7 +14,7 @@ ros_base_package_version="2.0.1"
 # 打印脚本使用方法
 usage() {
     echo "Usage: $0 platform package_name"
-    echo "  platform: One of x3, x5ultra, or x86"
+    echo "  platform: One of x3, rdkultra, or x86"
     echo "  package_name: ros-base, tros, others, all, or select package name"
 }
 
@@ -39,9 +39,9 @@ rm "${pwd_dir}/../sysroot_docker/usr"
 if [ "$platform" == "x3" ]; then
     platform=X3
     ln -s "${pwd_dir}/../sysroot_docker/usr_x3" "${pwd_dir}/../sysroot_docker/usr"
-elif [ "$platform" == "x5ultra" ]; then
-    platform=X5ultra
-    ln -s "${pwd_dir}/../sysroot_docker/usr_x5ultra" "${pwd_dir}/../sysroot_docker/usr"
+elif [ "$platform" == "rdkultra" ]; then
+    platform=Rdkultra
+    ln -s "${pwd_dir}/../sysroot_docker/usr_rdkultra" "${pwd_dir}/../sysroot_docker/usr"
 elif [ "$platform" == "x86" ]; then
     platform=X86
     ln -s "${pwd_dir}/../sysroot_docker/usr_x86" "${pwd_dir}/../sysroot_docker/usr"
@@ -52,7 +52,7 @@ else
 fi
 
 export ROS_VERSION=2
-if [ "$platform" == "X3" ] || [ "$platform" == "X5ultra" ]; then
+if [ "$platform" == "X3" ] || [ "$platform" == "Rdkultra" ]; then
     export TARGET_ARCH=aarch64
     export TARGET_TRIPLE=aarch64-linux-gnu
     export CROSS_COMPILE=/usr/bin/$TARGET_TRIPLE-
@@ -97,7 +97,7 @@ function clear_colcon_ignore {
 }
 
 function ros_base_colcon_ignore {
-    if [ "$platform" == "X3" ] || [ "$platform" == "X5ultra" ]; then
+    if [ "$platform" == "X3" ] || [ "$platform" == "Rdkultra" ]; then
         touch \
             ./src/tros/performance_test_fixture/COLCON_IGNORE \
             ./src/tros/rviz/COLCON_IGNORE \
@@ -158,8 +158,8 @@ function update_deb_build_packages {
         "${pwd_dir}"/robot_dev_config/all_build.sh
     elif [ "$platform" == "X86" ]; then
         "${pwd_dir}"/robot_dev_config/x86_build.sh
-    elif [ "$platform" == "X5ultra" ]; then
-        "${pwd_dir}"/robot_dev_config/x5ultra_build.sh
+    elif [ "$platform" == "Rdkultra" ]; then
+        "${pwd_dir}"/robot_dev_config/rdkultra_build.sh
     fi
 
     # 定义工作目录和deb包目录
@@ -225,7 +225,7 @@ function build_ros_base() {
 
     cd "$pwd_dir" || exit
 
-    if [ "$platform" == "X3" ] || [ "$platform" == "X5ultra" ]; then
+    if [ "$platform" == "X3" ] || [ "$platform" == "Rdkultra" ]; then
         colcon build \
             --merge-install \
             --cmake-force-configure \
@@ -287,7 +287,7 @@ Description: TogetheROS Bot Base
 Installed-Size: $install_size
 EOF
 
-    elif [ "$platform" == "X5ultra" ]; then
+    elif [ "$platform" == "Rdkultra" ]; then
             # 创建control文件
             cat >DEBIAN/control <<EOF
 Package: $ros_base_package_name
@@ -321,7 +321,7 @@ EOF
 }
 
 function create_tros_deb_package {
-    if [ "$platform" == "X3" ] || [ "$platform" == "X5ultra" ]; then
+    if [ "$platform" == "X3" ] || [ "$platform" == "Rdkultra" ]; then
         arch=arm64
     elif [ "$platform" == "X86" ]; then
         arch=amd64
@@ -385,8 +385,8 @@ function build_all() {
             -DTHIRDPARTY=ON \
             -DBUILD_TESTING=$build_testing \
             -DCMAKE_BUILD_RPATH="$(pwd)/build/poco_vendor/poco_external_project_install/lib/;$(pwd)/build/libyaml_vendor/libyaml_install/lib/"
-    elif [ "$platform" == "X5ultra" ]; then
-        "${pwd_dir}"/robot_dev_config/x5ultra_build.sh
+    elif [ "$platform" == "Rdkultra" ]; then
+        "${pwd_dir}"/robot_dev_config/rdkultra_build.sh
 
         colcon build \
             --merge-install \
@@ -424,7 +424,7 @@ function all_build_deb_package() {
     # 解析包名
     package_name=$(xmllint --xpath 'string(/package/name/text())' "${pkg}/package.xml")
 
-    if [ "$platform" == "X3" ] || [ "$platform" == "X5ultra" ]; then
+    if [ "$platform" == "X3" ] || [ "$platform" == "Rdkultra" ]; then
         colcon build \
             --packages-select="$package_name" \
             --build-base=build_temp_${platform}/build_"${package_name}" \
@@ -463,7 +463,7 @@ function build_deb_package() {
     # 解析包名
     package_name=$(xmllint --xpath 'string(/package/name/text())' "${pkg}/package.xml")
 
-    if [ "$platform" == "X3" ] || [ "$platform" == "X5ultra" ]; then
+    if [ "$platform" == "X3" ] || [ "$platform" == "Rdkultra" ]; then
         colcon build \
             --packages-select="$package_name" \
             --merge-install \
@@ -527,7 +527,7 @@ function build_deb_package() {
 function create_deb_package() {
     local pkg="$1"
     local arch=""
-    if [ "$platform" == "X3" ] || [ "$platform" == "X5ultra" ]; then
+    if [ "$platform" == "X3" ] || [ "$platform" == "Rdkultra" ]; then
         arch=arm64
     elif [ "$platform" == "X86" ]; then
         arch=amd64
@@ -663,8 +663,8 @@ function pack_tros_package_select {
     clear_colcon_ignore
     if [ "$platform" == "X3" ]; then
         "${pwd_dir}"/robot_dev_config/all_build.sh
-    elif [ "$platform" == "X5ultra" ]; then
-        "${pwd_dir}"/robot_dev_config/x5ultra_build.sh
+    elif [ "$platform" == "Rdkultra" ]; then
+        "${pwd_dir}"/robot_dev_config/rdkultra_build.sh
     elif [ "$platform" == "X86" ]; then
         "${pwd_dir}"/robot_dev_config/x86_build.sh
     fi
