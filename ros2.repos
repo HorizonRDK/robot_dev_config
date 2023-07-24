@@ -159,10 +159,6 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/orb_slam3.git
     version: develop
-  box/hobot_gpt:
-    type: git
-    url: https://github.com/HorizonRDK/hobot_gpt.git
-    version: develop
   box/hobot_tts:
     type: git
     url: https://github.com/HorizonRDK/hobot_tts.git
@@ -178,10 +174,6 @@ repositories:
   app/line_follower:
     type: git
     url: https://github.com/HorizonRDK/line_follower.git
-    version: develop
-  app/chat_robot:
-    type: git
-    url: https://github.com/HorizonRDK/chat_robot.git
     version: develop
   box/ros-perception/laser_geometry:
     type: git
