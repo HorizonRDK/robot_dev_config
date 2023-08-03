@@ -268,6 +268,12 @@ function create_ros_base_deb_package {
     # fi
     cp "${pwd_dir}"/robot_dev_config/create_soft_link.py "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
 
+    # 将root权限检查和切换脚本添加到启动脚本中
+    tros_env_script="${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/setup.bash
+    echo -e "$(cat ${pwd_dir}/robot_dev_config/deploy/check_uid.sh)\n\n$(cat ${tros_env_script})" > ${tros_env_script}
+    tros_env_script="${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/local_setup.bash
+    echo -e "$(cat ${pwd_dir}/robot_dev_config/deploy/check_uid.sh)\n\n$(cat ${tros_env_script})" > ${tros_env_script}
+
     mkdir -p "${tmp_dir}/${ros_base_temporary_directory_name}/DEBIAN"
     cd "${tmp_dir}/${ros_base_temporary_directory_name}/" || exit
 
