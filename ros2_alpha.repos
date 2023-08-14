@@ -82,7 +82,7 @@ repositories:
   box/hobot_audio:
     type: git
     url: https://github.com/HorizonRDK/hobot_audio.git
-    version: tros_2.1.0
+    version: tros_2.1.1
   box/hobot_trigger:
     type: git
     url: https://github.com/HorizonRDK/hobot_trigger.git
