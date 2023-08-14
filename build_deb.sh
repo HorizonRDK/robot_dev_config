@@ -367,7 +367,7 @@ EOF
     mkdir -p "${tmp_dir}/${tros_temporary_directory_name}/etc/apt/sources.list.d/"
 
     curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o ./usr/share/keyrings/ros-archive-keyring.gpg
-    echo "deb [arch=arm64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu focal main" | tee ./etc/apt/sources.list.d/ros2.list > /dev/null
+    echo "deb [arch=arm64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] https://mirrors.tuna.tsinghua.edu.cn/ros2/ubuntu focal main" | tee ./etc/apt/sources.list.d/ros2.list > /dev/null
 
     mkdir -p "$deb_dir"
     fakeroot dpkg-deb --build "${tmp_dir}/${tros_temporary_directory_name}" "${deb_dir}"
