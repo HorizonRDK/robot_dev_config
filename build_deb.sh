@@ -6,7 +6,7 @@ platform=X3
 build_testing=OFF
 
 tros_package_name="tros"
-tros_package_version="2.0.1"
+tros_package_version="2.0.2"
 
 ros_base_package_name="${tros_package_name}-ros-base"
 ros_base_package_version="2.0.1"
