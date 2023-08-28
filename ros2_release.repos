@@ -62,7 +62,7 @@ repositories:
   box/hobot_cv:
     type: git
     url: https://github.com/HorizonRDK/hobot_cv.git
-    version: tros_2.1.1rc1
+    version: tros_2.1.2
   box/hobot_msgs:
     type: git
     url: https://github.com/HorizonRDK/hobot_msgs.git
@@ -82,11 +82,11 @@ repositories:
   box/hobot_audio:
     type: git
     url: https://github.com/HorizonRDK/hobot_audio.git
-    version: tros_2.1.0
+    version: tros_2.1.1
   box/hobot_trigger:
     type: git
     url: https://github.com/HorizonRDK/hobot_trigger.git
-    version: tros_2.0.2rc1
+    version: tros_2.0.3
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_body_detection.git
@@ -470,7 +470,7 @@ repositories:
   tools/hobot_visualization:
     type: git
     url: https://github.com/HorizonRDK/hobot_visualization.git
-    version: tros_2.0.1rc1
+    version: tros_2.0.2
   box/hobot_sensor/hobot_rgbd_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_rgbd_cam.git
@@ -478,7 +478,7 @@ repositories:
   box/hobot_sensor/hobot_mipi_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_mipi_cam.git
-    version: tros_2.1.3
+    version: tros_2.1.5
   box/hobot_sensor/hobot_imu_sensor:
     type: git
     url: https://github.com/HorizonRDK/hobot_imu_sensor.git
