@@ -1,5 +1,25 @@
 # Changelog for TogetheROS
 
+v2.0.2 (2023-08-28)
+------------------
+
+功能变更：
+
+- tros.b安装时配置的ROS2源（`/etc/apt/sources.list.d/ros2.list`）变更为清华镜像源，解决安装ROS2 package速度慢和失败的问题。
+
+新增功能：
+
+- 启动tros.b脚本配置环境时（`source /opt/tros/setup.bash`和`source /opt/tros/local_setup.bash`）新增权限检查的功能。如果当前账户不具有root权限将会自动进入切换到root账户的流程，解决因为权限不够导致的使用tros.b失败的问题。
+- 智能语音算法`hobot_audio` node新增音频设备号参数配置功能，方便二次开发​。
+- 事件触发`hobot_trigger` node新增通过std_msg话题给Trigger模块发放任务功能，规范Trigger配置方法。
+
+问题修复：
+
+- 修复图像加速处理`hobot_cv` node同时进行crop&resize处理图像时，处理失败的问题。
+- 修复MIPI图像采集`hobot_mipi_cam` node启动时输出error log的问题。
+- 修复数据可视化消息转换`hobot_visualization` node的launch启动文件配置无效的问题。
+
+
 v2.0.1 (2023-06-10)
 ------------------
 
