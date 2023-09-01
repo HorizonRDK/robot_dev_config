@@ -81,8 +81,7 @@ function is_string_in_list() {
     shift
     local list=("$@")
 
-    for item in "${list[@]}"
-    do
+    for item in "${list[@]}"; do
         if [[ "$item" == "$search_str" ]]; then
             return 0
         fi
@@ -90,7 +89,6 @@ function is_string_in_list() {
 
     return 1
 }
-
 
 function clear_colcon_ignore {
     find "${pwd_dir}/src" -name "COLCON_IGNORE" -print0 | xargs -0 rm
@@ -266,13 +264,24 @@ function create_ros_base_deb_package {
     # if [ "$platform" == "X3" ]; then
     #     cp "${pwd_dir}"/robot_dev_config/deploy/check_version.sh "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
     # fi
-    cp "${pwd_dir}"/robot_dev_config/create_soft_link.py "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
+    # cp "${pwd_dir}"/robot_dev_config/create_soft_link.py "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros
+
+    rm "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/COLCON_IGNORE
+
+    sed -i '19i \ \
+# source foxy prefixes \
+# setting COLCON_CURRENT_PREFIX avoids determining the prefix in the sourced script \
+COLCON_CURRENT_PREFIX="/opt/ros/foxy" \
+if [ -d "$COLCON_CURRENT_PREFIX" ]; then \
+    _colcon_prefix_chain_bash_source_script "$COLCON_CURRENT_PREFIX/local_setup.bash"\
+fi
+' "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/setup.bash
 
     # 将root权限检查和切换脚本添加到启动脚本中
     tros_env_script="${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/setup.bash
-    echo -e "$(cat ${pwd_dir}/robot_dev_config/deploy/check_uid.sh)\n\n$(cat ${tros_env_script})" > ${tros_env_script}
+    echo -e "$(cat ${pwd_dir}/robot_dev_config/deploy/check_uid.sh)\n\n$(cat ${tros_env_script})" >${tros_env_script}
     tros_env_script="${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/local_setup.bash
-    echo -e "$(cat ${pwd_dir}/robot_dev_config/deploy/check_uid.sh)\n\n$(cat ${tros_env_script})" > ${tros_env_script}
+    echo -e "$(cat ${pwd_dir}/robot_dev_config/deploy/check_uid.sh)\n\n$(cat ${tros_env_script})" >${tros_env_script}
 
     mkdir -p "${tmp_dir}/${ros_base_temporary_directory_name}/DEBIAN"
     cd "${tmp_dir}/${ros_base_temporary_directory_name}/" || exit
@@ -294,8 +303,8 @@ Installed-Size: $install_size
 EOF
 
     elif [ "$platform" == "Rdkultra" ]; then
-            # 创建control文件
-            cat >DEBIAN/control <<EOF
+        # 创建control文件
+        cat >DEBIAN/control <<EOF
 Package: $ros_base_package_name
 Version: $ros_base_package_version
 Architecture: arm64
@@ -367,7 +376,7 @@ EOF
     mkdir -p "${tmp_dir}/${tros_temporary_directory_name}/etc/apt/sources.list.d/"
 
     curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o ./usr/share/keyrings/ros-archive-keyring.gpg
-    echo "deb [arch=arm64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] https://mirrors.tuna.tsinghua.edu.cn/ros2/ubuntu focal main" | tee ./etc/apt/sources.list.d/ros2.list > /dev/null
+    echo "deb [arch=arm64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] https://mirrors.tuna.tsinghua.edu.cn/ros2/ubuntu focal main" | tee ./etc/apt/sources.list.d/ros2.list >/dev/null
 
     mkdir -p "$deb_dir"
     fakeroot dpkg-deb --build "${tmp_dir}/${tros_temporary_directory_name}" "${deb_dir}"
@@ -419,7 +428,6 @@ function build_all() {
             -DTHIRD_PARTY="$(pwd)/../sysroot_docker"
     fi
 }
-
 
 function all_build_deb_package() {
     local pkg="$1"
@@ -707,7 +715,7 @@ fi
 
 # 根据platform设置环境变量
 if [ "$package_build_name" == "ros-base" ]; then
-    build_ros_base
+    # build_ros_base
     create_ros_base_deb_package
 elif [ "$package_build_name" == "others" ]; then
     pack_tros_packages
