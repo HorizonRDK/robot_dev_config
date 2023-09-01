@@ -715,7 +715,7 @@ fi
 
 # 根据platform设置环境变量
 if [ "$package_build_name" == "ros-base" ]; then
-    # build_ros_base
+    build_ros_base
     create_ros_base_deb_package
 elif [ "$package_build_name" == "others" ]; then
     pack_tros_packages
