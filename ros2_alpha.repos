@@ -70,7 +70,7 @@ repositories:
   box/hobot_codec:
     type: git
     url: https://github.com/HorizonRDK/hobot_codec.git
-    version: tros_2.1.1rc1
+    version: tros_2.1.2
   box/hobot_hdmi:
     type: git
     url: https://github.com/HorizonRDK/hobot_hdmi.git
