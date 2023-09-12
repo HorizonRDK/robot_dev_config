@@ -487,6 +487,10 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/hobot_stereo_usb_cam.git
     version: develop
+  box/hobot_llm:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_llm.git
+    version: develop
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRDK/sysroot_docker.git
