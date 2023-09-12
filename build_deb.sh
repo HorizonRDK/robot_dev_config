@@ -272,7 +272,7 @@ function create_ros_base_deb_package {
 # source foxy prefixes \
 # setting COLCON_CURRENT_PREFIX avoids determining the prefix in the sourced script \
 COLCON_CURRENT_PREFIX="/opt/ros/foxy" \
-if [ -d "$COLCON_CURRENT_PREFIX" ]; then \
+if [ -f "$COLCON_CURRENT_PREFIX/local_setup.bash" ]; then \
     _colcon_prefix_chain_bash_source_script "$COLCON_CURRENT_PREFIX/local_setup.bash"\
 fi
 ' "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/setup.bash
