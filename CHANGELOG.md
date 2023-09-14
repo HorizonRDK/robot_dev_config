@@ -1,5 +1,24 @@
 # Changelog for TogetheROS
 
+v2.1.0 (2023-09-14)
+------------------
+
+功能变更：
+
+- `tros-ros-base`更新到最新ROS2 foxy源码，兼容最新ROS2 foxy软件包。
+- 使用ROS2 foxy软件包只`source /opt/tros/setup.bash`即可，不再需要使用脚本建立软链接。
+
+新增功能：
+
+- 文本转语音`hobot_tts` node新增参数指定播放音频设备。
+- 新增大语言模型`hobot_llm` node，可在端侧体验LLM。
+- 图像编解码`hobot_codec` node配置参数`in_format`新增`jpeg-compressed`配置项，同时根据配置项选择订阅的话题数据类型。
+
+问题修复：
+
+- MIPI图像采集`hobot_mipi_cam` node修复发送RGB格式数据消息step字段设置错误问题。
+
+
 v2.0.2 (2023-08-28)
 ------------------
 
