@@ -163,6 +163,10 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/hobot_vio.git
     version: develop
+  app/hobot_chatbot:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_chatbot.git
+    version: develop
   app/xr_robot:
     type: git
     url: https://github.com/HorizonRDK/xr_robot.git
