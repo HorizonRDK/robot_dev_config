@@ -158,10 +158,14 @@ repositories:
   box/hobot_tts:
     type: git
     url: https://github.com/HorizonRDK/hobot_tts.git
-    version: tros_2.0.2
+    version: tros_2.0.3
   box/hobot_vio:
     type: git
     url: https://github.com/HorizonRDK/hobot_vio.git
+    version: tros_2.0.0
+  app/hobot_chatbot:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_chatbot.git
     version: tros_2.0.0
   app/xr_robot:
     type: git
