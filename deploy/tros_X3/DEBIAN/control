@@ -6,5 +6,5 @@ Installed-Size: 1500000
 Date:
 Depends: 
 Maintainer: kairui.wang <kairui.wang@horizon.ai>
-APT-Sources: http://archive.sunrisepi.tech/ubuntu-ports focal/main arm64 Packages
+APT-Sources: http://sunrise.horizon.cc/ubuntu-ports focal/main arm64 Packages
 Description: TogetheROS

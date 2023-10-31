@@ -67,7 +67,7 @@ vcs-import src < ./robot_dev_config/ros2.repos
 
 ```bash
 ## 获取用于交叉编译的docker
-wget http://archive.sunrisepi.tech/TogetheROS/cross_compile_docker/pc_tros_v1.0.5.tar.gz
+wget http://sunrise.horizon.cc/TogetheROS/cross_compile_docker/pc_tros_v1.0.5.tar.gz
 ## 加载docker镜像
 docker load --input pc_tros_v1.0.5.tar.gz
 ## 查看对应的image ID
