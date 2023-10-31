@@ -13,12 +13,10 @@ touch \
     ./src/box/hobot_perception/parking_perception/COLCON_IGNORE \
     ./src/box/hobot_dnn/dnn_node_sample/COLCON_IGNORE \
     ./src/box/hobot_hdmi/COLCON_IGNORE \
-    ./src/box/hobot_slam/COLCON_IGNORE \
     ./src/box/hobot_tts/COLCON_IGNORE \
     ./src/box/hobot_sensor/hobot_imu_sensor/COLCON_IGNORE \
     ./src/box/hobot_sensor/hobot_rgbd_cam/COLCON_IGNORE \
     ./src/box/hobot_trigger/COLCON_IGNORE \
-    ./src/box/hobot_vio/COLCON_IGNORE \
     ./src/app/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/ros2trace/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/tracetools_launch/COLCON_IGNORE \
