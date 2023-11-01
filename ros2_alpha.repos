@@ -94,7 +94,7 @@ repositories:
   box/hobot_perception/hand_lmk_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_lmk_detection.git
-    version: tros_2.1.1rc1
+    version: tros_2.1.2
   box/hobot_perception/hand_gesture_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_gesture_detection.git

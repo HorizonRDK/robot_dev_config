@@ -23,6 +23,8 @@ touch \
     ./src/box/ros-tracing/ros2_tracing/tracetools_read/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/tracetools_test/COLCON_IGNORE \
     ./src/box/ros-tracing/ros2_tracing/tracetools_trace/COLCON_IGNORE \
+    ./src/box/hobot_gpt/COLCON_IGNORE \
+    ./src/box/hobot_llm/COLCON_IGNORE \
     ./src/tros/performance_test_fixture/COLCON_IGNORE \
     ./src/tros/rviz/COLCON_IGNORE \
     ./src/tools/benchmark/performance_test_ros1_msgs/COLCON_IGNORE \
