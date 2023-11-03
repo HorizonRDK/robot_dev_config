@@ -70,7 +70,7 @@ repositories:
   box/hobot_codec:
     type: git
     url: https://github.com/HorizonRDK/hobot_codec.git
-    version: tros_2.1.2
+    version: tros_2.1.3
   box/hobot_hdmi:
     type: git
     url: https://github.com/HorizonRDK/hobot_hdmi.git
@@ -94,7 +94,7 @@ repositories:
   box/hobot_perception/hand_lmk_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_lmk_detection.git
-    version: tros_2.1.1rc1
+    version: tros_2.1.2
   box/hobot_perception/hand_gesture_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_gesture_detection.git
@@ -154,7 +154,7 @@ repositories:
   box/hobot_slam/orb_slam3:
     type: git
     url: https://github.com/HorizonRDK/orb_slam3.git
-    version: tros_2.0.1
+    version: tros_2.0.2
   box/hobot_tts:
     type: git
     url: https://github.com/HorizonRDK/hobot_tts.git
@@ -162,7 +162,7 @@ repositories:
   box/hobot_vio:
     type: git
     url: https://github.com/HorizonRDK/hobot_vio.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   app/hobot_chatbot:
     type: git
     url: https://github.com/HorizonRDK/hobot_chatbot.git

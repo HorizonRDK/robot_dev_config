@@ -1,5 +1,18 @@
 # Changelog for TogetheROS
 
+v2.1.1RC1 (2023-11-03)
+------------------
+
+新增功能：
+
+- RDK Ultra平台支持`orb_slam3`和`vio`算法。
+
+问题修复：
+
+- `hobot_codec`优化类型检查逻辑，修复`in_format`为`h265`时检查失败的问题，同时提升类型的可扩展性。
+- `hand_lmk_detection`修复RDK Ultra平台打包模型文件错误的问题。
+
+
 v2.1.1 (2023-10-18)
 ------------------
 
