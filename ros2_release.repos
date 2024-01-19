@@ -78,7 +78,7 @@ repositories:
   box/hobot_audio:
     type: git
     url: https://github.com/HorizonRDK/hobot_audio.git
-    version: tros_2.1.1
+    version: tros_2.2.0
   box/hobot_trigger:
     type: git
     url: https://github.com/HorizonRDK/hobot_trigger.git
@@ -158,7 +158,7 @@ repositories:
   box/hobot_tts:
     type: git
     url: https://github.com/HorizonRDK/hobot_tts.git
-    version: tros_2.0.3
+    version: tros_2.0.4
   box/hobot_vio:
     type: git
     url: https://github.com/HorizonRDK/hobot_vio.git
@@ -490,7 +490,7 @@ repositories:
   box/hobot_sensor/hobot_usb_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_usb_cam.git
-    version: tros_2.0.1rc1
+    version: tros_2.1.1
   box/hobot_sensor/hobot_stereo_usb_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_stereo_usb_cam.git
@@ -498,7 +498,7 @@ repositories:
   box/hobot_llm:
     type: git
     url: https://github.com/HorizonRDK/hobot_llm.git
-    version: tros_2.0.0
+    version: tros_2.0.1
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRDK/sysroot_docker.git
