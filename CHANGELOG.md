@@ -1,5 +1,15 @@
 # Changelog for TogetheROS
 
+v2.1.3 (2024-03-07)
+------------------
+
+功能变更：
+
+- 在`hobot_websocket`, `hobot_codec`, `hobot_image_publisher`, `hobot_usb_cam`模块中，`jpeg`压缩格式图片使用的数据类型由`sensor_msgs::msg::Image`变更为标准的`sensor_msgs::msg::CompressedImage`，支持使用`foxglove`和`ros2 rqt`等工具查看`TROS`发布的`jpeg`压缩格式图片。
+- 在`hobot_codec`和`hobot_usb_cam`模块中，删除`jpeg-compressed`/`mjpeg-compressed`配置项，使用`jpeg`/`mjpeg`配置项指定发布`jpeg`压缩格式图片。
+- 引入表示`TROS`发行版的环境变量`TROS_DISTRO`，执行`source /opt/tros/setup.bash`/`source /opt/tros/local_setup.bash`命令后，环境变量`TROS_DISTRO`的值为``（空）。`hobot_codec`, `hobot_audio`, `hobot_mipi_cam`, `hobot_usb_cam`等模块使用的配置文件路径由`/opt/tros/lib`变更为`/opt/tros/${TROS_DISTRO}/lib`。
+
+
 v2.1.2 (2024-01-19)
 ------------------
 
