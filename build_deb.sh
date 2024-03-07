@@ -9,7 +9,7 @@ tros_package_name="tros"
 tros_package_version="2.1.3"
 
 ros_base_package_name="${tros_package_name}-ros-base"
-ros_base_package_version="2.1.0"
+ros_base_package_version="2.1.1"
 tros_distro=foxy
 tros_install_prefix=""
 
