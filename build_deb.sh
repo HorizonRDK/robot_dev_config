@@ -11,6 +11,7 @@ tros_package_version="2.1.3"
 ros_base_package_name="${tros_package_name}-ros-base"
 ros_base_package_version="2.1.0"
 tros_distro=foxy
+tros_install_prefix=""
 
 # 打印脚本使用方法
 usage() {
@@ -272,7 +273,7 @@ function create_ros_base_deb_package {
     sed -i '19i \ \
 # source ros2 prefixes \
 # setting COLCON_CURRENT_PREFIX avoids determining the prefix in the sourced script \
-COLCON_CURRENT_PREFIX="/opt/ros/${tros_distro}" \
+COLCON_CURRENT_PREFIX="/opt/ros/${tros_install_prefix}" \
 if [ -f "$COLCON_CURRENT_PREFIX/local_setup.bash" ]; then \
     _colcon_prefix_chain_bash_source_script "$COLCON_CURRENT_PREFIX/local_setup.bash"\
 fi
@@ -282,10 +283,10 @@ fi
     # Adds the distribution information to the startup script
     tros_env_script="${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/setup.bash
     echo -e "$(cat ${pwd_dir}/robot_dev_config/deploy/check_uid.sh)\n\n$(cat ${tros_env_script})" >${tros_env_script}
-    echo -e "\nexport TROS_DISTRO=${tros_distro}\n" >>${tros_env_script}
+    echo -e "\nexport TROS_DISTRO=${tros_install_prefix}\n" >>${tros_env_script}
     tros_env_script="${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/local_setup.bash
     echo -e "$(cat ${pwd_dir}/robot_dev_config/deploy/check_uid.sh)\n\n$(cat ${tros_env_script})" >${tros_env_script}
-    echo -e "\nexport TROS_DISTRO=${tros_distro}\n" >>${tros_env_script}
+    echo -e "\nexport TROS_DISTRO=${tros_install_prefix}\n" >>${tros_env_script}
 
     mkdir -p "${tmp_dir}/${ros_base_temporary_directory_name}/DEBIAN"
     cd "${tmp_dir}/${ros_base_temporary_directory_name}/" || exit
