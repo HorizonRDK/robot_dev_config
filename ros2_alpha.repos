@@ -502,4 +502,4 @@ repositories:
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRDK/sysroot_docker.git
-    version: tros_2.2.1rc1
+    version: tros_2.2.2
