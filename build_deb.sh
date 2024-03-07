@@ -10,6 +10,7 @@ tros_package_version="2.1.3"
 
 ros_base_package_name="${tros_package_name}-ros-base"
 ros_base_package_version="2.1.0"
+tros_distro=foxy
 
 # 打印脚本使用方法
 usage() {
@@ -64,7 +65,7 @@ deb_build_packages=()
 deb_build_packages_path=()
 tros_package_exclude=("orb_slam3" "orb_slam3_example_ros2" "performance_test" "agent_node")
 depended_bsp_packages=("hobot-multimedia-dev" "hobot-multimedia" "hobot-dnn" "hobot-camera")
-ros_package_prefix="ros-foxy"
+ros_package_prefix="ros-${tros_distro}"
 
 # 更新列表信息
 readarray -t ros_base_packages <"${pwd_dir}/robot_dev_config/ros_base_packages_${platform}.list"
@@ -269,19 +270,22 @@ function create_ros_base_deb_package {
     rm "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/COLCON_IGNORE
 
     sed -i '19i \ \
-# source foxy prefixes \
+# source ros2 prefixes \
 # setting COLCON_CURRENT_PREFIX avoids determining the prefix in the sourced script \
-COLCON_CURRENT_PREFIX="/opt/ros/foxy" \
+COLCON_CURRENT_PREFIX="/opt/ros/${tros_distro}" \
 if [ -f "$COLCON_CURRENT_PREFIX/local_setup.bash" ]; then \
     _colcon_prefix_chain_bash_source_script "$COLCON_CURRENT_PREFIX/local_setup.bash"\
 fi
 ' "${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/setup.bash
 
     # 将root权限检查和切换脚本添加到启动脚本中
+    # Adds the distribution information to the startup script
     tros_env_script="${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/setup.bash
     echo -e "$(cat ${pwd_dir}/robot_dev_config/deploy/check_uid.sh)\n\n$(cat ${tros_env_script})" >${tros_env_script}
+    echo -e "\nexport TROS_DISTRO=${tros_distro}\n" >>${tros_env_script}
     tros_env_script="${tmp_dir}"/"${ros_base_temporary_directory_name}"/opt/tros/local_setup.bash
     echo -e "$(cat ${pwd_dir}/robot_dev_config/deploy/check_uid.sh)\n\n$(cat ${tros_env_script})" >${tros_env_script}
+    echo -e "\nexport TROS_DISTRO=${tros_distro}\n" >>${tros_env_script}
 
     mkdir -p "${tmp_dir}/${ros_base_temporary_directory_name}/DEBIAN"
     cd "${tmp_dir}/${ros_base_temporary_directory_name}/" || exit
