@@ -54,127 +54,127 @@ repositories:
   box/hobot_dnn:
     type: git
     url: https://github.com/HorizonRDK/hobot_dnn.git
-    version: develop
+    version: foxy
   box/hobot_cv:
     type: git
     url: https://github.com/HorizonRDK/hobot_cv.git
-    version: develop
+    version: foxy
   box/hobot_msgs:
     type: git
     url: https://github.com/HorizonRDK/hobot_msgs.git
-    version: develop
+    version: foxy
   box/hobot_websocket:
     type: git
     url: https://github.com/HorizonRDK/hobot_websocket.git
-    version: develop
+    version: foxy
   box/hobot_codec:
     type: git
     url: https://github.com/HorizonRDK/hobot_codec.git
-    version: develop
+    version: foxy
   box/hobot_hdmi:
     type: git
     url: https://github.com/HorizonRDK/hobot_hdmi.git
-    version: develop
+    version: foxy
   box/hobot_audio:
     type: git
     url: https://github.com/HorizonRDK/hobot_audio.git
-    version: develop
+    version: foxy
   box/hobot_trigger:
     type: git
     url: https://github.com/HorizonRDK/hobot_trigger.git
-    version: develop
+    version: foxy
   box/hobot_perception/mono2d_body_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_body_detection.git
-    version: develop
+    version: foxy
   box/hobot_perception/mot:
     type: git
     url: https://github.com/HorizonRDK/mot.git
-    version: develop
+    version: foxy
   box/hobot_perception/hand_lmk_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_lmk_detection.git
-    version: develop
+    version: foxy
   box/hobot_perception/hand_gesture_detection:
     type: git
     url: https://github.com/HorizonRDK/hand_gesture_detection.git
-    version: develop
+    version: foxy
   box/hobot_perception/hobot_falldown_detection:
     type: git
     url: https://github.com/HorizonRDK/hobot_falldown_detection.git
-    version: develop
+    version: foxy
   box/hobot_perception/mono3d_indoor_detection:
     type: git
     url: https://github.com/HorizonRDK/mono3d_indoor_detection.git
-    version: develop
+    version: foxy
   box/hobot_perception/elevation_net:
     type: git
     url: https://github.com/HorizonRDK/elevation_net.git
-    version: develop
+    version: foxy
   box/hobot_perception/parking_perception:
     type: git
     url: https://github.com/HorizonRDK/parking_perception.git
-    version: develop
+    version: foxy
   box/hobot_perception/mono2d_trash_detection:
     type: git
     url: https://github.com/HorizonRDK/mono2d_trash_detection.git
-    version: develop
+    version: foxy
   box/hobot_perception/hobot_centerpoint:
     type: git
     url: https://github.com/HorizonRDK/hobot_centerpoint.git
-    version: develop
+    version: foxy
   box/hobot_perception/hobot_bev:
     type: git
     url: https://github.com/HorizonRDK/hobot_bev.git
-    version: develop
+    version: foxy
   box/hobot_perception/hobot_stereonet:
     type: git
     url: https://github.com/HorizonRDK/hobot_stereonet.git
-    version: develop
+    version: foxy
   box/hobot_interactions/gesture_control:
     type: git
     url: https://github.com/HorizonRDK/gesture_control.git
-    version: develop
+    version: foxy
   box/hobot_interactions/body_tracking:
     type: git
     url: https://github.com/HorizonRDK/body_tracking.git
-    version: develop
+    version: foxy
   box/hobot_interactions/audio_control:
     type: git
     url: https://github.com/HorizonRDK/audio_control.git
-    version: develop
+    version: foxy
   box/hobot_interactions/audio_tracking:
     type: git
     url: https://github.com/HorizonRDK/audio_tracking.git
-    version: develop
+    version: foxy
   box/hobot_interactions/parking_search:
     type: git
     url: https://github.com/HorizonRDK/parking_search.git
-    version: develop
+    version: foxy
   box/hobot_slam/orb_slam3:
     type: git
     url: https://github.com/HorizonRDK/orb_slam3.git
-    version: develop
+    version: foxy
   box/hobot_tts:
     type: git
     url: https://github.com/HorizonRDK/hobot_tts.git
-    version: develop
+    version: foxy
   box/hobot_vio:
     type: git
     url: https://github.com/HorizonRDK/hobot_vio.git
-    version: develop
+    version: foxy
   app/hobot_chatbot:
     type: git
     url: https://github.com/HorizonRDK/hobot_chatbot.git
-    version: develop
+    version: foxy
   app/xr_robot:
     type: git
     url: https://github.com/HorizonRDK/xr_robot.git
-    version: develop
+    version: foxy
   app/line_follower:
     type: git
     url: https://github.com/HorizonRDK/line_follower.git
-    version: develop
+    version: foxy
   box/ros-perception/laser_geometry:
     type: git
     url: https://github.com/ros-perception/laser_geometry.git
@@ -234,7 +234,7 @@ repositories:
   tools/benchmark:
     type: git
     url: https://github.com/HorizonRDK/benchmark.git
-    version: develop
+    version: foxy
   tros/ament_cmake_ros:
     type: git
     url: https://github.com/ros2/ament_cmake_ros.git
@@ -466,11 +466,11 @@ repositories:
   tools/hobot_image_publisher:
     type: git
     url: https://github.com/HorizonRDK/hobot_image_publisher.git
-    version: develop
+    version: foxy
   tools/hobot_visualization:
     type: git
     url: https://github.com/HorizonRDK/hobot_visualization.git
-    version: develop  
+    version: foxy  
   tools/Breakpad:
     type: git
     url: https://github.com/HorizonRDK/breakpad.git
@@ -478,28 +478,28 @@ repositories:
   box/hobot_sensor/hobot_rgbd_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_rgbd_cam.git
-    version: develop
+    version: foxy
   box/hobot_sensor/hobot_mipi_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_mipi_cam.git
-    version: develop
+    version: foxy
   box/hobot_sensor/hobot_imu_sensor:
     type: git
     url: https://github.com/HorizonRDK/hobot_imu_sensor.git
-    version: develop
+    version: foxy
   box/hobot_sensor/hobot_usb_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_usb_cam.git
-    version: develop
+    version: foxy
   box/hobot_sensor/hobot_stereo_usb_cam:
     type: git
     url: https://github.com/HorizonRDK/hobot_stereo_usb_cam.git
-    version: develop
+    version: foxy
   box/hobot_llm:
     type: git
     url: https://github.com/HorizonRDK/hobot_llm.git
-    version: develop
+    version: foxy
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRDK/sysroot_docker.git
-    version: develop
+    version: foxy
