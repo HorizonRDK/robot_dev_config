@@ -167,6 +167,10 @@ repositories:
     type: git
     url: https://github.com/HorizonRDK/hobot_llm.git
     version: develop
+  box/hobot_shm:
+    type: git
+    url: https://github.com/HorizonRDK/hobot_shm.git
+    version: develop
   ../../sysroot_docker:
     type: git
     url: https://github.com/HorizonRDK/sysroot_docker.git
