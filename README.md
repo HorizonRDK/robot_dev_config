@@ -1,53 +1,55 @@
+English| [简体中文](./README_cn.md)
+
 # robot_dev_config
 
-## 概述
+## Overview
 
-介绍如何拉取[TogetheROS.Bot](https://developer.horizon.ai/api/v1/fileData/documents_tros/index.html)代码，交叉编译开发环境的要求和搭建，代码编译和安装包部署说明。
+Introduce how to fetch the code for [TogetheROS.Bot](https://developer.horizon.ai/api/v1/fileData/documents_tros/index.html), requirements and setup of cross-compilation development environment, code compilation, and package deployment instructions.
 
-## 文件说明
+## File Description
 
-build.sh 编译脚本
+build.sh Compilation script
 
-aarch64_toolchainfile.cmake 用于TROS交叉编译
+aarch64_toolchainfile.cmake Used for TROS cross-compilation
 
-all_build.sh x3编译配置脚本，完整编译
+all_build.sh x3 compilation configuration script, complete compilation
 
-rdkultra_build.sh rdkultra编译配置脚本，完整编译
+rdkultra_build.sh rdkultra compilation configuration script, complete compilation
 
-x86_build.sh x86编译配置脚本，完整编译
+x86_build.sh x86 compilation configuration script, complete compilation
 
-clear_COLCON_IGNORE.sh 重制编译配置脚本
+clear_COLCON_IGNORE.sh Reset compilation configuration script
 
-minimal_build.sh 编译配置脚本，最小化编译
+minimal_build.sh Compilation configuration script, minimal compilation
 
-minimal_deploy.sh 部署剪裁脚本，用于最小化部署
+minimal_deploy.sh Deployment clipping script, used for minimal deployment
 
-build_deb.sh 应用独立打包脚本
+build_deb.sh Application independent packaging script
 
-## 交叉编译说明
+## Cross-Compilation Instructions
 
-### 基于ubuntu20.04 docker
+### Based on ubuntu20.04 docker
 
-1. 本地创建开发目录结构，获取源码。这里以/mnt/data/test为例
+1. Create a development directory structure locally, and fetch the source code. Here take /mnt/data/test as an example
 
 ```bash
-## 创建目录
+## Create directory
 cd /mnt/data/test
 mkdir -p cc_ws/tros_ws/src
 cd cc_ws/tros_ws
-## 获取配置文件
+## Get configuration files
 git clone https://github.com/HorizonRDK/robot_dev_config.git -b develop
-## 安装vcs工具
+## Install vcs tool
 sudo pip install -U vcstool 
-## 拉取代码
-vcs-import src < ./robot_dev_config/ros2.repos 
+## Fetch code
+vcs-import src  < ./robot_dev_config/ros2.repos 
 ```
 
-整个工程目录结构如下
+The entire project directory structure is as follows
 
 ```text
 ├── cc_ws
-│   ├── sysroot_docker
+│   ├── sysroot_docker```bash
 │   │   ├── etc
 │   │   ├── lib -> usr/lib
 │   │   ├── opt
@@ -59,51 +61,45 @@ vcs-import src < ./robot_dev_config/ros2.repos
 │       └── src
 ```
 
-**注意：目录结构需要保持一致**
-
-**注意：vcs import过程中打印.表示成功拉取repo，如果打印E表示该repo拉取失败可以通过执行后的log看到具体失败的repo，碰到这种情况可以尝试删除src里面的内容重新vcs import或者手动拉取失败的repo**
-
-2. 使用docker镜像
+2. Use docker image
 
 ```bash
-## 获取用于交叉编译的docker
+## Get docker for cross compilation
 wget http://sunrise.horizon.cc/TogetheROS/cross_compile_docker/pc_tros_v1.0.5.tar.gz
-## 加载docker镜像
+## Load docker image
 docker load --input pc_tros_v1.0.5.tar.gz
-## 查看对应的image ID
+## Check corresponding image ID
 docker images
-## 启动docker挂载目录，docker run -it --rm --entrypoint="/bin/bash" -v PC本地目录:docker目录 imageID
+## Start docker with mounted directories, docker run -it --rm --entrypoint="/bin/bash" -v Local directory in PC:Directory in docker image imageID
 docker run -it --rm --entrypoint="/bin/bash" -v /mnt/data/test:/mnt/test 725ec5a56ede
 ```
 
-3. 交叉编译。该步骤均在docker中完成
+3. Cross compilation. This step is completed in the docker environment
 
 ```bash
-## 切到编译路径下
+## Navigate to the build path
 cd /mnt/test/cc_ws/tros_ws
 
-## 使用build.sh脚本编译，通过-p选项指定编译平台[X3|Rdkultra|X86]
-## 例如编译X3平台TROS的命令为
+## Compile using build.sh script, specify the platform to compile for using the -p option [X3|Rdkultra|X86]
+## For example, to compile TROS for X3 platform, execute the following command
 bash robot_dev_config/build.sh -p X3
 ```
 
-**注意：编译过程中，要确保同一个终端中执行colcon build命令之前已执行执行export环境变量命令**
+**Note: During the compilation process, make sure to export the environment variable in the same terminal before executing the colcon build command.**
 
-编译成功后会提示总计N packages编译通过
+Upon successful compilation, you will see a message indicating the total N packages have been successfully compiled.
 
-4. 简单验证
+4. Simple verification
 
-将编译生成的install目录放入开发板中（开发板ubuntu20.04环境）
+Copy the generated install directory to the development board (Ubuntu 20.04 environment on the development board)
 
-打开一个terminator
-```bash
-
+Open a terminator
+```bash```
 source ./local_setup.bash
 ros2 run examples_rclcpp_minimal_publisher publisher_member_function
-
 ```
 
-打开另一个terminator
+Open another terminator
 
 ```bash
 
@@ -112,23 +108,20 @@ ros2 run examples_rclcpp_minimal_subscriber subscriber_member_function
 
 ```
 
-可以看到subscriber已经收到了消息
+Subscriber has received the message successfully.
 
-5. 最小部署包
+5. Minimum Deployment Package
 
-量产环节为了节省ROM和RAM空间，需要对TROS进行最小化剪裁
+In order to save ROM and RAM space during mass production, it is necessary to minimize the TROS deployment. This process consists of two steps:
 
-这里分为两个步骤：
+Step 1: Configure compilation options using minimal_build.sh;
+Step 2: After compilation is completed, execute ./minimal_deploy.sh -d install_path to obtain the install directory.
 
-  第4步配置编译选项，使用minimal_build.sh；
+6. Compile Deb Installation Package
 
-  第4步编译完成后得到install目录，执行./minimal_deploy.sh -d install_path
+Use build_deb.sh to compile the deb installation package. It is recommended to do this in a separate project directory, rather than in the development debugging project directory. The packaging script will automatically compile the package, so there is no need to run the compilation script before packaging.
 
-6. 编译deb安装包
-
-使用build_deb.sh编译deb安装包，建议在单独工程目录进行，不要使用开发调试工程目录，打包脚本会自动编译，打包前不需要运行编译脚本。
-
-脚本读取源码package.xml文件中的name，version，description，maintainer和depend信息，提交或更新源码时必须要修改相关信息。脚本使用方法：
+The script reads information such as name, version, description, maintainer, and dependencies from the source package.xml file. It is important to modify this information when submitting or updating the source code. Instructions for using the script:
 
 ```text
 Usage: ./robot_dev_config/build_deb.sh platform package_name
@@ -136,26 +129,22 @@ Usage: ./robot_dev_config/build_deb.sh platform package_name
   package_name: ros-base, tros, others, all, or select package name
 ```
 
-其中：
+Where:
 
-platform，编译平台，支持x3，rdkultra和x86
+platform: the compilation platform, supports x3, rdkultra, and x86
+package_name: supports the following options:
+- ros-base: includes basic packages related to ros2
+- tros: integrates all packages into one installation package, which depends on all installation packages generated on the current platform
+- others: packages all installation packages except ros-base
+- all: packages all installation packages on the current platform
+- select package name: specific package to be packed, the source code of this package must be in the src directory, generally used to update software packages individually注意:
 
-package_name，支持如下：
-
-- ros-base，ros2相关的基础包都打包到ros-base中
-- tros, 整体所有包整合到一起的安装包，依赖当前平台所有编译生成的安装包
-- others，打包除了ros-base之外的所有安装包
-- all，打包当前平台所有的安装包
-- select package name，具体要打包的安装包，该包源码必须在src目录下，一般使用该方式更新软件包
-
-注意：
-
-- 打包ros-base或tros时，需要修改build_deb.sh中的版本号，tros版本号定义使用变量tros_package_version，ros-base使用ros_base_package_version。
-- 单独打包某一个包时，确保该包依赖的包已打包，脚本目前未实现自动打包依赖包功能。
+- When packaging ros-base or tros, you need to modify the version number in build_deb.sh. The version number for tros is defined using the variable tros_package_version, while for ros-base it is ros_base_package_version.
+- When packaging a single package individually, make sure that the package dependencies have been packaged. The script currently does not automatically package dependent packages.
 
 7. FAQ
 
-Q: git获取代码重复提示输入账户、密码
+Q: Repeated prompts for username and password when fetching code from git
 
 A:
 
@@ -163,27 +152,27 @@ A:
 git config --global credential.helper store
 ```
 
-尝试拉一个repo，输入Username和Password（Password不是GitHub账号密码，而是个人token），后面不再需要重复输入密码，如何创建token可参考GitHub官方文档[Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+Try pulling a repo, input your Username and Password (the Password is not your GitHub account password but a personal access token). Afterwards, you won't need to repeatedly enter the password. Reference the GitHub official documentation [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for guidance on creating a token.
 
-## 单元测试说明
+## Unit Test Instructions
 
-1. 通过build.sh编译脚本的-g选项打开测试用例的编译，例如打开X3平台的测试用例编译
+1. Use the -g option in the build.sh compilation script to enable the compilation of test cases, for example, to enable the compilation of test cases for the X3 platform:
 
 ```bash
 ./robot_dev_config/build.sh -p X3 -g ON
 ```
 
-2. 单元测试需要推送到开发板上运行，且推送到开发板上的路径需要与交叉编译的路径保持一致。
+2. Unit tests need to be pushed to the development board for execution, and the path where they are pushed on the development board needs to be consistent with the cross-compiled path.
 
-3. 使用run_gtest.sh脚本运行单元测试，默认进行所有package的单元测试。用户可通过选项-s选择单独的package进行测试。例如
+3. Use the run_gtest.sh script to run unit tests, by default it runs unit tests for all packages. Users can use the -s option to select a specific package for testing. For example:
 
 ```bash
 ./robot_dev_config/run_gtest.sh -s rclcpp
 ```
 
-运行结束后，会统计测试结果，并输出出现错误的测试case以及错误信息。
+After completion, the test results will be summarized, and any failed test cases along with error information will be output.
 
-## 版本说明
+## Version Information
 
-- tros_1.1.6及以前的1.x版本需要使用相同版本1.x的系统镜像
-- tros_2.0.0等2.x版本需要使用配套的2.x版本系统镜像
+- tros_1.1.6 and earlier versions in the 1.x series require the use of the corresponding 1.x version system image.
+- tros_2.0.0 and other 2.x versions require the use of the matching 2.x version system image.
