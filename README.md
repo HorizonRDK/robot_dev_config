@@ -60,6 +60,9 @@ The entire project directory structure is as follows
 │       ├── robot_dev_config
 │       └── src
 ```
+**Note: The directory structure needs to be consistent**
+
+**Note: During the VCS import process, printing `.` indicates a successful pull of the repo. If printing E indicates a failed pull of the repo, the specific failed repo can be seen in the executed log. In this case, you can try deleting the content in the src to re import VCS or manually pull the failed repo**
 
 2. Use docker image
 
@@ -94,7 +97,7 @@ Upon successful compilation, you will see a message indicating the total N packa
 Copy the generated install directory to the development board (Ubuntu 20.04 environment on the development board)
 
 Open a terminator
-```bash```
+```bash
 source ./local_setup.bash
 ros2 run examples_rclcpp_minimal_publisher publisher_member_function
 ```
@@ -114,8 +117,9 @@ Subscriber has received the message successfully.
 
 In order to save ROM and RAM space during mass production, it is necessary to minimize the TROS deployment. This process consists of two steps:
 
-Step 1: Configure compilation options using minimal_build.sh;
-Step 2: After compilation is completed, execute ./minimal_deploy.sh -d install_path to obtain the install directory.
+Step 1: The configuration compilation option in step 4 uses minimal_build.sh;
+
+Step 2: After the step 4 of compilation is completed, obtain the install directory and execute ./minimal_deploy.sh -d install_path
 
 6. Compile Deb Installation Package
 
@@ -137,7 +141,9 @@ package_name: supports the following options:
 - tros: integrates all packages into one installation package, which depends on all installation packages generated on the current platform
 - others: packages all installation packages except ros-base
 - all: packages all installation packages on the current platform
-- select package name: specific package to be packed, the source code of this package must be in the src directory, generally used to update software packages individually注意:
+- select package name: specific package to be packed, the source code of this package must be in the src directory, generally used to update software packages individually
+
+Note:
 
 - When packaging ros-base or tros, you need to modify the version number in build_deb.sh. The version number for tros is defined using the variable tros_package_version, while for ros-base it is ros_base_package_version.
 - When packaging a single package individually, make sure that the package dependencies have been packaged. The script currently does not automatically package dependent packages.
